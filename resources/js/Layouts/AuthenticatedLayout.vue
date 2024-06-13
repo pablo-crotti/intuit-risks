@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import axios from "axios";
 import AdminNavigationLink from "@/Components/Navigation/AdminNavigationLink.vue";
 
 import DashboardIcon from "@/Icons/Navigation/DashboardIcon.vue";
@@ -13,6 +14,11 @@ import RisksIcon from "@/Icons/Navigation/RisksIcon.vue";
 // import { Link } from "@inertiajs/vue3";
 
 const showingNavigationDropdown = ref(false);
+
+const logout = async () => {
+    await axios.post(route("logout"));
+    window.location = "/";
+};
 </script>
 
 <template>
@@ -114,12 +120,13 @@ const showingNavigationDropdown = ref(false);
                                         >
                                     </li>
                                     <li>
-                                        <a
-                                            :href="route('logout')"
+                                        <button
+                                            @click="logout"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                             role="menuitem"
-                                            >Se déconnecter</a
                                         >
+                                            Se déconnecter
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
