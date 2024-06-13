@@ -1,152 +1,161 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
+import { ref } from "vue";
+import AdminNavigationLink from "@/Components/Navigation/AdminNavigationLink.vue";
+
+import DashboardIcon from "@/Icons/Navigation/DashboardIcon.vue";
+import UserImgPlaceholder from "@/Icons/UserImgPlaceholder.vue";
+import RisksIcon from "@/Icons/Navigation/RisksIcon.vue";
+// import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+// import Dropdown from "@/Components/Dropdown.vue";
+// import DropdownLink from "@/Components/DropdownLink.vue";
+// import NavLink from "@/Components/NavLink.vue";
+// import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+// import { Link } from "@inertiajs/vue3";
 
 const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
-                <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
-                        <div class="flex">
-                            <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
-                                </Link>
-                            </div>
-
-                            <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
-                            </div>
-                        </div>
-
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
-                            <!-- Settings Dropdown -->
-                            <div class="ms-3 relative">
-                                <Dropdown align="right" width="48">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                            >
-                                                {{ $page.props.auth.user.name }}
-
-                                                <svg
-                                                    class="ms-2 -me-0.5 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
-
-                                    <template #content>
-                                        <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
-                                        <DropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
-                                        </DropdownLink>
-                                    </template>
-                                </Dropdown>
-                            </div>
-                        </div>
-
-                        <!-- Hamburger -->
-                        <div class="-me-2 flex items-center sm:hidden">
-                            <button
-                                @click="showingNavigationDropdown = !showingNavigationDropdown"
-                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+        <nav
+            class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+        >
+            <div class="px-3 py-3 lg:px-5 lg:pl-3">
+                <div class="flex items-center justify-between">
+                    <div
+                        class="flex items-center justify-start rtl:justify-end"
+                    >
+                        <button
+                            data-drawer-target="logo-sidebar"
+                            data-drawer-toggle="logo-sidebar"
+                            aria-controls="logo-sidebar"
+                            type="button"
+                            class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        >
+                            <span class="sr-only">Ouvrir le menu</span>
+                            <svg
+                                class="w-6 h-6"
+                                aria-hidden="true"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
                             >
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path
-                                        :class="{
-                                            hidden: showingNavigationDropdown,
-                                            'inline-flex': !showingNavigationDropdown,
-                                        }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        :class="{
-                                            hidden: !showingNavigationDropdown,
-                                            'inline-flex': showingNavigationDropdown,
-                                        }"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
+                                <path
+                                    clip-rule="evenodd"
+                                    fill-rule="evenodd"
+                                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                                ></path>
+                            </svg>
+                        </button>
+                        <a href="/dashboard" class="flex ms-2 md:me-24">
+                            <!-- <img
+                                src="https://flowbite.com/docs/images/logo.svg"
+                                class="h-8 me-3"
+                                alt="FlowBite Logo"
+                            /> -->
+                            <span
+                                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
+                                >IntuitRisks</span
+                            >
+                        </a>
                     </div>
-                </div>
-
-                <!-- Responsive Navigation Menu -->
-                <div
-                    :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
-                    class="sm:hidden"
-                >
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <!-- Responsive Settings Options -->
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="px-4">
-                            <div class="font-medium text-base text-gray-800">
-                                {{ $page.props.auth.user.name }}
+                    <div class="flex items-center">
+                        <div class="flex items-center ms-3">
+                            <div>
+                                <button
+                                    type="button"
+                                    class="flex text-sm rounded-full focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-200"
+                                    aria-expanded="false"
+                                    data-dropdown-toggle="dropdown-user"
+                                >
+                                    <span class="sr-only"
+                                        >Ouvrir le menu utilisateur</span
+                                    >
+                                    <svg
+                                        class="w-10 h-10 text-gray-200"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <UserImgPlaceholder />
+                                    </svg>
+                                    <!-- <img
+                                        class="w-8 h-8 rounded-full"
+                                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                        alt="user photo"
+                                    /> -->
+                                </button>
                             </div>
-                            <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
-                            </ResponsiveNavLink>
+                            <div
+                                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                                id="dropdown-user"
+                            >
+                                <div class="px-4 py-3" role="none">
+                                    <p
+                                        class="text-sm text-gray-900 dark:text-white"
+                                        role="none"
+                                    >
+                                        {{ $page.props.auth.user.name }}
+                                    </p>
+                                    <p
+                                        class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
+                                        role="none"
+                                    >
+                                        {{ $page.props.auth.user.email }}
+                                    </p>
+                                </div>
+                                <ul class="py-1" role="none">
+                                    <li>
+                                        <a
+                                            :href="route('profile.edit')"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            role="menuitem"
+                                            >Profil</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a
+                                            :href="route('logout')"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            role="menuitem"
+                                            >Se déconnecter</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
-                </div>
-            </header>
+        <aside
+            id="logo-sidebar"
+            class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 xl:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+            aria-label="Sidebar"
+        >
+            <div
+                class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800"
+            >
+                <ul class="space-y-2 font-medium">
+                    <AdminNavigationLink
+                        href="/dashboard"
+                        title="Tableau de bord"
+                        :isActive="route().current('dashboard')"
+                        ><DashboardIcon
+                    /></AdminNavigationLink>
+                    <AdminNavigationLink
+                        href="/risks"
+                        title="Risques"
+                        :isActive="route().current('risks')"
+                        ><RisksIcon
+                    /></AdminNavigationLink>
+                </ul>
+            </div>
+        </aside>
 
-            <!-- Page Content -->
-            <main>
-                <slot />
-            </main>
-        </div>
+        <main class="p-10 mt-16 xl:ml-64">
+            <slot />
+        </main>
     </div>
 </template>

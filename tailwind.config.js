@@ -8,15 +8,38 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.vue',
+        "./node_modules/flowbite/**/*.js",
     ],
     darkMode: 'media',
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+            colors: {
+                green: "#34a72a",
+                orange: "#c9812f",
+                red: "#ca3737",
+                blue: "#129bbd",
+                primary: {
+                    "50": "#E5F6F5",
+                    "100": "#CCEDEB",
+                    "200": "#99DBD7",
+                    "300": "#66C9C4",
+                    "400": "#33B7B1",
+                    "500": "#0E7C7B",
+                    "600": "#0A6364",
+                    "700": "#07524D",
+                    "800": "#053F3A",
+                    "900": "#032C27",
+                    "950": "#021E1B"
+                },
+            }
+        },
+        fontFamily: {
+            sans: ['Figtree', ...defaultTheme.fontFamily.sans],
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        require('flowbite/plugin')
+    ],
 };
