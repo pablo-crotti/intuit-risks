@@ -8,7 +8,7 @@ import TendencyArrow from "@/Icons/TendencyArrow.vue";
 export default {
     props: {
         risk: {
-            type: Array,
+            type: Object,
             required: true,
         },
     },
@@ -33,14 +33,13 @@ export default {
                 >
                     <span
                         class="w-2 h-2 block rounded-full"
-                        :style="`background-color: ${risk.category_color}`"
+                        :style="`background-color: ${risk.category.color}`"
                     ></span>
-                    {{ risk.category_name }}
+                    {{ risk.category.name }}
                 </div>
             </div>
             <button
                 id="dropdownMenuIconButton"
-                data-dropdown-toggle="dropdownDots"
                 class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
             >
@@ -60,29 +59,35 @@ export default {
     </td>
     <td class="px-6 py-4">
         <CriticityTooltip
-            v-if="risk.actual_impact && risk.actual_probability"
+            v-if="risk.evaluations[0].impact && risk.evaluations[0].probability"
             :id="risk.id"
-            :probability="risk.actual_probability"
-            :impact="risk.actual_impact"
+            :probability="risk.evaluations[0].probability"
+            :impact="risk.evaluations[0].impact"
         />
         <CriticityTooltip
             v-else
             :id="risk.id"
-            :probability="risk.actual_probability"
-            :impact="risk.actual_impact"
+            :probability="risk.evaluations[0].probability"
+            :impact="risk.evaluations[0].impact"
         />
     </td>
     <td class="px-6 py-4">
         <div class="text-sm text-gray-500 dark:text-gray-400">
             <svg
-                v-if="risk.old_probability && risk.old_impact"
+                v-if="
+                    risk.evaluations.length > 1
+                "
                 :class="`w-6 h-6 ${
-                    risk.actual_probability * risk.actual_impact -
-                        risk.old_probability * risk.old_impact >
+                    risk.evaluations[0].probability *
+                        risk.evaluations[0].impact -
+                        risk.evaluations[1].probability *
+                            risk.evaluations[1].impact >
                     0
                         ? 'text-red'
-                        : risk.actual_probability * risk.actual_impact -
-                              risk.old_probability * risk.old_impact <
+                        : risk.evaluations[0].probability *
+                              risk.evaluations[0].impact -
+                              risk.evaluations[1].probability *
+                                  risk.evaluations[1].impact <
                           0
                         ? 'text-green'
                         : 'text-gray-500 dark:text-gray-400'
@@ -93,20 +98,14 @@ export default {
             >
                 <TendencyArrow
                     :tendency="
-                        risk.actual_probability * risk.actual_impact -
-                        risk.old_probability * risk.old_impact
+                        risk.evaluations[0].probability *
+                            risk.evaluations[0].impact -
+                        risk.evaluations[1].probability *
+                            risk.evaluations[1].impact
                     "
                 />
             </svg>
-            <span
-                v-if="
-                    !risk.actual_impact ||
-                    !risk.actual_probability ||
-                    !risk.old_impact ||
-                    !risk.old_probability
-                "
-                >Aucune donnée</span
-            >
+            <span v-if="!risk.evaluations.length <= 1">Aucune donnée</span>
         </div>
     </td>
     <td class="px-6 py-4">
@@ -119,10 +118,10 @@ export default {
     </td>
     <td class="px-6 py-4">
         <div class="text-sm text-gray-500 dark:text-gray-400">
-            <div v-if="risk.last_review">
-                <DateText :date="risk.last_review" /><br />
+            <div v-if="risk.evaluations[0].created_at">
+                <DateText :date="risk.evaluations[0].created_at" /><br />
                 <ReviewInformations
-                    :lastReview="risk.last_review"
+                    :lastReview="risk.evaluations[0].created_at"
                     :evaluationFrequency="risk.evaluation_frequency"
                 />
             </div>

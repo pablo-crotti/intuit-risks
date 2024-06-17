@@ -8,16 +8,16 @@ export default {
     },
     data: function(){
         return {
-            dateFormatter : new Intl.DateTimeFormat('fr-FR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }),
+            formatDate(dateString) {
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('fr-FR', options);
         }
-    }
+        }
+    },
 
 };
 </script>
 <template>
-    <span>{{ dateFormatter.format(new Date(date * 1000)) }}</span>
+     <span>{{ formatDate(date) }}</span>
 </template>

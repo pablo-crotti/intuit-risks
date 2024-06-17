@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
-            CategorySeeder::class,
-            OrganizationTypeSeeder::class,
-            RiskSeeder::class,
+            // CategorySeeder::class,
+            // OrganizationTypeSeeder::class,
+            // RiskSeeder::class,
+            CountrySeeder::class,
         ]);
     }
 }
