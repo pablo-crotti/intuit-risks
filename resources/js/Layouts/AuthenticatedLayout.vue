@@ -154,7 +154,7 @@ const logout = async () => {
                     <AdminNavigationLink
                         href="/risks"
                         title="Risques"
-                        :isActive="route().current('risks')"
+                        :isActive="route().current('risks') || route().current('risks.show')"
                         ><RisksIcon
                     /></AdminNavigationLink>
                 </ul>

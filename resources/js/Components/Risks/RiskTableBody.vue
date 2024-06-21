@@ -4,6 +4,7 @@ import RiskStrategy from "@/Components/Risks/RiskStrategy.vue";
 import DateText from "@/Components/DateText.vue";
 import ReviewInformations from "@/Components/Risks/ReviewInformations.vue";
 import TendencyArrow from "@/Icons/TendencyArrow.vue";
+import RiskAndCategory from "@/Components/Risks/RiskAndCategory.vue";
 
 export default {
     props: {
@@ -18,27 +19,19 @@ export default {
         DateText,
         ReviewInformations,
         TendencyArrow,
+        RiskAndCategory
     },
 };
 </script>
 <template>
     <td class="px-6 py-4">
         <div class="flex justify-between gap-8">
-            <div>
-                <div class="text-sm font-medium text-gray-900 dark:text-white">
-                    {{ risk.name }}
-                </div>
-                <div
-                    class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2"
-                >
-                    <span
-                        class="w-2 h-2 block rounded-full"
-                        :style="`background-color: ${risk.category.color}`"
-                    ></span>
-                    {{ risk.category.name }}
-                </div>
-            </div>
-            <button
+            <RiskAndCategory
+                :name="risk.name"
+                :category_name="risk.category.name"
+                :category_color="risk.category.color" />
+            <a
+                :href="`/risks/${risk.id}`"
                 id="dropdownMenuIconButton"
                 class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
@@ -54,7 +47,7 @@ export default {
                         d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
                     />
                 </svg>
-            </button>
+            </a>
         </div>
     </td>
     <td class="px-6 py-4">
@@ -74,9 +67,7 @@ export default {
     <td class="px-6 py-4">
         <div class="text-sm text-gray-500 dark:text-gray-400">
             <svg
-                v-if="
-                    risk.evaluations.length > 1
-                "
+                v-if="risk.evaluations.length > 1"
                 :class="`w-6 h-6 ${
                     risk.evaluations[0].probability *
                         risk.evaluations[0].impact -
@@ -105,7 +96,7 @@ export default {
                     "
                 />
             </svg>
-            <span v-if="!risk.evaluations.length <= 1">Aucune donnée</span>
+            <span v-if="risk.evaluations.length <= 1">Aucune donnée</span>
         </div>
     </td>
     <td class="px-6 py-4">

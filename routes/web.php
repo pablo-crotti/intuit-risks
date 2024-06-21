@@ -7,6 +7,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Registration\RegistrationCompanyController;
 use App\Http\Controllers\Registration\RegistrationRisksController;
 use App\Http\Controllers\CompanyRisksController;
+use App\Http\Controllers\CompanyRiskController;
+use App\Http\Controllers\EvaluationController;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -22,7 +24,6 @@ Route::get('/dashboard', function () {
     return Inertia::render('Logged/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/risks', [CompanyRisksController::class, 'display'])->middleware(['auth', 'verified'])->name('risks');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,12 +38,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/register/risks', [RegistrationRisksController::class, 'store'])->name('register.risks.store');
 });
 
+Route::middleware(('auth'))->group(function () {
+    Route::get('/risks', [CompanyRisksController::class, 'display'])->name('risks');
+    Route::get('/risks/{id}', [CompanyRiskController::class, 'display'])->name('risks.show');
+});
+
 
 
 
 
 
 Route::get('api/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::middleware('auth')->group(function () {
+    Route::post('api/evaluations', [EvaluationController::class, 'store'])->name('evaluations.store');
+});
 
 
 
