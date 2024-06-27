@@ -53,13 +53,13 @@ export default {
     <td class="px-6 py-4">
         <CriticityTooltip
             v-if="risk.evaluations[0].impact && risk.evaluations[0].probability"
-            :id="risk.id"
+            :id="`tool-${risk.id}`"
             :probability="risk.evaluations[0].probability"
             :impact="risk.evaluations[0].impact"
         />
         <CriticityTooltip
             v-else
-            :id="risk.id"
+            :id="`tool-${risk.id}`"
             :probability="risk.evaluations[0].probability"
             :impact="risk.evaluations[0].impact"
         />

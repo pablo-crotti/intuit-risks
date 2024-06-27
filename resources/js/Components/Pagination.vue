@@ -1,21 +1,30 @@
 <script>
 export default {
     props: {
-        links: {
-            type: Array,
+        pages: {
+            type: Number,
+            required: false,
+        },
+        actualPage: {
+            type: Number,
             required: true,
         },
     },
+    emits: ["change-page"],
 };
 </script>
 <template>
     <nav>
         <ul class="flex items-center -space-x-px h-10 text-base">
             <li>
-                <a
-                    :href="links[0].url"
-                    :disabeled="links[1].active"
-                    class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                <button
+                    @click="$emit('change-page', actualPage - 1)"
+                    :disabled="actualPage === 1"
+                    :class="`flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 border border-e-0 border-gray-300 rounded-s-lg bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 ${
+                        actualPage === 1
+                            ? 'opacity-35'
+                            : ' hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-white'
+                    }`"
                 >
                     <span class="sr-only">Précédent</span>
                     <svg
@@ -33,27 +42,32 @@ export default {
                             d="M5 1 1 5l4 4"
                         />
                     </svg>
-                </a>
+                </button>
             </li>
-            <span v-for="(link, index) in links" :key="link.label">
-                <li v-if="index != links.length - 1 && index != 0">
-                    <a
-                        :href="link.url"
-                        v-if="link.url"
+            <span v-for="i in pages">
+                <li>
+                    <button
+                        @click="$emit('change-page', i)"
                         :class="`${
-                            link.active
+                            actualPage === i
                                 ? 'z-10 flex items-center justify-center px-4 h-10 leading-tight text-primary-600 border border-primary-300 bg-primary-50 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white'
                                 : 'flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300  hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
                         }`"
-                        >{{ link.label }}
-                    </a>
+                    >
+                        {{ i }}
+                    </button>
                 </li>
             </span>
             <li>
-                <a
-                    :href="links[links.length - 1].url"
-                    :disabeled="links[links.length - 2].active"
-                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                <button
+                    @click="$emit('change-page', actualPage + 1)"
+                    :disabled="actualPage === pages"
+                    :class="`flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 border border-e-0 border-gray-300 rounded-e-lg bg-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 ${
+                        actualPage === pages
+                            ? 'opacity-35'
+                            : ' hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-white'
+                    }`"
+
                 >
                     <span class="sr-only">Next</span>
                     <svg
@@ -71,7 +85,7 @@ export default {
                             d="m1 9 4-4-4-4"
                         />
                     </svg>
-                </a>
+                </button>
             </li>
         </ul>
     </nav>

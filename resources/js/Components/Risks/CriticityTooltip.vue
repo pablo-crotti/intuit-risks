@@ -3,7 +3,6 @@ import { initFlowbite } from "flowbite";
 export default {
     props: {
         id: {
-            type: Number,
             required: true,
         },
         probability: {

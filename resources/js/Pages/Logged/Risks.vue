@@ -4,7 +4,6 @@ import { Head } from "@inertiajs/vue3";
 import ListView from "@/Components/Risks/ListView.vue";
 import MatrixView from "@/Components/Risks/MatrixView.vue";
 import { ref } from "vue";
-import Pagination from "@/Components/Pagination.vue";
 import localstorage from "@/Helpers/localstorage";
 
 const view = ref("list");
@@ -22,13 +21,12 @@ if (localstorage.verifyLocalStorage("risksView")) {
 }
 
 
-defineProps({
+const props = defineProps({
     risks: {
-        type: Object,
+        type: Array,
         required: true,
     },
 });
-
 
 
 const changeView = (newView) => {
@@ -63,11 +61,9 @@ const changeView = (newView) => {
                 Vue en matrice
             </button>
         </div>
-        <ListView :risks="risks.data" v-if="view === 'list'" />
-        <MatrixView :risks="risks.data" v-else-if="view === 'matrix'" />
-        <div class="w-full flex justify-center my-8">
-            <Pagination :links="risks.links" />
-        </div>
+        <ListView :risks="risks" v-if="view === 'list'" />
+        <MatrixView :risks="risks" v-else-if="view === 'matrix'" />
+        
     </div>
 
         
