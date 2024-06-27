@@ -19,4 +19,5 @@ class OrganizationType extends Model
         return $this->hasMany(Company::class);
     }
     
+    
 }

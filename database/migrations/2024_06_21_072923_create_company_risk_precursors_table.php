@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('company_risk_precursors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('label');
-            $table->string('color');
-            $table->text('description_short');
-            $table->text('description_long');
+            $table->String('name');
+            $table->foreignId('company_risk_id')->constrained()->onDelete('cascade');
+            $table->integer('status')->default(0)->comment('0: Normal, 1: Warning, 2: Dangerous');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('company_risk_precursors');
     }
 };

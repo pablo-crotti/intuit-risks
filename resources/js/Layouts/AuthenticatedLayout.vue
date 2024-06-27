@@ -6,6 +6,7 @@ import AdminNavigationLink from "@/Components/Navigation/AdminNavigationLink.vue
 import DashboardIcon from "@/Icons/Navigation/DashboardIcon.vue";
 import UserImgPlaceholder from "@/Icons/UserImgPlaceholder.vue";
 import RisksIcon from "@/Icons/Navigation/RisksIcon.vue";
+import UsersIcon from "@/Icons/Navigation/UsersIcon.vue";
 // import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 // import Dropdown from "@/Components/Dropdown.vue";
 // import DropdownLink from "@/Components/DropdownLink.vue";
@@ -77,14 +78,11 @@ const logout = async () => {
                                     <span class="sr-only"
                                         >Ouvrir le menu utilisateur</span
                                     >
-                                    <svg
-                                        class="w-10 h-10 text-gray-200"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                    >
-                                        <UserImgPlaceholder />
-                                    </svg>
+                                    <UserImgPlaceholder
+                                        width="w-10"
+                                        height="h-10"
+                                    />
+
                                     <!-- <img
                                         class="w-8 h-8 rounded-full"
                                         src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
@@ -122,7 +120,7 @@ const logout = async () => {
                                     <li>
                                         <button
                                             @click="logout"
-                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                             role="menuitem"
                                         >
                                             Se déconnecter
@@ -154,9 +152,21 @@ const logout = async () => {
                     <AdminNavigationLink
                         href="/risks"
                         title="Risques"
-                        :isActive="route().current('risks') || route().current('risks.show')"
+                        :isActive="
+                            route().current('risks') ||
+                            route().current('risks.show')
+                        "
                         ><RisksIcon
                     /></AdminNavigationLink>
+
+                    <AdminNavigationLink
+                        v-if="$page.props.auth.user.is_admin"
+                        href="/admin/users"
+                        title="Utilisateurs"
+                        :isActive="route().current('admin.users')"
+                    >
+                        <UsersIcon />
+                    </AdminNavigationLink>
                 </ul>
             </div>
         </aside>

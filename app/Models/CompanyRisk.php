@@ -44,6 +44,10 @@ class CompanyRisk extends Model
         return $this->hasMany(CompanyRiskEvaluation::class)->orderBy('created_at', 'desc');
     }
 
+    public function precursors()
+    {
+        return $this->hasMany(CompanyRiskPrecursor::class)->orderBy('status', 'desc');
+    }
 
 
 }

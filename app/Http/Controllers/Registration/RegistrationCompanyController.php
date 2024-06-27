@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\OrganizationType;
 use App\Models\Country;
 use App\Models\Company;
+use App\Models\User;
 use Inertia\Inertia;
 
 class RegistrationCompanyController extends Controller
@@ -19,7 +20,6 @@ class RegistrationCompanyController extends Controller
 
 
         return Inertia::render('Logged/Registration/Company', ['organizations' => $organizations, 'countries' => $countries]);
-
     }
 
     public function store(Request $request): RedirectResponse
@@ -45,6 +45,11 @@ class RegistrationCompanyController extends Controller
             'administrator_id' => $user_id,
         ]);
 
-        return redirect(route('dashboard', absolute: false));
+        $user = User::find($user_id);
+        $user->company_id = $company->id;
+        $user->registration_step = 2;
+        $user->save();
+
+        return redirect(route('register.risks.index', absolute: false));
     }
 }

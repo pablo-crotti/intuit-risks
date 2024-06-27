@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('registration_step')->default(1);
             $table->integer('company_id')->nullable();
             $table->boolean('is_admin')->default(false);
+            $table->boolean('is_active')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

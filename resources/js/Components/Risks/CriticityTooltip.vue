@@ -1,4 +1,5 @@
 <script>
+import { initFlowbite } from "flowbite"; 
 export default {
     props: {
         id: {
@@ -27,6 +28,9 @@ export default {
                 return "Mineure";
             }
         },
+    },
+    mounted() {
+        initFlowbite();
     },
 };
 </script>

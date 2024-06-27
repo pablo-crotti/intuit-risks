@@ -18,11 +18,10 @@ class RegistrationSteps
     {
         if (Auth::check()) {
             $userRegistrationStep = Auth::user()->registration_step;
-            $actualRoute = $request->route()->getName();
             if ($userRegistrationStep == 1) {
-                if ($actualRoute != 'register.company') {
-                    return redirect()->route('register.company');
-                }
+                return redirect()->route('register.company');
+            } else if ($userRegistrationStep == 2) {
+                return redirect()->route('register.risks.index');
             }
         }
 

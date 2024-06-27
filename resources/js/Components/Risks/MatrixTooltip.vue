@@ -1,4 +1,5 @@
 <script>
+import { initFlowbite } from "flowbite";
 export default {
     props: {
         id: {
@@ -17,6 +18,9 @@ export default {
             type: String,
             required: true,
         },
+    },
+    mounted() {
+        initFlowbite();
     },
 };
 </script>
@@ -45,5 +49,4 @@ export default {
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
     </div>
-    
 </template>
