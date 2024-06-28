@@ -16,7 +16,4 @@ class CompanyRiskController extends Controller
             'risk' => $risk,
         ]);
     }
-    
-
-    
 }

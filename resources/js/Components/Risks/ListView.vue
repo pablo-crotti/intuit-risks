@@ -177,9 +177,9 @@ export default {
 
 <template>
     <div
-        class="flex items-center justify-start flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900"
+        class="flex items-center justify-start flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4"
     >
-        <label for="table-search" class="sr-only">Recherche</label>
+        <label for="table-search-risks" class="sr-only">Recherche</label>
         <div class="relative">
             <div
                 class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
@@ -203,7 +203,7 @@ export default {
             <input
                 @input="search($event.target.value)"
                 type="text"
-                id="table-search-users"
+                id="table-search-risks"
                 class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Recherche d'un risque"
             />

@@ -15,9 +15,11 @@ class UsersController extends Controller
     {
         $company_id = auth()->user()->company_id;
         $company_users = User::where('company_id', $company_id)->get();
+        $company_admin = Company::where('id', $company_id)->first()->administrator_id;
 
         return inertia('Logged/Admin/Users', [
-            'users' => $company_users
+            'users' => $company_users,
+            'admin' => $company_admin
         ]);
     }
 
@@ -32,27 +34,49 @@ class UsersController extends Controller
 
         $company_id = auth()->user()->company_id;
 
-        // $user = new User();
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->is_admin = $request->is_admin;
-        // $user->company_id = $company_id;
-        // $user->save();
+        $random = random_bytes(16);
+        $timestamp = now()->timestamp;
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->is_admin = $request->is_admin;
+        $user->company_id = $company_id;
+        $user->registration_step = 3;
+        $user->token = bin2hex($timestamp . $random);
+        $user->save();
         
         $company_name = Company::where('id', $company_id)->first()->name;
+
+        $url = "http://localhost:8000/user-register/$user->token";
        
-        Mail::to($request->email)->send(new NewUserMail(["name" => $request->name, "company_name" => $company_name, "email" => $request->email]));
+        Mail::to($request->email)->send(new NewUserMail(["name" => $request->name, "company_name" => $company_name, "email" => $request->email, "url" => $url]));
+        
+    }
 
-        // User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'is_admin' => $request->is_admin,
-        //     'company_id' => auth()->user()->company_id,
-        // ]);
+    public function update(Request $request) 
+    {
+        $request->validate([
+            'id' => 'required',
+            'update' => 'required|in:status,admin',
+        ]);
 
-        // return redirect()->route('admin.users');
+        if($request->update == 'status') {
+            $user = User::find($request->id);
+            $user->is_deleted = !$user->is_deleted;
+            $user->save();
+        } else {
+            $user = User::find($request->id);
+            $user->is_admin = !$user->is_admin;
+            $user->save();
+        }
 
+        $company_id = auth()->user()->company_id;
+        $company_users = User::where('company_id', $company_id)->get();
 
+        return response()->json([
+            'users' => $company_users,
+        ]);
         
     }
 }

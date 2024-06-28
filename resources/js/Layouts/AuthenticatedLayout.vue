@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import axios from "axios";
 import AdminNavigationLink from "@/Components/Navigation/AdminNavigationLink.vue";
-
+import { initFlowbite } from "flowbite";
 import DashboardIcon from "@/Icons/Navigation/DashboardIcon.vue";
 import UserImgPlaceholder from "@/Icons/UserImgPlaceholder.vue";
 import RisksIcon from "@/Icons/Navigation/RisksIcon.vue";
@@ -20,6 +20,10 @@ const logout = async () => {
     await axios.post(route("logout"));
     window.location = "/";
 };
+
+onMounted(() => {
+    initFlowbite();
+});
 </script>
 
 <template>

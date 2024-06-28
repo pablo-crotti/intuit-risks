@@ -1,4 +1,5 @@
 <script>
+import { initFlowbite } from "flowbite";
 export default {
     props: {
         id: {
@@ -13,16 +14,19 @@ export default {
     emits: ["manualClosed"],
     methods: {
         closeModal() {
-            const closeButton = document.querySelector(`button-${this.id}`);
-            if (closeButton) {
-                const clickEvent = new MouseEvent("click", {
-                    bubbles: true,
-                    cancelable: true,
-                    view: window,
-                });
-                closeButton.dispatchEvent(clickEvent);
-            }
+            const closeButton = document.querySelector(`#button-${this.id}`);
 
+            if (closeButton) {
+                const open = document.querySelector(`#${this.id}`);
+                if (!open.classList.contains("hidden")) {
+                    const clickEvent = new MouseEvent("click", {
+                        bubbles: true,
+                        cancelable: true,
+                        view: window,
+                    });
+                    closeButton.dispatchEvent(clickEvent);
+                }
+            }
             this.$emit("manualClosed");
         },
     },
@@ -33,6 +37,9 @@ export default {
             }
         },
     },
+    mounted() {
+        initFlowbite();
+    },
 };
 </script>
 
@@ -40,7 +47,7 @@ export default {
     <button
         :id="`button-${id}`"
         :data-dropdown-toggle="id"
-        class="text-gray-900 dark:text-white bg-gray-100 hover:bg-white dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-gray-900 dark:text-white bg-gray-100 hover:bg-white dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 duration-300"
         type="button"
     >
         <slot name="button" />

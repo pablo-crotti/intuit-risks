@@ -24,6 +24,8 @@ class User extends Authenticatable
         'registration_step',
         'is_admin',
         'is_active',
+        'is_deleted',
+        'token',
     ];
 
     /**
@@ -48,4 +50,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    
 }

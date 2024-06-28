@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, ref, onMounted } from "vue";
+import { Head } from "@inertiajs/vue3";
 import CategoriesHub from "@/Components/Registration/CategoriesHub.vue";
 import RisksView from "@/Components/Registration/RisksView.vue";
 import Loader from "@/Components/Loader.vue";
@@ -98,6 +99,7 @@ onMounted(() => {
 </script>
 <template>
     <Loader v-if="isLoading"/>
+    <Head title="Sélection de risques" />
     <div
         id="popup-modal"
         tabindex="-1"
@@ -107,7 +109,7 @@ onMounted(() => {
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button
                     type="button"
-                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white duration-300"
                     data-modal-hide="popup-modal"
                 >
                     <svg

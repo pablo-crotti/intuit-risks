@@ -38,5 +38,10 @@ class Company extends Model
     {
         return $this->hasMany(CompanyRisk::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
     
 }
