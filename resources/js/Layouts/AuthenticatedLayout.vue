@@ -7,19 +7,20 @@ import DashboardIcon from "@/Icons/Navigation/DashboardIcon.vue";
 import UserImgPlaceholder from "@/Icons/UserImgPlaceholder.vue";
 import RisksIcon from "@/Icons/Navigation/RisksIcon.vue";
 import UsersIcon from "@/Icons/Navigation/UsersIcon.vue";
-// import ApplicationLogo from "@/Components/ApplicationLogo.vue";
-// import Dropdown from "@/Components/Dropdown.vue";
-// import DropdownLink from "@/Components/DropdownLink.vue";
-// import NavLink from "@/Components/NavLink.vue";
-// import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-// import { Link } from "@inertiajs/vue3";
+import Loader from "@/Components/Loader.vue";
 
 const showingNavigationDropdown = ref(false);
+const isLoading = ref(false);
+
 
 const logout = async () => {
+    isLoading.value = true;
     await axios.post(route("logout"));
     window.location = "/";
 };
+
+
+
 
 onMounted(() => {
     initFlowbite();
@@ -27,6 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <Loader v-if="isLoading" />
     <div>
         <nav
             class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
@@ -59,11 +61,6 @@ onMounted(() => {
                             </svg>
                         </button>
                         <a href="/dashboard" class="flex ms-2 md:me-24">
-                            <!-- <img
-                                src="https://flowbite.com/docs/images/logo.svg"
-                                class="h-8 me-3"
-                                alt="FlowBite Logo"
-                            /> -->
                             <span
                                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
                                 >IntuitRisks</span
@@ -83,15 +80,12 @@ onMounted(() => {
                                         >Ouvrir le menu utilisateur</span
                                     >
                                     <UserImgPlaceholder
+                                        :img="$page.props.auth.user.image"
+                                        
                                         width="w-10"
                                         height="h-10"
                                     />
 
-                                    <!-- <img
-                                        class="w-8 h-8 rounded-full"
-                                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                        alt="user photo"
-                                    /> -->
                                 </button>
                             </div>
                             <div

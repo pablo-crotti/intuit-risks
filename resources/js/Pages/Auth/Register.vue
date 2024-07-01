@@ -3,6 +3,7 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
+import InputFile from "@/Components/InputFile.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
 const form = useForm({
@@ -11,6 +12,7 @@ const form = useForm({
     password: "",
     password_confirmation: "",
     terms: false,
+    avatar: null,
 });
 
 const submit = () => {
@@ -112,6 +114,13 @@ const submit = () => {
                                 <InputError
                                     class="mt-2"
                                     :message="form.errors.password_confirmation" />
+                            </div>
+                            <div class="mt-4">
+                                <InputLabel for="avatar">Avatar</InputLabel>
+                                <InputFile :id="`avatar`" @selectFile="(f) => form.avatar=f" />
+                                <InputError
+                                    class="mt-2"
+                                    :message="form.errors.avatar" />
                             </div>
 
                             <div class="flex items-start">

@@ -19,6 +19,12 @@ class CompanyRisk extends Model
         'evaluation_frequency'
     ];
 
+    /**
+     * The function "company" defines a relationship where an object belongs to a Company class.
+     * 
+     * @return The `company()` function is returning a relationship where the current model belongs to
+     * a `Company` model.
+     */
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -44,10 +50,13 @@ class CompanyRisk extends Model
         return $this->hasMany(CompanyRiskEvaluation::class)->orderBy('created_at', 'desc');
     }
 
+    public function latestEvaluation()
+    {
+        return $this->hasOne(CompanyRiskEvaluation::class)->latestOfMany();
+    }
+
     public function precursors()
     {
         return $this->hasMany(CompanyRiskPrecursor::class)->orderBy('status', 'desc');
     }
-
-
 }

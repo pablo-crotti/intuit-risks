@@ -185,7 +185,7 @@ const updatePrecursors = (id, status) => {
                             class="font-semibold text-gray-900 dark:text-white"
                             >Créateur</strong
                         >
-                        <UserNameAndImg :user_name="risk.author.name" />
+                        <UserNameAndImg :user_name="risk.author.name" :user_image="risk.author.image" />
                     </div>
                 </div>
 

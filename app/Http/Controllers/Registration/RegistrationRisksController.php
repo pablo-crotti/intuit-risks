@@ -13,6 +13,17 @@ use App\Models\User;
 class RegistrationRisksController extends Controller
 {
 
+    /**
+     * The index function retrieves organization, risk categories, risks, and company risks data for
+     * display in a web page.
+     * 
+     * @return The `index` function is returning data to be used in a view. The data being returned
+     * includes:
+     * - 'organization': The organization type with risks and categories
+     * - 'categories': An array of categories with their details and the count of associated risks
+     * - 'risks': Risks grouped by category ID
+     * - 'companyRisks': Company risks with evaluations, filtered by the company ID
+     */
     public function index()
     {
         $user_id = auth()->user()->id;
@@ -51,6 +62,13 @@ class RegistrationRisksController extends Controller
         ]);
     }
 
+    /**
+     * The function `store` checks if a company risk already exists, deletes existing evaluations and
+     * the risk if found, otherwise creates a new company risk and evaluation.
+     * 
+     * @param Request request The `store` function you provided is responsible for storing company
+     * risks and their evaluations based on the request data.
+     */
     public function store(Request $request)
     {
         $riskExists = CompanyRisk::where('risk_id', $request->id)->first();
@@ -94,6 +112,15 @@ class RegistrationRisksController extends Controller
         }
     }
 
+    /**
+     * The update function in the PHP code snippet updates the probability and impact values of a
+     * company risk evaluation based on the provided request data, while the validate function updates
+     * the registration step of the authenticated user to 3.
+     * 
+     * @param Request request In the `update` function, you are trying to update the probability and
+     * impact values of a CompanyRiskEvaluation based on the data received in the request. However,
+     * there are a couple of issues in your code:
+     */
     public function update(Request $request)
     {
         $newEvaluationData = $request->all();

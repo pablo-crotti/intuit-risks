@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_active')->default(false);
             $table->boolean('is_deleted')->default(false);
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

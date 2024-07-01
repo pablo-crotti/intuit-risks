@@ -8,6 +8,13 @@ use App\Models\Company;
 
 class CompanyController extends Controller
 {
+   /**
+    * The function retrieves the company details along with its organization type and country for the
+    * authenticated user and returns the data in JSON format.
+    * 
+    * @return The code is returning a JSON response containing the company details of the authenticated
+    * user. The company details include the organization type and country associated with the company.
+    */
    public function index()
    {
 

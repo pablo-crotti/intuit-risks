@@ -25,8 +25,11 @@ class User extends Authenticatable
         'is_admin',
         'is_active',
         'is_deleted',
+        'image',
         'token',
     ];
+
+    protected $appends = ['image_url'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -54,6 +57,10 @@ class User extends Authenticatable
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function getImageUrlAttribute() {
+        return asset('storage/' . $this->attributes['image']);
     }
 
     

@@ -13,7 +13,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\PrecursorsController;
 use App\Http\Controllers\Admin\UsersController;
-
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\EnsureUserIsActivated;
 
 use Inertia\Inertia;
@@ -27,9 +27,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Logged/Dashboard');
-})->middleware(['auth', EnsureUserIsActivated::class, 'verified', RegistrationSteps::class])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth', EnsureUserIsActivated::class, 'verified', RegistrationSteps::class])->name('dashboard');
 
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {

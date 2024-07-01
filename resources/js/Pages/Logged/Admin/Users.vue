@@ -30,14 +30,11 @@ const manualClose = ref(false);
 const users = ref(props.users);
 const filteredUsers = ref(users.value);
 
-
 const form = useForm({
     name: "",
     email: "",
     is_admin: false,
 });
-
-
 
 onMounted(() => {
     initFlowbite();
@@ -59,14 +56,15 @@ const updateStatus = async (id, status) => {
         id: id,
         update: status,
     });
-    
-    axios.patch(route("admin.users.update"), statusForm.data()).then((response) => {
-        users.value = response.data.users;
-        filteredUsers.value = response.data.users;
-        isLoading.value = false;
-        manualClose.value = true;
-    });
 
+    axios
+        .patch(route("admin.users.update"), statusForm.data())
+        .then((response) => {
+            users.value = response.data.users;
+            filteredUsers.value = response.data.users;
+            isLoading.value = false;
+            manualClose.value = true;
+        });
 };
 
 const normalizeString = (str) => {
@@ -227,7 +225,8 @@ const search = (input) => {
                                 class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                             >
                                 <UserImgPlaceholder
-                                    width="h-10"
+                                    :img="user.image"
+                                    width="w-10"
                                     height="h-10"
                                 />
                                 <div class="ps-3">
@@ -284,7 +283,9 @@ const search = (input) => {
                                     </template>
                                     <template v-slot:radio>
                                         <button
-                                            @click="updateStatus(user.id, 'status')"
+                                            @click="
+                                                updateStatus(user.id, 'status')
+                                            "
                                             class="group w-full flex justify-between items-center hover:bg-gray-100 px-4 py-2 rounded-lg dark:hover:bg-gray-600 duration-300"
                                         >
                                             <div class="flex items-center">
@@ -326,10 +327,12 @@ const search = (input) => {
                                 </DropdownRadio>
                             </td>
                             <td class="px-6 py-3">
-                                <div v-if="user.id == admin" class="flex items-center">
+                                <div
+                                    v-if="user.id == admin"
+                                    class="flex items-center"
+                                >
                                     <div
-                                    class="h-2.5 w-2.5 rounded-full bg-green me-2"
-                                        
+                                        class="h-2.5 w-2.5 rounded-full bg-green me-2"
                                     ></div>
                                     Administrateur principal
                                 </div>
@@ -358,8 +361,10 @@ const search = (input) => {
                                     </template>
                                     <template v-slot:radio>
                                         <button
-                                        @click="updateStatus(user.id, 'admin')"
-                                        class="group w-full flex justify-between items-center hover:bg-gray-100 px-4 py-2 rounded-lg dark:hover:bg-gray-600 duration-300"
+                                            @click="
+                                                updateStatus(user.id, 'admin')
+                                            "
+                                            class="group w-full flex justify-between items-center hover:bg-gray-100 px-4 py-2 rounded-lg dark:hover:bg-gray-600 duration-300"
                                         >
                                             <div class="flex items-center">
                                                 <div
