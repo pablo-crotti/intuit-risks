@@ -1,10 +1,11 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
-import ListView from "@/Components/Risks/ListView.vue";
-import MatrixView from "@/Components/Risks/MatrixView.vue";
+import ListView from "@/Components/Risks/Views/ListView.vue";
+import MatrixView from "@/Components/Risks/Views/MatrixView.vue";
 import { ref } from "vue";
 import localstorage from "@/Helpers/localstorage";
+import NewRisk from "@/Components/Risks/Forms/NewRisk.vue";
 
 const view = ref("list");
 const loaded = ref(false);
@@ -40,6 +41,7 @@ const changeView = (newView) => {
     <AuthenticatedLayout>
         <div v-if="loaded">
         <div class="w-full flex justify-center mb-4">
+            <div class="w-full">
             <button
                 @click="changeView('list')"
                 :class="`text-gray-900 border border-gray-300 focus:outline-none font-medium rounded-tl-lg rounded-bl-lg text-sm w-40 py-2.5 mb-2 dark:text-white dark:border-gray-600 dark:hover:border-gray-600 ${
@@ -60,6 +62,9 @@ const changeView = (newView) => {
             >
                 Vue en matrice
             </button>
+        </div>
+            <div class="w-80 flex justify-end"> <NewRisk /></div>
+           
         </div>
         <ListView :risks="risks" v-if="view === 'list'" />
         <MatrixView :risks="risks" v-else-if="view === 'matrix'" />

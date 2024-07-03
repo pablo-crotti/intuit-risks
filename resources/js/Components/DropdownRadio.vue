@@ -70,7 +70,7 @@ export default {
 
     <div
         :id="id"
-        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-60 dark:bg-gray-700 dark:divide-gray-600"
+        class="z-10 hidden bg-gray-100 divide-y divide-gray-100 rounded-lg shadow w-max-content dark:bg-gray-600 dark:divide-gray-600"
         data-popper-reference-hidden=""
         data-popper-escaped=""
         data-popper-placement="top"

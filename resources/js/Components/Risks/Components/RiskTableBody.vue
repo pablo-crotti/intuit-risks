@@ -1,10 +1,10 @@
 <script>
-import CriticityTooltip from "@/Components/Risks/CriticityTooltip.vue";
-import RiskStrategy from "@/Components/Risks/RiskStrategy.vue";
+import CriticityTooltip from "@/Components/Risks/Components/CriticityTooltip.vue";
+import RiskStrategy from "@/Components/Risks/Components/RiskStrategy.vue";
 import DateText from "@/Components/DateText.vue";
-import ReviewInformations from "@/Components/Risks/ReviewInformations.vue";
+import ReviewInformations from "@/Components/Risks/Components/ReviewInformations.vue";
 import TendencyArrow from "@/Icons/TendencyArrow.vue";
-import RiskAndCategory from "@/Components/Risks/RiskAndCategory.vue";
+import RiskAndCategory from "@/Components/Risks/Components/RiskAndCategory.vue";
 
 export default {
     props: {

@@ -23,6 +23,10 @@ export default {
             type: String,
             default: "Modifier",
         },
+        buttonNewRisk: {
+            type: Boolean,
+            default: false,
+        },
     },
     components: {
         SecondaryButton,
@@ -30,7 +34,7 @@ export default {
     emits: ["manualClosed"],
     methods: {
         closeModal() {
-            const closeButton = document.querySelector("#close-modal");
+            const closeButton = document.querySelector(`#close-modal-${this.id}`);
             if (closeButton) {
                 const clickEvent = new MouseEvent("click", {
                     bubbles: true,
@@ -54,7 +58,28 @@ export default {
 </script>
 
 <template>
-    <SecondaryButton :data-modal-target="id" :data-modal-toggle="id">
+    <button
+        class="w-max-content gap-4 text-white bg-red focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:opacity-80 flex items-center justify-between dark:bg-red-600 dark:hover:bg-red-700 dark:text-white duration-300"
+        :data-modal-target="id"
+        :data-modal-toggle="id"
+        v-if="buttonNewRisk"
+    >
+        Déclarer un risque
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="size-6"
+        >
+            <path
+                fill-rule="evenodd"
+                d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
+                clip-rule="evenodd"
+            />
+        </svg>
+    </button>
+
+    <SecondaryButton :data-modal-target="id" :data-modal-toggle="id" v-else>
         {{ buttonTitle }}
     </SecondaryButton>
 
@@ -76,7 +101,7 @@ export default {
                     </h3>
                     <button
                         type="button"
-                        id="close-modal"
+                        :id="`close-modal-${id}`"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         :data-modal-hide="id"
                     >

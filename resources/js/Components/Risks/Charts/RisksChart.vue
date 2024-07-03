@@ -1,12 +1,11 @@
 <script>
 import { render } from "vue";
-import CriticityTooltip from "./CriticityTooltip.vue";
 import { initFlowbite } from "flowbite";
 
 export default {
     props: {
-        evaluations: {
-            type: Array,
+        variations: {
+            type: Object,
             default: () => [],
         },
     },
@@ -107,45 +106,46 @@ export default {
             return date.toLocaleDateString("fr-FR", options);
         },
         formatEvaluations() {
-            let evaluationData = [];
-            let evaluationDates = [];
-
             let timeRange = 0;
 
             if (this.selectedPeriod == 1) {
-                timeRange = 30; // 1 mois
+                timeRange = 30;
             } else if (this.selectedPeriod == 2) {
-                timeRange = 90; // 3 mois
+                timeRange = 90;
             } else if (this.selectedPeriod == 3) {
-                timeRange = 180; // 6 mois
+                timeRange = 180;
             } else if (this.selectedPeriod == 4) {
-                timeRange = 365; // 1 an
+                timeRange = 365;
             } else if (this.selectedPeriod == 5) {
-                timeRange = 730; // 2 ans
+                timeRange = 730;
             }
 
-            const actualEvaluations = this.evaluations;
             const now = new Date();
-            const filteredEvaluations = actualEvaluations.filter(
-                (evaluation) => {
-                    const createdAt = new Date(evaluation.created_at);
-                    const timeDifference =
-                        (now - createdAt) / (1000 * 60 * 60 * 24);
-                    return timeDifference <= timeRange;
-                }
+
+            const filteredEvaluations = Object.fromEntries(
+                Object.entries(this.variations).filter(([date, value]) => {
+                    const evalDate = new Date(date);
+                    const diffTime = Math.abs(now - evalDate);
+                    const diffDays = Math.ceil(
+                        diffTime / (1000 * 60 * 60 * 24)
+                    );
+                    return diffDays <= timeRange;
+                })
             );
 
-            if (filteredEvaluations.length > 1) {
+            this.options.series[0].data = Object.values(filteredEvaluations);
+            Object.keys(filteredEvaluations).forEach((key) => {
+                this.options.xaxis.categories.push(this.formatDate(key));
+            });
+
+            if (this.options.series[0].data.length > 1) {
+                const firstEvaluation = this.options.series[0].data[0];
                 const lastEvaluation =
-                    filteredEvaluations[0].probability *
-                    filteredEvaluations[0].impact;
+                    this.options.series[0].data[
+                        this.options.series[0].data.length - 1
+                    ];
 
-                const previousEvaluation =
-                    filteredEvaluations[filteredEvaluations.length - 1]
-                        .probability *
-                    filteredEvaluations[filteredEvaluations.length - 1].impact;
-
-                this.variance = lastEvaluation - previousEvaluation;
+                this.variance = lastEvaluation - firstEvaluation;
                 if (this.variance < 0) {
                     this.percentage_color = "text-green";
                 } else if (this.variance > 0) {
@@ -154,16 +154,6 @@ export default {
                     this.percentage_color = "text-gray-500 dark:text-gray-400";
                 }
             }
-
-            filteredEvaluations.reverse();
-
-            filteredEvaluations.map((evaluation) => {
-                evaluationData.push(evaluation.probability * evaluation.impact);
-                evaluationDates.push(this.formatDate(evaluation.created_at));
-            });
-
-            this.options.series[0].data = evaluationData;
-            this.options.xaxis.categories = evaluationDates;
 
             this.renderChart();
         },
@@ -186,32 +176,28 @@ export default {
             }
         },
     },
-    components: {
-        CriticityTooltip,
-    },
     mounted() {
         initFlowbite();
         this.formatEvaluations();
     },
 };
 </script>
+
 <template>
-    <div class="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+    <div
+        class="max-w-sm w-full bg-white rounded-lg dark:bg-gray-800 p-4 md:p-6"
+    >
         <div class="flex justify-between">
             <div>
                 <h5
                     class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2"
                 >
-                    <CriticityTooltip
-                        :id="1"
-                        :probability="evaluations[0].probability"
-                        :impact="evaluations[0].impact"
-                    />
+                    Criticité
                 </h5>
                 <p
                     class="text-base font-normal text-gray-500 dark:text-gray-400"
                 >
-                    Criticité actuelle
+                    Globale
                 </p>
             </div>
             <div
@@ -286,7 +272,7 @@ export default {
                                 @click="setNewPeriod(2)"
                                 class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
-                            {{ getPeriodName(2) }}
+                                {{ getPeriodName(2) }}
                             </button>
                         </li>
                         <li>

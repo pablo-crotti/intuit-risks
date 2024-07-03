@@ -27,8 +27,9 @@ class RegistrationRisksController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $organization_id = Company::where('administrator_id', $user_id)->first()->organization_type_id;
-        $company_id = Company::where('administrator_id', $user_id)->first()->id;
+        $company_id = auth()->user()->company_id;
+
+        $organization_id = Company::where('id', $company_id)->first()->organization_type_id;
 
 
         $organizationType = OrganizationType::with('risks.category')->find($organization_id);

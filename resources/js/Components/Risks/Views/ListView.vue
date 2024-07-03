@@ -1,5 +1,5 @@
 <script>
-import RiskTableBody from "@/Components/Risks/RiskTableBody.vue";
+import RiskTableBody from "@/Components/Risks/Components/RiskTableBody.vue";
 import Pagination from "@/Components/Pagination.vue";
 
 export default {

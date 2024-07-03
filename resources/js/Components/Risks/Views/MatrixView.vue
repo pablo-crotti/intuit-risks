@@ -1,6 +1,6 @@
 <script>
-import MatrixTooltip from "@/Components/Risks/MatrixTooltip.vue";
-import RiskTableBody from "@/Components/Risks/RiskTableBody.vue";
+import MatrixTooltip from "@/Components/Risks/Components/MatrixTooltip.vue";
+import RiskTableBody from "@/Components/Risks/Components/RiskTableBody.vue";
 
 export default {
     data() {
