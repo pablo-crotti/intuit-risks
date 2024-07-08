@@ -162,6 +162,10 @@ export default {
         },
     },
     watch: {
+        risks() {
+            this.order();
+            this.setPageRisks();
+        },
         actualPage() {
             this.setPageRisks();
         },
@@ -329,7 +333,8 @@ export default {
     </table>
 
     <div class="w-full flex justify-center my-8">
-        <Pagination v-if="pages > 1 && !searching"
+        <Pagination
+            v-if="pages > 1 && !searching"
             :pages="pages"
             :actualPage="actualPage"
             @changePage="(i) => (actualPage = i)"

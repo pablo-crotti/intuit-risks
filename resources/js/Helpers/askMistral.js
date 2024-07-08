@@ -68,6 +68,24 @@ const askPrecursors = async (risk, company) => {
     return await askMistral(message);
 }
 
-export default { askPrecursors }
-// export default { askEmergencyPlan }
+
+const askRisk = async (company, risks, categories) => {
+
+    const message = [
+        {
+            role: "system",
+            content: `Tu es spécialiste en gestion de crise dans une ${company.organization_type} ${company.country}, basée à ${company.city} de ${company.employees} employés. Le secteur d'activité principal de l'entreprise est : « ${company.sector} ». Tu es paramétré pour répondre en JSON et en français.`,
+        },
+        {
+            role: "user",
+            content: `Donne moi un risque que l'on n'auraît peut être pas identifié. Voici les risques déjà identifiés : ${risks.map(risk => `${risk.name}: ${risk.description}`).join(', ')}. Voici les catégories que tu dois utiliser : ${categories.map(category => `[${category.id}, ${category.label}, ${category.name}, ${category.color}]`).join(', ')}. Donne tes réponses UNIQUEMENT dans le format JSON suivant : {"title": "Nom du risque","description": "Description du risque","category": {id: "X", label: "XXX", name: "Yyyyyy", color: "#xxyyzz"}}`
+
+        }
+
+    ]
+    
+    return await askMistral(message);
+}
+
+export default { askPrecursors, askRisk }
 

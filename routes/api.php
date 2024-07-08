@@ -7,6 +7,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\API\CompanyController;
 use App\Http\Controllers\API\PrecursorsController;
 use App\Http\Middleware\EnsureUserIsActivated;
+use App\Http\Controllers\API\RiskController;
 
 
 Route::get('api/categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -16,4 +17,6 @@ Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
     Route::post('api/precursors', [PrecursorsController::class, 'store'])->name('precursors.store');
     Route::delete('api/precursors', [PrecursorsController::class, 'delete'])->name('precursors.delete');
     Route::patch('api/precursors', [PrecursorsController::class, 'update'])->name('precursors.update');
+    Route::get('api/risks', [RiskController::class, 'index'])->name('risk.index');
+    Route::post('api/risks', [RiskController::class, 'store'])->name('risk.store');
 });

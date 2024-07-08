@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-use App\Models\Risk;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use App\Models\CompanyRisk;
+use App\Models\CompanyRiskEvaluation;
 
 class DashboardController extends Controller
 {
@@ -43,6 +43,20 @@ class DashboardController extends Controller
             return $risk->evaluations;
         });
 
+        $recentEvaluations = DB::table('company_risk_evaluations as e1')
+            ->select('e1.*', DB::raw('probability * impact as criticity'))
+            ->join(DB::raw('(SELECT company_risk_id, MAX(created_at) as max_date FROM company_risk_evaluations GROUP BY company_risk_id) as e2'), function ($join) {
+                $join->on('e1.company_risk_id', '=', 'e2.company_risk_id')
+                    ->on('e1.created_at', '=', 'e2.max_date');
+            })
+            ->orderByDesc('criticity')
+            ->take(5)
+            ->get();
+
+        $mainRisks = CompanyRiskEvaluation::whereIn('id', $recentEvaluations->pluck('id'))
+            ->with('companyRisk')
+            ->get();
+
 
         return Inertia::render('Logged/Dashboard', [
             'company' => $company,
@@ -53,6 +67,7 @@ class DashboardController extends Controller
                 'critical' => $results->critical,
             ],
             'evaluations' => $evaluations,
+            'mainRisks' => $mainRisks->toArray()
         ]);
     }
 }

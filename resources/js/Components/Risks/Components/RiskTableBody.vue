@@ -103,7 +103,7 @@ export default {
         <RiskStrategy v-if="risk.strategy" :strategy="risk.strategy" />
         <span
             v-else
-            class="text-white px-2 py-1 rounded-md bg-gray-400 dark:bg-gray-500"
+            class="text-white block text-center min-w-max px-2 py-1 rounded-md bg-gray-400 dark:bg-gray-500"
             >Non définie</span
         >
     </td>

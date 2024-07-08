@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('company_id')->constrained();
             $table->foreignId('author_id')->constrained('users');
-            $table->foreignId('risk_id')->constrained()->nullable();
+            $table->foreignId('responsible_id')->nullable()->constrained('users');
+            $table->foreignId('risk_id')->nullable()->constrained();
             $table->foreignId('category_id')->constrained();
             $table->string('name');
             $table->string('description');

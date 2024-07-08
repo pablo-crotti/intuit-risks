@@ -1,11 +1,12 @@
 <script setup>
 import { Head } from "@inertiajs/vue3";
-import { defineProps } from "vue";
+import { defineProps, onMounted } from "vue";
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 
 import GlobalStatusWidget from "@/Components/Risks/Widgets/GlobalStatusWidget.vue";
 import GlobalRiskChartWidget from "@/Components/Risks/Widgets/GlobalRiskChartWidget.vue";
+import MainRisksWidget from "@/Components/Risks/Widgets/MainRisksWidget.vue";
 
 const props = defineProps({
     company: {
@@ -24,7 +25,15 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    mainRisks: {
+        type: Object,
+        required: true,
+    },
 });
+
+onMounted(() => {
+    console.log(props.mainRisks);
+})
 </script>
 
 <template>
@@ -47,6 +56,9 @@ const props = defineProps({
                 </div>
                 <div class="bg-white rounded-md dark:bg-gray-800">
                     <GlobalRiskChartWidget :evaluations="evaluations" />
+                </div>
+                <div class="bg-white rounded-md dark:bg-gray-800">
+                    <MainRisksWidget :mainRisks="mainRisks" />
                 </div>
             </div>
         </div>

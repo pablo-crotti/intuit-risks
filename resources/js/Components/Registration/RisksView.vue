@@ -1,7 +1,9 @@
 <script>
 import { useForm } from "@inertiajs/vue3";
 import { initFlowbite } from "flowbite";
+
 import InfosModal from "@/Components/InfosModal.vue";
+import ProbabilityAndImpactSelect from "@/Components/Risks/Forms/ProbabilityAndImpactSelect.vue";
 
 export default {
     props: {
@@ -32,6 +34,7 @@ export default {
     emits: ["newRiskSelected", "newCategorySelected", "validateSelection"],
     components: {
         InfosModal,
+        ProbabilityAndImpactSelect,
     },
     methods: {
         insertRisk(risk) {
@@ -98,18 +101,17 @@ export default {
                 title="Fonctionnement de cette page"
                 id="risks-infos-modal"
             >
-                    <p
-                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
-                    >
-                        Pour une gestion efficace des risques, suivez ces étapes
-                        :
-                    </p>
-                    <ol class="list-decimal list-inside">
+                <p
+                    class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+                >
+                    Pour une gestion efficace des risques, suivez ces étapes :
+                </p>
+                <ol class="list-decimal list-inside">
                     <li
                         class="text-base leading-relaxed text-gray-500 dark:text-gray-400 mb-2"
                     >
                         Identifiez les risques pertinents en cochant la case
-                        correspondante 
+                        correspondante
                     </li>
                     <li
                         class="text-base leading-relaxed text-gray-500 dark:text-gray-400 mb-2"
@@ -201,7 +203,7 @@ export default {
                     @click="$emit('validateSelection')"
                     class="text-white bg-primary-700 hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-10 text-center inline-flex items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 duration-300"
                 >
-                Terminer la sélection de risques
+                    Terminer la sélection de risques
                 </button>
             </div>
         </div>
@@ -237,90 +239,32 @@ export default {
                 v-if="companyRisks.find((r) => r.risk_id === risk.id)"
                 class="w-full mt-4 pt-4"
             >
-                <div class="relative mb-12">
-                    <label
-                        for="labels-range-input"
-                        class="font-normal text-lg text-gray-700 dark:text-white"
-                        >Probabilité
-                    </label>
-                    <input
-                        id="labels-range-input"
-                        type="range"
-                        :value="
+                <ProbabilityAndImpactSelect
+                    :probability="
+                        companyRisks.find((r) => r.risk_id === risk.id)
+                            .evaluations[0].probability
+                    "
+                    :impact="
+                        companyRisks.find((r) => r.risk_id === risk.id)
+                            .evaluations[0].impact
+                    "
+                    @update:probability="
+                        updateRisk(
                             companyRisks.find((r) => r.risk_id === risk.id)
-                                .evaluations[0].probability
-                        "
-                        @input="
-                            updateRisk(
-                                companyRisks.find((r) => r.risk_id === risk.id)
-                                    .evaluations[0],
-                                'probability',
-                                $event.target.value
-                            )
-                        "
-                        min="1"
-                        max="4"
-                        class="w-full h-1 bg-gray-200 h1 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-700"
-                    />
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6"
-                        >Peu probable</span
-                    >
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6"
-                        >Possible</span
-                    >
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6"
-                        >Probable</span
-                    >
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"
-                        >Très probable</span
-                    >
-                </div>
-                <div class="relative mb-6">
-                    <label
-                        for="labels-range-input"
-                        class="font-normal text-lg text-gray-700 dark:text-white"
-                        >Impact</label
-                    >
-                    <input
-                        id="labels-range-input"
-                        type="range"
-                        :value="
+                                .evaluations[0],
+                            'probability',
+                            $event
+                        )
+                    "
+                    @update:impact="
+                        updateRisk(
                             companyRisks.find((r) => r.risk_id === risk.id)
-                                .evaluations[0].impact
-                        "
-                        @input="
-                            updateRisk(
-                                companyRisks.find((r) => r.risk_id === risk.id)
-                                    .evaluations[0],
-                                'impact',
-                                $event.target.value
-                            )
-                        "
-                        min="1"
-                        max="4"
-                        class="w-full h-1 bg-gray-200 h1 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-700"
-                    />
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6"
-                        >Mineur</span
-                    >
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6"
-                        >Significatif</span
-                    >
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6"
-                        >Important</span
-                    >
-                    <span
-                        class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"
-                        >Majeur</span
-                    >
-                </div>
+                                .evaluations[0],
+                            'impact',
+                            $event
+                        )
+                    "
+                />
             </div>
         </div>
     </div>
