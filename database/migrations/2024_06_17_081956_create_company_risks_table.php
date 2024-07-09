@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained();
             $table->string('name');
             $table->string('description');
+            $table->string('strategy')->nullable();
+            $table->boolean('is_open')->default(true);
             $table->timestamp('evaluation_frequency')->default(31536000);
             $table->timestamps();
         });

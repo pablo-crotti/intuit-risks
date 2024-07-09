@@ -16,7 +16,8 @@ class CompanyRisk extends Model
         'category_id',
         'name',
         'description',
-        'evaluation_frequency'
+        'evaluation_frequency',
+        'responsible_id'
     ];
 
     /**
@@ -59,4 +60,9 @@ class CompanyRisk extends Model
     {
         return $this->hasMany(CompanyRiskPrecursor::class)->orderBy('status', 'desc');
     }
+    public function responsible()
+    {
+        return $this->belongsTo(User::class, 'responsible_id');
+    }
+
 }

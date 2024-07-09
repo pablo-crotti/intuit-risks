@@ -262,7 +262,7 @@ const search = (input) => {
                                     v-else
                                     :id="`radio-${user.id}`"
                                     :manualClose="manualClose"
-                                    @manualClosed="() => (manualClose = false)"
+                                    @manualClosed="manualClose = false"
                                 >
                                     <template v-slot:button>
                                         <div class="flex items-center">
@@ -340,7 +340,7 @@ const search = (input) => {
                                     v-else
                                     :id="`radio-admin-${user.id}`"
                                     :manualClose="manualClose"
-                                    @manualClosed="() => (manualClose = false)"
+                                    @manualClosed="manualClose = false"
                                 >
                                     <template v-slot:button>
                                         <div class="flex items-center">
@@ -403,21 +403,6 @@ const search = (input) => {
                                         </button>
                                     </template>
                                 </DropdownRadio>
-                                <!-- <div class="flex items-center">
-                                    <div
-                                        :class="`h-2.5 w-2.5 rounded-full me-2 ${
-                                            user.is_admin
-                                                ? 'bg-green'
-                                                : 'bg-red'
-                                        }`"
-                                        class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"
-                                    ></div>
-                                    {{
-                                        user.is_admin
-                                            ? "Administrateur"
-                                            : "Utilisateur"
-                                    }}
-                                </div> -->
                             </td>
                         </tr>
                     </tbody>

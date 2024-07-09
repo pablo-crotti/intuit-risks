@@ -1,5 +1,6 @@
 <script>
 import { initFlowbite } from "flowbite";
+
 export default {
     props: {
         id: {
@@ -42,6 +43,7 @@ export default {
     },
 };
 </script>
+
 
 <template>
     <button

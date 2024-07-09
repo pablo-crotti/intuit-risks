@@ -25,9 +25,9 @@ const submit = () => {
 <template>
     <Head title="S'enregistrer" />
 
-    <div class="min-h-full w-screen h-screen flex justify-center flex-wrap md:flex-nowrap">
+    <div class="min-h-screen w-screen  flex justify-center flex-wrap md:flex-nowrap">
         <form @submit.prevent="submit" class="w-full">
-            <div class="w-full h-full flex justify-center items-center">
+            <div class="w-full h-max flex justify-center items-center py-8">
                 <div
                     class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
                 >
@@ -172,7 +172,7 @@ const submit = () => {
             </div>
         </form>
         <div
-            class="py-8 md:w-full md:h-full flex justify-center items-center bg-gray-800"
+            class="py-8 md:w-full md:min-h-full flex justify-center items-center bg-gray-800"
         >
             <div class="w-4/5">
                 <h2

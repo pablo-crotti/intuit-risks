@@ -19,7 +19,7 @@ class CompanyRiskController extends Controller
      */
     public function display()
     {
-        $risk = CompanyRisk::with(['author', 'category', 'evaluations', 'precursors'])->find(request()->route('id'));
+        $risk = CompanyRisk::with(['author', 'category', 'evaluations', 'precursors', 'responsible'])->find(request()->route('id'));
 
         return inertia('Logged/Risk', [
             'risk' => $risk,

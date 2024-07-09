@@ -193,7 +193,7 @@ export default {
                 <div class="w-full flex justify-end">
                     <DropdownRadio
                         :manualClose="manualClose"
-                        @manualClose="manualClose = false"
+                        @manualClosed="manualClose = false"
                     >
                         <template v-slot:button v-if="form.category.name"
                             ><div
@@ -210,7 +210,7 @@ export default {
                         <template v-slot:radio>
                             <li v-for="category in categories">
                                 <button
-                                    class="text-left px-4 py-2 hover:bg-white dark:hover:bg-gray-700 w-full"
+                                    :class="`${form.category.id == category.id ? 'bg-white dark:bg-gray-700' : ''} text-left px-4 py-2 hover:bg-white dark:hover:bg-gray-700 w-full`"
                                     @click.prevent="
                                         (form.category = category),
                                             (manualClose = true)
@@ -247,7 +247,7 @@ export default {
                     <textarea
                         id="description"
                         v-model="form.description"
-                        class="block w-full mt-1 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white"
+                        class="block w-full mt-1 border bg-gray-50 border-gray-300 rounded-lg shadow-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:text-white"
                         rows="3"
                     ></textarea>
                     <InputError

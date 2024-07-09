@@ -48,4 +48,34 @@ class RiskController extends Controller
 
         return back()->withInput();
     }
+
+    public function update(Request $request)
+    {   
+        $request->validate([
+            "title" => "required|string",
+            "description" => "required|string",
+            "category" => "required|array",
+
+        ]);
+
+        $responsible = $request->responsible;
+
+        if ($responsible) {
+            $responsible = $responsible['id'];
+        } else {
+            $responsible = null;
+        
+        }
+
+        $update = CompanyRisk::find($request->id);
+        $update->category_id = $request->category['id'];
+        $update->name = $request->title;
+        $update->description = $request->description;
+        $update->responsible_id = $responsible;
+        $update->save();
+
+        return back()->withInput();
+
+    }
+
 }
