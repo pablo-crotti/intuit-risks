@@ -835,7 +835,7 @@ class RiskSeeder extends Seeder
 
         foreach ($riskData as $risk) {
             $categoryId = DB::table('categories')->where('name', $risk['category'])->first()->id;
-            
+
             $riskId = DB::table('risks')->insertGetId([
                 'name' => $risk['name'],
                 'description' => $risk['description'],
