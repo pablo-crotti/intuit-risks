@@ -175,7 +175,7 @@ export default {
                                 id="dropdownUsersButton"
                                 data-dropdown-toggle="dropdownUsers"
                                 data-dropdown-placement="bottom"
-                                class="text-gray-800 min-w-max bg-gray-300 hover:bg-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:ring-blue-800"
+                                class="text-gray-800 min-w-max bg-gray-300 hover:bg-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:text-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-blue-800"
                                 type="button"
                             >
                                 <span v-if="!form.responsible"
@@ -207,7 +207,7 @@ export default {
                             </button>
                             <div
                                 id="dropdownUsers"
-                                class="z-10 hidden bg-gray-200 rounded-lg shadow w-60 dark:bg-gray-600"
+                                class="z-10 hidden bg-gray-200 rounded-lg shadow w-60 dark:bg-gray-700"
                             >
                                 <ul
                                     class="h-48 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
@@ -320,6 +320,7 @@ export default {
                         >Créateur</strong
                     >
                     <UserNameAndImg
+                        :user_id="risk.author_id"
                         :user_name="risk.author.name"
                         :user_image="risk.author.image"
                     />
@@ -330,6 +331,7 @@ export default {
                     >
                     <UserNameAndImg
                         v-if="risk.responsible_id"
+                        :user_id="risk.responsible_id"
                         :user_name="risk.responsible.name"
                         :user_image="risk.responsible.image"
                     />

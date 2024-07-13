@@ -64,5 +64,20 @@ class CompanyRisk extends Model
     {
         return $this->belongsTo(User::class, 'responsible_id');
     }
+    public function reductionPlanTasks()
+    {
+        return $this->hasMany(CompanyRiskReductionPlanTask::class)->with('agent');
+    }
+
+    public function emergencyPlanActions()
+    {
+        return $this->hasMany(CompanyRiskEmergencyPlanAction::class)->with('agent');
+    }
+
+
+
+
+
+
 
 }

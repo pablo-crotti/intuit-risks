@@ -110,7 +110,7 @@ export default {
             <div v-if="!AIrisk && !customRisk" class="flex flex-col gap-4">
                 <a
                     href="/register/risks"
-                    class="group inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-800 dark:hover:bg-gray-800 dark:hover:text-white duration-300"
+                    class="group inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:hover:text-white duration-300"
                 >
                     <span class="w-full">Sélection de risques prédéfinis</span>
                     <svg
@@ -131,7 +131,7 @@ export default {
                 </a>
                 <button
                     @click="customRisk = true"
-                    class="group text-left inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-800 dark:hover:bg-gray-800 dark:hover:text-white duration-300"
+                    class="group text-left inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:hover:text-white duration-300"
                 >
                     <span class="w-full">Création d'un risque</span>
                     <svg
@@ -152,7 +152,7 @@ export default {
                 </button>
                 <button
                     @click="(AIrisk = true), askMistral()"
-                    class="group text-left inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-800 dark:hover:bg-gray-800 dark:hover:text-white duration-300"
+                    class="group text-left inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:hover:text-white duration-300"
                 >
                     <span class="w-full flex gap-2 items-center">
                         <svg

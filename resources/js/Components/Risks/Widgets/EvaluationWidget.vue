@@ -78,7 +78,7 @@ export default {
                                 v-model="newEvaluationForm.probability"
                                 min="1"
                                 max="4"
-                                class="w-full h-1 bg-gray-200 h1 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-800"
+                                class="w-full h-1 bg-gray-200 h1 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-700"
                             />
                             <span
                                 class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6"
@@ -109,7 +109,7 @@ export default {
                                 v-model="newEvaluationForm.impact"
                                 min="1"
                                 max="4"
-                                class="w-full h-1 bg-gray-200 h1 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-800"
+                                class="w-full h-1 bg-gray-200 h1 rounded-lg appearance-none cursor-pointer range-sm dark:bg-gray-700"
                             />
                             <span
                                 class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6"

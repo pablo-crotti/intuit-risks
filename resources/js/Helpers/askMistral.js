@@ -87,5 +87,22 @@ const askRisk = async (company, risks, categories) => {
     return await askMistral(message);
 }
 
-export default { askPrecursors, askRisk }
+const askReductionPlanTask = async (company, risk) => {
+    const message = [
+        {
+            role: "system",
+            content: `Tu es spécialiste en gestion de crise dans une ${company.organization_type} ${company.country}, basée à ${company.city} de ${company.employees} employés. Le secteur d'activité principal de l'entreprise est : « ${company.sector} ». Tu es paramétré pour répondre en JSON et en français.`,
+        },
+        {
+            role: "user",
+            content: `Donne moi une tâche à faire pour réduire le risque suivant : ${risk.name}, ${risk.description}. Les tâches déjà identifiées sont les suivantes : ${risk.reduction_plan_tasks.map(task => task.action).join(', ')}. Donne ta réponses qui ne soit pas semblable aux tâches déjà identifiées UNIQUEMENT dans le format JSON suivant : {"title": "Nom de la tâche"}`
+
+        }
+
+    ]
+
+    return await askMistral(message);
+}
+
+export default { askPrecursors, askRisk, askReductionPlanTask }
 

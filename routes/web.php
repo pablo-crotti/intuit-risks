@@ -25,13 +25,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', EnsureUserIsActivated::class, 'verified', RegistrationSteps::class])->name('dashboard');
 
-
-Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
     Route::get('/register/company', [RegistrationCompanyController::class, 'display'])->name('register.company');
     Route::post('/register/company', [RegistrationCompanyController::class, 'store'])->name('register.company.store');
@@ -42,10 +35,15 @@ Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
 });
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
     Route::get('/risks', [CompanyRisksController::class, 'display'])->name('risks');
     Route::get('/risks/{id}', [CompanyRiskController::class, 'display'])->name('risks.show');
 });
-
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
     Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users');

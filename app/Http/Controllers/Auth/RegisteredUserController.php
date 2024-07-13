@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'terms' => 'required|accepted',
         ]);
 
-        if ($request->has('avatar')) {
+        if ($request->avatar) {
             $request->validate([
                 'avatar' => 'image|max:2048|mimes:jpeg,png,jpg,gif,svg',
             ]);

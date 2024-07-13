@@ -208,7 +208,7 @@ export default {
                             <div
                                 v-for="(precursor, index) in precursors"
                                 :key="precursor"
-                                class="flex justify-between items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+                                class="flex justify-between items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700"
                             >
                                 <p
                                     class="text-base font-normal text-gray-700 dark:text-gray-300"
@@ -383,7 +383,7 @@ export default {
                         </div>
                     </div>
                 </span>
-                <p v-else class="text-gray-500 justify-center dark:text-gray-400 flex items-center gap-2">Aucun signe avant coureur identifié</p>
+                <p v-else class="text-gray-500 justify-center dark:text-gray-400 flex items-center gap-2">Aucun signe avant coureur identifié.</p>
             </div>
         </template>
     </WidgetLayout>

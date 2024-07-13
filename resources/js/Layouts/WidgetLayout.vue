@@ -4,7 +4,7 @@
             <slot name="title" />
         </h2>
 
-        <div class="w-24">
+        <div class="w-max">
             <slot name="action" />
         </div>
     </div>

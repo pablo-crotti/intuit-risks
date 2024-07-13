@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CompanyRisk;
 use App\Models\CompanyRiskEvaluation;
+use App\Models\CompanyRiskReductionPlanTask;
 
 
 class RiskController extends Controller
@@ -50,7 +51,7 @@ class RiskController extends Controller
     }
 
     public function update(Request $request)
-    {   
+    {
         $request->validate([
             "title" => "required|string",
             "description" => "required|string",
@@ -64,7 +65,6 @@ class RiskController extends Controller
             $responsible = $responsible['id'];
         } else {
             $responsible = null;
-        
         }
 
         $update = CompanyRisk::find($request->id);
@@ -75,7 +75,36 @@ class RiskController extends Controller
         $update->save();
 
         return back()->withInput();
-
     }
 
+    public function updateStrategy(Request $request)
+    {
+        $request->validate([
+            "strategy" => "required|string",
+        ]);
+
+        $update = CompanyRisk::find($request->id);
+        $update->strategy = $request->strategy;
+        $update->save();
+
+        return back()->withInput();
+    }
+
+
+    public function storeTask(Request $request)
+    {
+        $request->validate([
+            'responsible' => 'required',
+            'task' => 'required',
+        ]);
+
+
+        $task = new CompanyRiskReductionPlanTask();
+        $task->company_risk_id = $request->id;
+        $task->agent_id = $request->responsible['id'];
+        $task->action = $request->task;
+        $task->save();
+
+        return back()->withInput();
+    }
 }

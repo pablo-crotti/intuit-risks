@@ -5,14 +5,13 @@ import { initFlowbite } from "flowbite";
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 
-import RiskAndCategory from "@/Components/Risks/Components/RiskAndCategory.vue";
-import SecondaryButton from "@/Components/SecondaryButton.vue";
-import UserNameAndImg from "@/Components/UserNameAndImg.vue";
-
 import RiskChartWidget from "@/Components/Risks/Widgets/RiskChartWidget.vue";
 import PrecursorsWidget from "@/Components/Risks/Widgets/PrecursorsWidget.vue";
 import EvaluationWidget from "@/Components/Risks/Widgets/EvaluationWidget.vue";
 import RiskPropsWidget from '@/Components/Risks/Widgets/RiskPropsWidget.vue'
+import RiskStrategyWidget from '@/Components/Risks/Widgets/RiskStrategyWidget.vue'
+import EmergencyPlanWidget from "@/Components/Risks/Widgets/EmergencyPlanWidget.vue";
+
 
 const props = defineProps({
     risk: {
@@ -23,6 +22,7 @@ const props = defineProps({
 
 onMounted(() => {
     initFlowbite();
+
 });
 </script>
 <template>
@@ -40,18 +40,8 @@ onMounted(() => {
             </div>
 
             <div class="bg-white rounded-md dark:bg-gray-800">
-                <div class="px-4 py-4 flex justify-between items-center">
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-white">
-                        Stratégie
-                    </h2>
-
-                    <div class="w-24"></div>
-                </div>
-
-                <span
-                    class="w-full h-1 block bg-gray-200 dark:bg-gray-900"
-                ></span>
-                <div class="px-4 py-4"></div>
+                <RiskStrategyWidget :strategy="risk.strategy ? risk.strategy : 'Non définie'" :risk="risk"/>
+                <EmergencyPlanWidget :risk="risk"/>
             </div>
         </div>
     </AuthenticatedLayout>

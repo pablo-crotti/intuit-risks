@@ -26,7 +26,7 @@ const submit = () => {
     <Head title="S'enregistrer" />
 
     <div class="min-h-screen w-screen  flex justify-center flex-wrap md:flex-nowrap">
-        <form @submit.prevent="submit" class="w-full">
+        <form @submit.prevent="submit" class="w-full flex flex-col justify-center">
             <div class="w-full h-max flex justify-center items-center py-8">
                 <div
                     class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
