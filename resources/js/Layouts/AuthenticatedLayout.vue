@@ -12,15 +12,11 @@ import Loader from "@/Components/Loader.vue";
 const showingNavigationDropdown = ref(false);
 const isLoading = ref(false);
 
-
 const logout = async () => {
     isLoading.value = true;
     await axios.post(route("logout"));
     window.location = "/";
 };
-
-
-
 
 onMounted(() => {
     initFlowbite();
@@ -63,7 +59,10 @@ onMounted(() => {
                         <a href="/dashboard" class="flex ms-2 md:me-24">
                             <span
                                 class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
-                                >IntuitRisks</span
+                                >Intuit<span
+                                    class="text-primary-500 dark:text-primary-400"
+                                    >Risks</span
+                                ></span
                             >
                         </a>
                     </div>
@@ -81,11 +80,9 @@ onMounted(() => {
                                     >
                                     <UserImgPlaceholder
                                         :img="$page.props.auth.user.image"
-                                        
                                         width="w-10"
                                         height="h-10"
                                     />
-
                                 </button>
                             </div>
                             <div

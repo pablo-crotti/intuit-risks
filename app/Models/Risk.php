@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Risk extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'name',
+        'description',
+        'category_id',
+        'is_active',
+    ];
 
     public function category()
     {

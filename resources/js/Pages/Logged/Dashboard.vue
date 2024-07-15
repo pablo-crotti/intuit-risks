@@ -1,6 +1,6 @@
 <script setup>
 import { Head } from "@inertiajs/vue3";
-import { defineProps, onMounted } from "vue";
+import { defineProps } from "vue";
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 
@@ -30,10 +30,6 @@ const props = defineProps({
         required: true,
     },
 });
-
-onMounted(() => {
-    console.log(props.mainRisks);
-})
 </script>
 
 <template>

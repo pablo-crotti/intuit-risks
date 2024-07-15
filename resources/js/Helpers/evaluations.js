@@ -1,5 +1,4 @@
 const groupEvaluationsByCompanyRiskId = (data) => {
-
     return data.reduce((acc, evaluation) => {
         if (!acc[evaluation.company_risk_id]) {
             acc[evaluation.company_risk_id] = [];
@@ -11,7 +10,7 @@ const groupEvaluationsByCompanyRiskId = (data) => {
     }, {});
 };
 
-const calculateCriticity = (entry) => entry.probability * entry.impact;
+
 
 const processData = (data) => {
     const riskHistory = {};
@@ -19,7 +18,7 @@ const processData = (data) => {
 
     for (const date in data) {
         data[date].forEach((entry) => {
-            entry.criticity = calculateCriticity(entry);
+            entry.criticity = entry.probability * entry.impact;
             if (!riskHistory[entry.company_risk_id]) {
                 riskHistory[entry.company_risk_id] = [];
             }
@@ -85,3 +84,4 @@ const formatEvaluationsVariations = (data) => {
 }
 
 export default { formatEvaluationsVariations };
+

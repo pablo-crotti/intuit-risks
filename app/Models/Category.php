@@ -9,6 +9,15 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'label',
+        'color',
+        'description_short',
+        'description_long',
+    ];
+
+    
    /**
     * The function "risks" defines a relationship where an instance has many "Risk" objects.
     * 
