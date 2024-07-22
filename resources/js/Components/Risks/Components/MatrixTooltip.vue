@@ -30,7 +30,6 @@ export default {
         <button
             :data-tooltip-target="`tooltip-${id}`"
             type="button"
-            @click="$emit('showDetails')"
             class="text-gray-700 rounded-lg text-xs px-2 py-0.5 text-center bg-white dark:bg-gray-700 dark:text-white flex items-center gap-1 hover:bg-gray-200 dark:hover:bg-gray-800"
         >
             <span

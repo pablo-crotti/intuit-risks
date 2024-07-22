@@ -24,24 +24,23 @@ export default {
             {
                 id: 1,
                 name: "Supprimer",
-                color: "bg-red"
+                color: "bg-red",
             },
             {
                 id: 2,
                 name: "Diminuer",
-                color: "bg-orange"
+                color: "bg-orange",
             },
             {
                 id: 3,
                 name: "Veiller",
-                color: "bg-blue"
+                color: "bg-blue",
             },
             {
                 id: 4,
                 name: "Accepter",
-                color: "bg-green"
-            
-            }
+                color: "bg-green",
+            },
         ],
         selectedStrategies: [],
         pages: null,
@@ -64,7 +63,6 @@ export default {
             } else {
                 newValue = "up";
             }
-
 
             this.ordered = {
                 title: null,
@@ -164,7 +162,6 @@ export default {
                     return 0;
                 } else return 0;
             });
-       
         },
         setPageRisks() {
             this.pageRisks = this.risks.slice(
@@ -206,27 +203,29 @@ export default {
         },
 
         useFilters() {
-            if (this.selectedStrategies.length === 0 && this.selectedCategories.length === 0) {
+            if (
+                this.selectedStrategies.length === 0 &&
+                this.selectedCategories.length === 0
+            ) {
                 this.pageRisks = this.risks;
                 return;
-            } 
-            
+            }
+
             if (this.selectedStrategies.length == 0) {
                 this.pageRisks = this.risks.filter((risk) =>
                     this.selectedCategories.includes(risk.category.id)
                 );
             } else if (this.selectedCategories.length == 0) {
-                this.pageRisks = this.risks.filter((risk) => 
-                   
+                this.pageRisks = this.risks.filter((risk) =>
                     this.selectedStrategies.includes(risk.strategy)
                 );
             } else {
-                this.pageRisks = this.risks.filter((risk) =>
-                    this.selectedCategories.includes(risk.category.id) &&
-                    this.selectedStrategies.includes(risk.strategy)
+                this.pageRisks = this.risks.filter(
+                    (risk) =>
+                        this.selectedCategories.includes(risk.category.id) &&
+                        this.selectedStrategies.includes(risk.strategy)
                 );
             }
-       
         },
         setSelectedCategories(id) {
             if (this.selectedCategories.includes(id)) {
@@ -236,9 +235,8 @@ export default {
             } else {
                 this.selectedCategories.push(id);
             }
-            
+
             this.useFilters();
-        
         },
         setSelectedStrategies(name) {
             if (this.selectedStrategies.includes(name)) {
@@ -273,99 +271,112 @@ export default {
 </script>
 
 <template>
-    <div
-        class="flex items-center justify-start flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4"
-    >
-        <label for="table-search-risks" class="sr-only">Recherche</label>
-        <div class="relative">
-            <div
-                class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
-            >
-                <svg
-                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
+    <div class="flex gap-4 items-start mb-4">
+        <div
+            class="flex items-center justify-center flex-column flex-wrap md:flex-row md:items-center space-y-4 md:space-y-0 pb-4"
+        >
+            <label for="table-search-risks" class="sr-only">Recherche</label>
+            <div class="relative">
+                <div
+                    class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none"
                 >
-                    <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                </svg>
+                    <svg
+                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                        />
+                    </svg>
+                </div>
+                <input
+                    @input="search($event.target.value)"
+                    type="text"
+                    id="table-search-risks"
+                    class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Recherche d'un risque"
+                />
             </div>
-            <input
-                @input="search($event.target.value)"
-                type="text"
-                id="table-search-risks"
-                class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Recherche d'un risque"
-            />
         </div>
-    </div>
-    <div>
-        <DropdownRadio id="cat" @manualClosed="">
-            <template #button> Catégories </template>
-            <template #radio>
-                <li v-for="category in categories">
-                    <div class="flex items-center">
-                        <input
-                            :id="`checkbox-cat-${category.id}`"
-                            type="checkbox"
-                            value=""
-                            @change="setSelectedCategories(category.id)"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                        />
-                        <label
-                            :for="`checkbox-cat-${category.id}`"
-                            class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            ><span class="block w-2 h-2 rounded-full" :style="`background-color: ${category.color}`"></span>{{ category.name }}</label
-                        >
-                    </div>
-                </li>
-                
-            </template>
-        </DropdownRadio>
-        <DropdownRadio  id="strat"  @manualClosed="">
-            <template #button> Stratégies </template>
-            <template #radio>
-                <li v-for="strategy in strategies">
-                    <div class="flex items-center">
-                        <input
-                            :id="`checkbox-strat-${strategy.id}`"
-                            type="checkbox"
-                            value=""
-                            @change="setSelectedStrategies(strategy.name)"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                        />
-                        <label
-                            :for="`checkbox-strat-${strategy.id}`"
-                            class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            > <span :class="`block w-2 h-2 rounded-full ${strategy.color}`"></span>{{ strategy.name }}</label
-                        >
-                    </div>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <input
-                            id="checkbox-strat-99"
-                            type="checkbox"
-                            value=""
-                            @change="setSelectedStrategies(null)"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                        />
-                        <label
-                            for="checkbox-strat-99"
-                            class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            > <span class="block w-2 h-2 rounded-full bg-gray-400"></span>Non définie</label
-                        >
-                    </div>
-                </li>
-            </template>
-        </DropdownRadio>
+        <div class="w-full flex justify-end gap-4">
+            <DropdownRadio id="cat" @manualClosed="">
+                <template #button> Catégories </template>
+                <template #radio>
+                    <li v-for="category in categories">
+                        <div class="flex items-center">
+                            <input
+                                :id="`checkbox-cat-${category.id}`"
+                                type="checkbox"
+                                value=""
+                                @change="setSelectedCategories(category.id)"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                            />
+                            <label
+                                :for="`checkbox-cat-${category.id}`"
+                                class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                ><span
+                                    class="block w-2 h-2 rounded-full"
+                                    :style="`background-color: ${category.color}`"
+                                ></span
+                                >{{ category.name }}</label
+                            >
+                        </div>
+                    </li>
+                </template>
+            </DropdownRadio>
+            <DropdownRadio id="strat" @manualClosed="">
+                <template #button> Stratégies </template>
+                <template #radio>
+                    <li v-for="strategy in strategies">
+                        <div class="flex items-center">
+                            <input
+                                :id="`checkbox-strat-${strategy.id}`"
+                                type="checkbox"
+                                value=""
+                                @change="setSelectedStrategies(strategy.name)"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                            />
+                            <label
+                                :for="`checkbox-strat-${strategy.id}`"
+                                class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >
+                                <span
+                                    :class="`block w-2 h-2 rounded-full ${strategy.color}`"
+                                ></span
+                                >{{ strategy.name }}</label
+                            >
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <input
+                                id="checkbox-strat-99"
+                                type="checkbox"
+                                value=""
+                                @change="setSelectedStrategies(null)"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                            />
+                            <label
+                                for="checkbox-strat-99"
+                                class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >
+                                <span
+                                    class="block w-2 h-2 rounded-full bg-gray-400"
+                                ></span
+                                >Non définie</label
+                            >
+                        </div>
+                    </li>
+                </template>
+            </DropdownRadio>
+        </div>
     </div>
     <table
         class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"

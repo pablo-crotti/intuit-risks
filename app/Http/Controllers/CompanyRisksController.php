@@ -19,7 +19,7 @@ class CompanyRisksController extends Controller
      * user. Finally, it returns a view named 'Logged/Risks' with the retrieved company risks data
      * passed as 'risks' to the view.
      */
-    public function display()
+    public function index()
     {
         $company_id = auth()->user()->company_id;
 

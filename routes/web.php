@@ -41,7 +41,7 @@ Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
 });
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
-    Route::get('/risks', [CompanyRisksController::class, 'display'])->name('risks');
+    Route::get('/risks', [CompanyRisksController::class, 'index'])->name('risks');
     Route::get('/risks/{id}', [CompanyRiskController::class, 'display'])->name('risks.show');
 });
 

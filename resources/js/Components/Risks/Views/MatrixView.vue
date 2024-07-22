@@ -5,7 +5,7 @@ import RiskTableBody from "@/Components/Risks/Components/RiskTableBody.vue";
 export default {
     data() {
         return {
-            selectedRisk: null,
+            selectedRisks: [],
         };
     },
 
@@ -18,6 +18,11 @@ export default {
     components: {
         MatrixTooltip,
         RiskTableBody,
+    },
+    methods: {
+        selectRisk(risks) {
+            this.selectedRisks = risks;
+        },
     },
     computed: {
         riskMatrix() {
@@ -93,8 +98,9 @@ export default {
                 </td>
                 <td
                     v-for="impact in [1, 2, 3, 4]"
+                    @click="selectRisk(riskMatrix[4 - prob][impact])"
                     :key="impact"
-                    :class="`impact-${impact} border dark:border-gray-600`"
+                    :class="`impact-${impact} border dark:border-gray-600 hover:opacity-90 cursor-pointer`"
                 >
                     <div
                         class="flex justify-start gap-1 flex-wrap min-w-1/5 max-w-1/5 p-2 min-h-24"
@@ -106,14 +112,13 @@ export default {
                             :catLabel="risk.category.label"
                             :catColor="risk.category.color"
                             :name="risk.name"
-                            @showDetails="selectedRisk = risk"
                         />
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div v-if="selectedRisk" class="mt-4">
+    <div v-if="selectedRisks.length > 0" class="mt-4">
         <table
             class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
         >
@@ -127,8 +132,8 @@ export default {
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-b dark:border-gray-700">
-                    <RiskTableBody :risk="selectedRisk" />
+                <tr class="border-b dark:border-gray-700" v-for="risk in selectedRisks">
+                    <RiskTableBody :risk="risk" />
                 </tr>
             </tbody>
         </table>
