@@ -321,8 +321,8 @@ export default {
                         />
                         <label
                             :for="`checkbox-cat-${category.id}`"
-                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            >{{ category.name }}</label
+                            class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            ><span class="block w-2 h-2 rounded-full" :style="`background-color: ${category.color}`"></span>{{ category.name }}</label
                         >
                     </div>
                 </li>
@@ -343,8 +343,8 @@ export default {
                         />
                         <label
                             :for="`checkbox-strat-${strategy.id}`"
-                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            >{{ strategy.name }}</label
+                            class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            > <span :class="`block w-2 h-2 rounded-full ${strategy.color}`"></span>{{ strategy.name }}</label
                         >
                     </div>
                 </li>
@@ -359,8 +359,8 @@ export default {
                         />
                         <label
                             for="checkbox-strat-99"
-                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            >Non définie</label
+                            class="flex gap-2 items-center ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            > <span class="block w-2 h-2 rounded-full bg-gray-400"></span>Non définie</label
                         >
                     </div>
                 </li>
