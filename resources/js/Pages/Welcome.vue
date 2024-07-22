@@ -26,7 +26,7 @@ defineProps({
         class="w-screen h-screen flex flex-col justify-center items-center gap-4 gradient-bg"
     >
         <h1
-            class="text-3xl text-center md:text-left font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-gray-900 dark:text-white"
+            class="text-3xl text-center md:text-left font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-white"
         >
             Intuit<span class="text-primary-500 dark:text-primary-400"
                 >Risks</span
@@ -34,7 +34,7 @@ defineProps({
         </h1>
 
         <h2
-            class="text-xl text-center md:text-left font-extrabold leading-none tracking-tight md:text-4xl text-gray-900 dark:text-white"
+            class="text-xl text-center md:text-left font-extrabold leading-none tracking-tight md:text-4xl text-white"
         >
             <div class="inline-flex">
                 La gestion de risques

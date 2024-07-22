@@ -1,6 +1,7 @@
 <script>
 import RiskTableBody from "@/Components/Risks/Components/RiskTableBody.vue";
 import Pagination from "@/Components/Pagination.vue";
+import DropdownRadio from "@/Components/DropdownRadio.vue";
 
 export default {
     props: {
@@ -17,6 +18,32 @@ export default {
             strategy: null,
             lastReview: null,
         },
+        categories: [],
+        selectedCategories: [],
+        strategies: [
+            {
+                id: 1,
+                name: "Supprimer",
+                color: "bg-red"
+            },
+            {
+                id: 2,
+                name: "Diminuer",
+                color: "bg-orange"
+            },
+            {
+                id: 3,
+                name: "Veiller",
+                color: "bg-blue"
+            },
+            {
+                id: 4,
+                name: "Accepter",
+                color: "bg-green"
+            
+            }
+        ],
+        selectedStrategies: [],
         pages: null,
         maxPerPage: 10,
         actualPage: 1,
@@ -26,6 +53,7 @@ export default {
     components: {
         RiskTableBody,
         Pagination,
+        DropdownRadio,
     },
     methods: {
         filter(col) {
@@ -36,6 +64,7 @@ export default {
             } else {
                 newValue = "up";
             }
+
 
             this.ordered = {
                 title: null,
@@ -135,6 +164,7 @@ export default {
                     return 0;
                 } else return 0;
             });
+       
         },
         setPageRisks() {
             this.pageRisks = this.risks.slice(
@@ -160,7 +190,69 @@ export default {
                 this.normalizeString(risk.name).includes(normalizedInput)
             );
         },
+        setCategories() {
+            const categories = this.risks.map((risk) => risk.category);
+
+            categories.forEach((category) => {
+                const existingCategory = this.categories.find(
+                    (cat) => cat.id === category.id
+                );
+                if (!existingCategory) {
+                    this.categories.push(category);
+                }
+            });
+
+            this.categories.sort((a, b) => a.name.localeCompare(b.name));
+        },
+
+        useFilters() {
+            if (this.selectedStrategies.length === 0 && this.selectedCategories.length === 0) {
+                this.pageRisks = this.risks;
+                return;
+            } 
+            
+            if (this.selectedStrategies.length == 0) {
+                this.pageRisks = this.risks.filter((risk) =>
+                    this.selectedCategories.includes(risk.category.id)
+                );
+            } else if (this.selectedCategories.length == 0) {
+                this.pageRisks = this.risks.filter((risk) => 
+                   
+                    this.selectedStrategies.includes(risk.strategy)
+                );
+            } else {
+                this.pageRisks = this.risks.filter((risk) =>
+                    this.selectedCategories.includes(risk.category.id) &&
+                    this.selectedStrategies.includes(risk.strategy)
+                );
+            }
+       
+        },
+        setSelectedCategories(id) {
+            if (this.selectedCategories.includes(id)) {
+                this.selectedCategories = this.selectedCategories.filter(
+                    (cat) => cat !== id
+                );
+            } else {
+                this.selectedCategories.push(id);
+            }
+            
+            this.useFilters();
+        
+        },
+        setSelectedStrategies(name) {
+            if (this.selectedStrategies.includes(name)) {
+                this.selectedStrategies = this.selectedStrategies.filter(
+                    (strat) => strat !== name
+                );
+            } else {
+                this.selectedStrategies.push(name);
+            }
+
+            this.useFilters();
+        },
     },
+
     watch: {
         risks() {
             this.order();
@@ -175,6 +267,7 @@ export default {
 
         this.pages = Math.ceil(this.risks.length / this.maxPerPage);
         this.setPageRisks();
+        this.setCategories();
     },
 };
 </script>
@@ -212,6 +305,67 @@ export default {
                 placeholder="Recherche d'un risque"
             />
         </div>
+    </div>
+    <div>
+        <DropdownRadio id="cat" @manualClosed="">
+            <template #button> Catégories </template>
+            <template #radio>
+                <li v-for="category in categories">
+                    <div class="flex items-center">
+                        <input
+                            :id="`checkbox-cat-${category.id}`"
+                            type="checkbox"
+                            value=""
+                            @change="setSelectedCategories(category.id)"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                        />
+                        <label
+                            :for="`checkbox-cat-${category.id}`"
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >{{ category.name }}</label
+                        >
+                    </div>
+                </li>
+                
+            </template>
+        </DropdownRadio>
+        <DropdownRadio  id="strat"  @manualClosed="">
+            <template #button> Stratégies </template>
+            <template #radio>
+                <li v-for="strategy in strategies">
+                    <div class="flex items-center">
+                        <input
+                            :id="`checkbox-strat-${strategy.id}`"
+                            type="checkbox"
+                            value=""
+                            @change="setSelectedStrategies(strategy.name)"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                        />
+                        <label
+                            :for="`checkbox-strat-${strategy.id}`"
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >{{ strategy.name }}</label
+                        >
+                    </div>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <input
+                            id="checkbox-strat-99"
+                            type="checkbox"
+                            value=""
+                            @change="setSelectedStrategies(null)"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                        />
+                        <label
+                            for="checkbox-strat-99"
+                            class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                            >Non définie</label
+                        >
+                    </div>
+                </li>
+            </template>
+        </DropdownRadio>
     </div>
     <table
         class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
