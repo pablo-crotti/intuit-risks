@@ -261,7 +261,11 @@ export default {
                         <div v-for="task in risk.reduction_plan_tasks">
                             <ReductionPlanTaskCard
                                 :task="task"
-                                :responsible_id="risk.responsible.id"
+                                :responsible_id="
+                                    risk.responsible
+                                        ? risk.responsible.id
+                                        : null
+                                "
                                 :author_id="risk.author_id"
                             />
                         </div>

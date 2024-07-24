@@ -20,7 +20,7 @@ export default {
         },
         responsible_id: {
             type: Number,
-            required: true,
+            default: null,
         },
         author_id: {
             type: Number,

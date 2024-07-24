@@ -1,9 +1,15 @@
 <script>
+import { initFlowbite } from "flowbite";
+import { useForm } from "@inertiajs/vue3";
+
+import Loader from "@/Components/Loader.vue";
 import CustomModal from "@/Components/CustomModal.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import PrimaryButtonMono from "@/Components/PrimaryButtonMono.vue";
-import { Input } from "postcss";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+
+import askMistral from "@/Helpers/askMistral";
 
 export default {
     props: {
@@ -18,9 +24,19 @@ export default {
             manualClose: false,
             information: "",
             action: "",
+            isLoading: false,
+
             informations: [],
+
             actions: [],
+
             toDelete: [],
+
+            form: useForm({
+                informations: [],
+                actions: [],
+                toDelete: [],
+            }),
         };
     },
 
@@ -29,15 +45,30 @@ export default {
         InputLabel,
         TextInput,
         PrimaryButtonMono,
+        PrimaryButton,
+        Loader,
     },
 
     methods: {
+        getInfosAndActions() {
+            this.informations = this.risk.emergency_plan_actions
+                .filter((action) => action.is_information == true)
+                .map((action) => ({
+                    information: action.action,
+                    id: action.id,
+                }));
+            this.actions = this.risk.emergency_plan_actions
+                .filter((action) => action.is_information == false)
+                .map((action) => ({
+                    action: action.action,
+                    id: action.id,
+                }));
+        },
         addInformation() {
             if (this.information === "") {
                 return;
             }
 
-            
             const info = {
                 information: this.information,
                 id: 0,
@@ -47,7 +78,7 @@ export default {
             this.information = "";
         },
         deleteInformation(index, id) {
-            if(id) {
+            if (id) {
                 this.toDelete.push(id);
             }
             this.informations.splice(index, 1);
@@ -57,7 +88,6 @@ export default {
                 return;
             }
 
-            
             const action = {
                 action: this.action,
                 id: 0,
@@ -67,23 +97,114 @@ export default {
             this.action = "";
         },
         deleteAction(index, id) {
-            if(id) {
+            if (id) {
                 this.toDelete.push(id);
             }
             this.actions.splice(index, 1);
         },
-        generateEmergencyPlan() {
-            console.log("generate precursors");
+        async generateEmergencyPlan() {
+            this.isLoading = true;
+            const riskForIA = {
+                name: this.risk.name,
+                description: this.risk.description,
+                category: this.risk.category.name,
+                precursors: this.precursors,
+                probability: this.risk.evaluations[0].probability,
+                impact: this.risk.evaluations[0].impact,
+            };
+
+            const company = await axios.get(route("company.index"));
+            const companyForAI = {
+                sector: company.data.sector,
+                employees: company.data.employees,
+                country: company.data.country.name,
+                city: company.data.city,
+                organization_type: company.data.organization_type.name,
+            };
+
+            const emergencyPlanFromIA = await askMistral.askEmergencyPlan(
+                riskForIA,
+                companyForAI,
+                this.informations,
+                this.actions
+            );
+
+            this.informations.push(
+                ...emergencyPlanFromIA.infos.map((info) => ({
+                    information: info.action,
+                    id: 0,
+                }))
+            );
+
+            this.actions.push(
+                ...emergencyPlanFromIA.tasks.map((task) => ({
+                    action: task.action,
+                    id: 0,
+                }))
+            );
+
+            this.isLoading = false;
+        },
+
+        store() {
+            this.isLoading = true;
+            if (this.informations.length > 0) {
+                const newInformations = this.informations.filter(
+                    (information) => {
+                        return information.id === 0;
+                    }
+                );
+
+                this.form.informations = newInformations;
+            }
+
+            if (this.actions.length > 0) {
+                const newActions = this.actions.filter((action) => {
+                    return action.id === 0;
+                });
+
+                this.form.actions = newActions;
+            }
+
+            if (this.toDelete.length > 0) {
+                this.form.toDelete = this.toDelete;
+            }
+
+            if (
+                this.form.informations.length === 0 &&
+                this.form.actions.length === 0 &&
+                this.form.toDelete.length === 0
+            ) {
+                return;
+            } else {
+                this.form.post(`/api/risks/${this.risk.id}/emergency-plan`, {
+                    preserveState: true,
+                    onSuccess: () => {
+                        this.isLoading = false;
+                        this.manualClose = true;
+                    },
+                    onError: () => {
+                        this.manualClose = true;
+                        this.isLoading = false;
+                    },
+                });
+            }
+
+            this.isLoading = false;
+            this.toDelete = [];
+            this.getInfosAndActions();
         },
     },
 
     mounted() {
-        console.log(this.risk);
+        initFlowbite();
+        this.getInfosAndActions();
     },
 };
 </script>
 
 <template>
+    <Loader v-if="isLoading" />
     <CustomModal
         :buttonTitle="
             this.risk.emergency_plan_actions.length == 0 ? 'Créer' : 'Modifier'
@@ -203,6 +324,16 @@ export default {
                             />
                         </svg>
                     </button>
+                </div>
+            </div>
+        </template>
+        <template #footer>
+            <div class="w-full flex justify-end gap-4">
+                <div>
+                    <PrimaryButtonMono>Annuler</PrimaryButtonMono>
+                </div>
+                <div>
+                    <PrimaryButton @click="store">Enregistrer</PrimaryButton>
                 </div>
             </div>
         </template>

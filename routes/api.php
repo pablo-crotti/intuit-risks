@@ -10,8 +10,7 @@ use App\Http\Middleware\EnsureUserIsActivated;
 use App\Http\Controllers\API\RiskController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\CompanyRiskReductionPlanTaskController;
-
-
+use App\Http\Controllers\API\EmergencyPlanController;
 
 Route::get('api/categories', [CategoryController::class, 'index'])->name('categories.index');
 
@@ -38,4 +37,8 @@ Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
     Route::put('api/reduction-plan/tasks/{id}/evaluate', [CompanyRiskReductionPlanTaskController::class, 'update'])->name('reduction-plan.tasks.evaluate');
     Route::delete('api/reduction-plan/tasks/{id}', [CompanyRiskReductionPlanTaskController::class, 'delete'])->name('reduction-plan.tasks.delete');
+});
+
+Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
+    Route::post('api/risks/{id}/emergency-plan', [EmergencyPlanController::class, 'store'])->name('risk.emergency-plan.store');
 });

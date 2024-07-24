@@ -17,6 +17,7 @@ class CompanyRisk extends Model
         'name',
         'description',
         'evaluation_frequency',
+        'emergencyPlanStatus',
         'responsible_id'
     ];
 
@@ -73,11 +74,4 @@ class CompanyRisk extends Model
     {
         return $this->hasMany(CompanyRiskEmergencyPlanAction::class)->with('agent');
     }
-
-
-
-
-
-
-
 }

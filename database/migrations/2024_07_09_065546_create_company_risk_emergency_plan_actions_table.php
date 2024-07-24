@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('company_risk_emergency_plan_actions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_risk_id')->constrained('company_risks');
-            $table->foreignId('agent_id')->constrained('users');
+            $table->foreignId('agent_id')->nullable()->constrained('users');
             $table->boolean('is_information');
             $table->text('action');
             $table->boolean('status')->default(0);

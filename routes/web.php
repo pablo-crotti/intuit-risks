@@ -11,7 +11,8 @@ use App\Http\Controllers\CompanyRiskController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\EnsureUserIsActivated;
-
+use App\Http\Controllers\EmergencyPlanController;
+use App\Http\Middleware\EmergencyPlanActive;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -23,7 +24,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', DashboardController::class)->middleware(['auth', EnsureUserIsActivated::class, 'verified', RegistrationSteps::class])->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware(['auth', EnsureUserIsActivated::class, 'verified', RegistrationSteps::class, EmergencyPlanActive::class])->name('dashboard');
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
     Route::get('/register/company', [RegistrationCompanyController::class, 'display'])->name('register.company');
@@ -35,23 +36,30 @@ Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
 });
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->middleware(EmergencyPlanActive::class)->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
-    Route::get('/risks', [CompanyRisksController::class, 'index'])->name('risks');
-    Route::get('/risks/{id}', [CompanyRiskController::class, 'display'])->name('risks.show');
+    Route::get('/risks', [CompanyRisksController::class, 'index'])->middleware(EmergencyPlanActive::class)->name('risks');
+    Route::get('/risks/{id}', [CompanyRiskController::class, 'display'])->middleware(EmergencyPlanActive::class)->name('risks.show');
 });
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
-    Route::get('/admin/users', [UsersController::class, 'index'])->name('admin.users');
+    Route::get('/admin/users', [UsersController::class, 'index'])->middleware(EmergencyPlanActive::class)->name('admin.users');
     Route::post('/admin/users', [UsersController::class, 'store'])->name('admin.users.store');
     Route::patch('/admin/users', [UsersController::class, 'update'])->name('admin.users.update');
 });
 
 
+Route::middleware(['auth', EnsureUserIsActivated::class])->group(function () {
+    Route::get('/emergency-plan/{id}', [EmergencyPlanController::class, 'index'])->name('emergency.plan');
+    Route::patch('/emergency-plan/{id}/agents', [EmergencyPlanController::class, 'update'])->name('emergency.plan.set.agents');
+    Route::patch('/emergency-plan/{id}/start', [EmergencyPlanController::class, 'start'])->name('emergency.plan.start');
+});
 
-require __DIR__.'/auth.php';
-require __DIR__.'/api.php';
+
+
+require __DIR__ . '/auth.php';
+require __DIR__ . '/api.php';

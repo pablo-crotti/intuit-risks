@@ -37,6 +37,25 @@ const askMistral = async (message) => {
  * @returns {Promise<Object>} A promise that resolves to an object containing 'informations' and 'taches'.
  * @throws {Error} Throws an error if there's a problem with the Mistral AI request.
  */
+
+
+const askEmergencyPlan = async (risk, company, informations, actions) => {
+    const message = [
+        {
+            role: "system",
+            content: `Tu es spécialiste en gestion de crise dans une ${company.organization_type} ${company.country}, basée à ${company.city} de ${company.employees} employés. Le secteur d'activité principal de l'entreprise est : « ${company.sector} ». Tu es paramétré pour répondre en JSON et en français.`,
+        }, {
+
+
+            role: "user",
+            content: `Pour développer un plan d'urgence, détermine les informations clés nécessaires pour comprendre la situation et liste les étapes essentielles pour y répondre efficacement. La crise en question est la suivante : « ${risk.name} ». La description du risque est la suivante : « ${risk.description} ». Les informations déjà identifiées sont les suivantes : ${informations.map(info => `${info.information}`).join(', ')}. Les actions déjà identifiées sont les suivantes : ${actions.map(action => `${action.action}`).join(', ')}. Génère un plan contenant uniquement les informations cruciales à obtenir et les tâches à accomplir pour gérer cette crise tout en essayant de garantir la continuité des activités. Donne tes réponses UNIQUEMENT dans le format JSON suivant : {"infos":[{"action": "Information 1"},{"action": "Information 2"},{"action": "Etc…"},],"tasks":[{"action": "Tâche 1"},{"action": "Tâche 2"},{"action": "Etc…"},]}`,
+        }
+    ];
+
+    return await askMistral(message);
+
+
+}
 // const askEmergencyPlan = async (risk, companyInfos) => {
 //     const message = [
 //         {
@@ -83,7 +102,7 @@ const askRisk = async (company, risks, categories) => {
         }
 
     ]
-    
+
     return await askMistral(message);
 }
 
@@ -104,5 +123,5 @@ const askReductionPlanTask = async (company, risk) => {
     return await askMistral(message);
 }
 
-export default { askPrecursors, askRisk, askReductionPlanTask }
+export default { askPrecursors, askRisk, askReductionPlanTask, askEmergencyPlan }
 
