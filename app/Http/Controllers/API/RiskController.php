@@ -26,7 +26,6 @@ class RiskController extends Controller
             "category" => "required|array",
             "probability" => "required|numeric",
             "impact" => "required|numeric",
-
         ]);
 
         $company_id = auth()->user()->company_id;

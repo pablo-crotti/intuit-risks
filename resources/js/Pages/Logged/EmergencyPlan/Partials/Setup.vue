@@ -75,7 +75,7 @@ const setUser = (action, user) => {
 };
 
 const start = () => {
-    axios.post(`/emergency-plan/${props.risk.id}/start`);
+    useForm({ send: true }).patch(`/emergency-plan/${props.risk.id}/start`);
 };
 
 onMounted(() => {

@@ -1,21 +1,15 @@
 <script>
-
 export default {
     props: {
         probability: {
-            type: String,
             required: true,
         },
         impact: {
-            type: String,
             required: true,
         },
     },
     emits: ["update:probability", "update:impact"],
 };
-
-
-
 </script>
 <template>
     <div class="relative mb-12">

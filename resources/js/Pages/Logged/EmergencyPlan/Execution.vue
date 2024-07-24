@@ -7,8 +7,10 @@ const props = defineProps({
         required: true,
     },
 });
+
+console.log(props.risk);
 </script>
 
 <template>
-    <Setup :risk="risk" />
+    <Setup :risk="risk" v-if="risk.emergencyPlanStatus == 1" />
 </template>

@@ -12,7 +12,7 @@ export default {
             required: true,
         },
         companyRisks: {
-            type: Object,
+            type: Array,
             required: false,
             default: null,
         },

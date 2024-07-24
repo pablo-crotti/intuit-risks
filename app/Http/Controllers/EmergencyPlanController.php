@@ -50,6 +50,9 @@ class EmergencyPlanController extends Controller
         $risk->update([
             'emergencyPlanStatus' => 2
         ]);
+        $risk->save();
+
+        dd($risk);
 
         return back()->withInput();
     }

@@ -46,6 +46,7 @@ const storeNewUser = () => {
         onFinish: () => {
             isLoading.value = false;
             form.reset("name", "email", "is_admin");
+            manualClose.value = true;
         },
     });
 };
