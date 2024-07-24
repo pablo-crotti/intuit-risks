@@ -31,11 +31,6 @@ export default {
             default: null,
         },
     },
-    data() {
-        return {
-            localCompanyRisks: [],
-        };
-    },
     emits: ["newCategorySelected", "validateSelection"],
     components: {
         InfosModal,
@@ -82,8 +77,6 @@ export default {
     },
     mounted() {
         initFlowbite();
-        this.localCompanyRisks = this.companyRisks;
-        console.log(this.companyRisks);
     },
 };
 </script>
@@ -110,7 +103,6 @@ export default {
                     class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
                 >
                     Pour une gestion efficace des risques, suivez ces étapes :
-                    {{ localCompanyRisks.length }}
                 </p>
                 <ol class="list-decimal list-inside">
                     <li
@@ -223,8 +215,6 @@ export default {
                         class="font-normal text-lg text-gray-900 dark:text-white"
                     >
                         {{ risk.name }}
-
-                        {{ localCompanyRisks.length }}
                     </p>
                     <p class="font-normal text-gray-700 dark:text-gray-400">
                         {{ risk.description }}
@@ -235,7 +225,6 @@ export default {
                         id="red-checkbox"
                         type="checkbox"
                         :checked="
-                            companyRisks.length > 0 &&
                             companyRisks?.find((r) => r.risk_id === risk.id)
                         "
                         value=""
@@ -245,10 +234,7 @@ export default {
                 </div>
             </label>
             <div
-                v-if="
-                    companyRisks.length > 0 &&
-                    companyRisks?.find((r) => r.risk_id === risk.id)
-                "
+                v-if="companyRisks?.find((r) => r.risk_id === risk.id)"
                 class="w-full mt-4 pt-4"
             >
                 <ProbabilityAndImpactSelect
