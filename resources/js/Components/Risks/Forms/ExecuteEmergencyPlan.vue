@@ -2,6 +2,7 @@
 import DangerButton from "@/Components/DangerButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import Modal from "@/Components/Modal.vue";
+import { useForm } from "@inertiajs/vue3";
 
 export default {
     props: {
@@ -24,7 +25,11 @@ export default {
 
     methods: {
         execute() {
-            window.location.href = `/emergency-plan/${this.id}`;
+            const form = useForm({
+                risk_id: this.id,
+            });
+
+            form.patch(`/emergency-plan/${this.id}/execute`);
         },
     },
 };

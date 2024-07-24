@@ -110,6 +110,8 @@ class RegistrationRisksController extends Controller
             $evaluation->probability = $selectedRisk['probability'];
             $evaluation->impact = $selectedRisk['impact'];
             $evaluation->save();
+
+            return back()->withInput();
         }
     }
 
@@ -138,7 +140,8 @@ class RegistrationRisksController extends Controller
         $evaluation->save();
     }
 
-    public function validate() {
+    public function validate()
+    {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         $user->update([
@@ -146,4 +149,3 @@ class RegistrationRisksController extends Controller
         ]);
     }
 }
-

@@ -14,7 +14,7 @@ export default {
         companyRisks: {
             type: Array,
             required: false,
-            default: null,
+            default: [],
         },
         category: {
             type: Object,
@@ -31,7 +31,12 @@ export default {
             default: null,
         },
     },
-    emits: ["newRiskSelected", "newCategorySelected", "validateSelection"],
+    data() {
+        return {
+            localCompanyRisks: [],
+        };
+    },
+    emits: ["newCategorySelected", "validateSelection"],
     components: {
         InfosModal,
         ProbabilityAndImpactSelect,
@@ -50,7 +55,6 @@ export default {
             form.post("/register/risks", {
                 preserveScroll: true,
                 preserveState: true,
-                onSuccess: () => this.$emit("newRiskSelected"),
                 onError: (errors) => console.error(errors),
             });
         },
@@ -72,13 +76,14 @@ export default {
             form.patch("/register/risks", {
                 preserveScroll: true,
                 preserveState: true,
-                onSuccess: () => this.$emit("newRiskSelected"),
                 onError: (errors) => console.error(errors),
             });
         },
     },
     mounted() {
         initFlowbite();
+        this.localCompanyRisks = this.companyRisks;
+        console.log(this.companyRisks);
     },
 };
 </script>
@@ -105,6 +110,7 @@ export default {
                     class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
                 >
                     Pour une gestion efficace des risques, suivez ces étapes :
+                    {{ localCompanyRisks.length }}
                 </p>
                 <ol class="list-decimal list-inside">
                     <li
@@ -217,6 +223,8 @@ export default {
                         class="font-normal text-lg text-gray-900 dark:text-white"
                     >
                         {{ risk.name }}
+
+                        {{ localCompanyRisks.length }}
                     </p>
                     <p class="font-normal text-gray-700 dark:text-gray-400">
                         {{ risk.description }}
@@ -227,7 +235,8 @@ export default {
                         id="red-checkbox"
                         type="checkbox"
                         :checked="
-                            companyRisks.find((r) => r.risk_id === risk.id)
+                            companyRisks.length > 0 &&
+                            companyRisks?.find((r) => r.risk_id === risk.id)
                         "
                         value=""
                         @click="insertRisk(risk)"
@@ -236,21 +245,24 @@ export default {
                 </div>
             </label>
             <div
-                v-if="companyRisks.find((r) => r.risk_id === risk.id)"
+                v-if="
+                    companyRisks.length > 0 &&
+                    companyRisks?.find((r) => r.risk_id === risk.id)
+                "
                 class="w-full mt-4 pt-4"
             >
                 <ProbabilityAndImpactSelect
                     :probability="
-                        companyRisks.find((r) => r.risk_id === risk.id)
+                        companyRisks?.find((r) => r.risk_id === risk.id)
                             .evaluations[0].probability
                     "
                     :impact="
-                        companyRisks.find((r) => r.risk_id === risk.id)
+                        companyRisks?.find((r) => r.risk_id === risk.id)
                             .evaluations[0].impact
                     "
                     @update:probability="
                         updateRisk(
-                            companyRisks.find((r) => r.risk_id === risk.id)
+                            companyRisks?.find((r) => r.risk_id === risk.id)
                                 .evaluations[0],
                             'probability',
                             $event
@@ -258,7 +270,7 @@ export default {
                     "
                     @update:impact="
                         updateRisk(
-                            companyRisks.find((r) => r.risk_id === risk.id)
+                            companyRisks?.find((r) => r.risk_id === risk.id)
                                 .evaluations[0],
                             'impact',
                             $event

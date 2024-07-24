@@ -56,7 +56,13 @@ Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {
 Route::middleware(['auth', EnsureUserIsActivated::class])->group(function () {
     Route::get('/emergency-plan/{id}', [EmergencyPlanController::class, 'index'])->name('emergency.plan');
     Route::patch('/emergency-plan/{id}/agents', [EmergencyPlanController::class, 'update'])->name('emergency.plan.set.agents');
+    Route::patch('/emergency-plan/{id}/execute', [EmergencyPlanController::class, 'execute'])->name('emergency.plan.execute');
+
     Route::patch('/emergency-plan/{id}/start', [EmergencyPlanController::class, 'start'])->name('emergency.plan.start');
+    Route::patch('/emergency-plan/{id}/end', [EmergencyPlanController::class, 'end'])->name('emergency.plan.end');
+
+    Route::patch('/emergency-plan/{id}/action-done', [EmergencyPlanController::class, 'actionDone'])->name('emergency.plan.action.done');
+    Route::patch('/emergency-plan/{id}/action-response', [EmergencyPlanController::class, 'actionResponse'])->name('emergency.plan.action.response');
 });
 
 

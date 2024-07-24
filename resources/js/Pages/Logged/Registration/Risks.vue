@@ -22,7 +22,7 @@ const props = defineProps({
         required: true,
     },
     companyRisks: {
-        type: Object,
+        type: Array,
         required: false,
         default: null,
     },
@@ -35,10 +35,6 @@ const previousCategory = ref(null);
 const actualCategoryIndex = ref(null);
 const isLoading = ref(false);
 let modal = null;
-
-const updateRisks = () => {
-    props.companyRisks = axios.get("/register/risks");
-};
 
 const consultCategory = (id) => {
     consultedCategories.value.push(id);
@@ -98,7 +94,7 @@ onMounted(() => {
 });
 </script>
 <template>
-    <Loader v-if="isLoading"/>
+    <Loader v-if="isLoading" />
     <Head title="Sélection de risques" />
     <div
         id="popup-modal"
@@ -148,7 +144,8 @@ onMounted(() => {
                     <h3
                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
                     >
-                        Vous avez actuellement selectionné moins de 5 risques. Êtes-vous sûr de vouloir continuer ?
+                        Vous avez actuellement selectionné moins de 5 risques.
+                        Êtes-vous sûr de vouloir continuer ?
                     </h3>
                     <button
                         @click="storeRisks"
@@ -160,7 +157,7 @@ onMounted(() => {
                     <button
                         data-modal-hide="popup-modal"
                         type="button"
-                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
                         Non, annuler
                     </button>
@@ -183,7 +180,6 @@ onMounted(() => {
             :nextCategory="nextCategory"
             :previousCategory="previousCategory"
             :category="categories[actualCategoryIndex]"
-            @newRiskSelected="updateRisks"
             @newCategorySelected="(id) => consultCategory(id)"
             @validateSelection="validateSelection"
         />

@@ -11,6 +11,10 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    user: {
+        type: Object,
+        required: true,
+    },
 });
 
 const actions = ref([]);
@@ -75,7 +79,14 @@ const setUser = (action, user) => {
 };
 
 const start = () => {
-    useForm({ send: true }).patch(`/emergency-plan/${props.risk.id}/start`);
+    form.patch(`/emergency-plan/${props.risk.id}/start`, {
+        onSuccess: () => {
+            console.log("Emergency plan started.");
+        },
+        onError: (errors) => {
+            console.error("Error starting emergency plan:", errors);
+        },
+    });
 };
 
 onMounted(() => {
@@ -87,11 +98,11 @@ onMounted(() => {
 <template>
     <div
         v-if="
-            risk.author_id == $page.props.auth.user.id ||
-            responsible_id == $page.props.auth.user.id ||
-            $page.props.auth.user.is_admin
+            risk.author_id == user.id ||
+            responsible_id == user.id ||
+            user.is_admin
         "
-        class="min-w-screen min-h-screen flex flex-col gap-4 justify-start items-center py-8 px-8"
+        class="flex flex-col gap-4 justify-start items-center"
     >
         <div class="w-full rounded-lg bg-gray-200 dark:bg-gray-800 p-4">
             <div class="flex justify-end">
@@ -318,7 +329,7 @@ onMounted(() => {
 
     <div
         v-else
-        class="min-w-screen min-h-screen flex flex-col justify-center items-center p-4 gap-4"
+        class="h-screen flex flex-col justify-center items-center gap-4"
     >
         <h1
             class="text-xl text-gray-900 text-center md:text-left font-extrabold leading-none tracking-tight md:text-2xl lg:text-3xl dark:text-white animate-pulse"

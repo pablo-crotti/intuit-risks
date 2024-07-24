@@ -14,16 +14,16 @@ class EmergencyPlanController extends Controller
     public function index()
     {
         $risk = CompanyRisk::with(['author', 'category', 'responsible', 'emergencyPlanActions'])->find(request()->route('id'));
+        $user = auth()->user();
 
-        if ($risk->emergencyPlanStatus == 0 || $risk->emergencyPlanStatus == 2) {
-            $risk->update([
-                'emergencyPlanStatus' => 1
-            ]);
+        if ($risk->emergencyPlanStatus == 0) {
+            return redirect()->route('dashboard');
         }
 
 
         return Inertia::render('Logged/EmergencyPlan/Execution', [
             'risk' => $risk,
+            'user' => $user,
         ]);
     }
 
@@ -44,16 +44,70 @@ class EmergencyPlanController extends Controller
         return back()->withInput();
     }
 
-    public function start()
+    public function start(Request $request)
+
+    {
+
+
+        $risk = CompanyRisk::find($request->route('id'));
+        $risk->emergencyPlanStatus = 2;
+        $risk->save();
+
+
+
+        return back()->withInput();
+    }
+
+    public function actionDone(Request $request)
+    {
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+        $action = CompanyRiskEmergencyPlanAction::find($request->id);
+        $action->status = 1;
+        $action->save();
+
+        return back()->withInput();
+    }
+
+    public function actionResponse(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            'response' => 'required'
+        ]);
+
+        $action = CompanyRiskEmergencyPlanAction::find($request->id);
+        $action->response = $request->response;
+        $action->save();
+
+        return back()->withInput();
+    }
+
+    public function end()
+    {
+        $risk = CompanyRisk::find(request()->route('id'));
+        $risk->emergencyPlanStatus = 0;
+        $risk->save();
+
+        $deleteActions = CompanyRiskEmergencyPlanAction::where('company_risk_id', $risk->id)->update([
+            'status' => 0,
+            'response' => null,
+            'agent_id' => null
+
+        ]);
+
+        return redirect()->route('dashboard');
+    }
+
+    public function execute()
     {
         $risk = CompanyRisk::find(request()->route('id'));
         $risk->update([
-            'emergencyPlanStatus' => 2
+            'emergencyPlanStatus' => 1
         ]);
-        $risk->save();
 
-        dd($risk);
-
-        return back()->withInput();
+        return redirect()->route('dashboard');
     }
 }
