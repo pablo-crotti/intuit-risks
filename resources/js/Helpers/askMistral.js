@@ -1,5 +1,5 @@
 import MistralClient from "@mistralai/mistralai";
-import ollama from "ollama"
+// import ollama from "ollama"
 
 const mistral = new MistralClient(import.meta.env.VITE_MISTRAL_API_KEY);
 
