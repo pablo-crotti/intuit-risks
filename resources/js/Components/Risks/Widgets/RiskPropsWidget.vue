@@ -29,17 +29,19 @@ export default {
             manualCloseRadio: false,
             categories: [],
             users: [],
-			isLoading: false,
+            isLoading: false,
             form: useForm({
                 title: this.risk.name,
                 description: this.risk.description,
                 category: this.risk.category,
                 responsible: this.risk.responsible,
+                frequency: this.risk.evaluation_frequency,
+
                 id: this.risk.id,
             }),
         };
     },
-    
+
     components: {
         WidgetLayout,
         CustomModal,
@@ -48,25 +50,26 @@ export default {
         UserNameAndImg,
         PrimaryButtonMono,
         PrimaryButton,
+        DropdownRadio,
+        UserImgPlaceholder,
+        Loader,
         TextInput,
         InputLabel,
         InputError,
-        DropdownRadio,
-        UserImgPlaceholder,
-		Loader,
-
     },
     methods: {
-		
         update() {
-			this.isLoading = true,
-            this.form.put(`/api/risks/${this.form.id}`, {
-                preserveScroll: true,
-                onSuccess: () => {
-                    this.manualClose = true;
-					this.isLoading = false;
-                },
-            });
+            (this.isLoading = true),
+                this.form.put(`/api/risks/${this.form.id}`, {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.manualClose = true;
+                        this.isLoading = false;
+                    },
+                    onError: () => {
+                        this.isLoading = false;
+                    },
+                });
         },
     },
     mounted() {
@@ -83,7 +86,7 @@ export default {
 </script>
 
 <template>
-	<Loader v-if="isLoading" />
+    <Loader v-if="isLoading" />
     <WidgetLayout>
         <template #title>Propriétés </template>
         <template #action>
@@ -119,7 +122,11 @@ export default {
                                 <template v-slot:radio>
                                     <li v-for="category in categories">
                                         <button
-                                            :class="`${form.category.id == category.id ? 'bg-white dark:bg-gray-700' : ''} text-left px-4 py-2 hover:bg-white dark:hover:bg-gray-700 w-full`"
+                                            :class="`${
+                                                form.category.id == category.id
+                                                    ? 'bg-white dark:bg-gray-700'
+                                                    : ''
+                                            } text-left px-4 py-2 hover:bg-white dark:hover:bg-gray-700 w-full`"
                                             @click.prevent="
                                                 (form.category = category),
                                                     (manualCloseRadio = true)
@@ -170,6 +177,145 @@ export default {
                                 :message="form.errors.description"
                             />
                         </div>
+                        <div class="flex justify-start mb-2">
+                            <InputLabel>Fréquence d'évaluation</InputLabel>
+                        </div>
+                        <div class="flex justify-start">
+                            <button
+                                id="dropdownFreqButton"
+                                data-dropdown-toggle="dropdownFreq"
+                                data-dropdown-placement="bottom"
+                                class="text-gray-800 min-w-max bg-gray-300 hover:bg-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:text-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-blue-800"
+                                type="button"
+                            >
+                                <span v-if="!form.frequency"
+                                    >Définir un fréquence d'évaluation</span
+                                >
+                                <span v-else>
+                                    {{
+                                        form.frequency == 86400
+                                            ? `Un jour`
+                                            : form.frequency == 604800
+                                            ? `Une semaine`
+                                            : form.frequency == 2592000
+                                            ? `Un mois`
+                                            : form.frequency == 7776000
+                                            ? `Trois mois`
+                                            : form.frequency == 15552000
+                                            ? `Six mois`
+                                            : `Une année`
+                                    }}</span
+                                >
+
+                                <svg
+                                    class="w-2.5 h-2.5 ms-3"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="m1 1 4 4 4-4"
+                                    />
+                                </svg>
+                            </button>
+                            <div
+                                id="dropdownFreq"
+                                class="z-10 hidden bg-gray-200 rounded-lg shadow w-60 dark:bg-gray-700"
+                            >
+                                <ul
+                                    class="h-48 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="dropdownFreqButton"
+                                >
+                                    <li>
+                                        <button
+                                            @click="form.frequency = 86400"
+                                            :class="`${
+                                                form.frequency == 86400
+                                                    ? 'bg-gray-100 dark:bg-gray-800'
+                                                    : ''
+                                            } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
+                                        >
+                                            Un jour
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            @click="form.frequency = 604800"
+                                            :class="`${
+                                                form.frequency == 604800
+                                                    ? 'bg-gray-100 dark:bg-gray-800'
+                                                    : ''
+                                            } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
+                                        >
+                                            Une semaine
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            @click="form.frequency = 2592000"
+                                            :class="`${
+                                                form.frequency == 2592000
+                                                    ? 'bg-gray-100 dark:bg-gray-800'
+                                                    : ''
+                                            } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
+                                        >
+                                            Un mois
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            @click="form.frequency = 7776000"
+                                            :class="`${
+                                                form.frequency == 7776000
+                                                    ? 'bg-gray-100 dark:bg-gray-800'
+                                                    : ''
+                                            } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
+                                        >
+                                            Trois mois
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            @click="form.frequency = 15552000"
+                                            :class="`${
+                                                form.frequency == 15552000
+                                                    ? 'bg-gray-100 dark:bg-gray-800'
+                                                    : ''
+                                            } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
+                                        >
+                                            Six mois
+                                        </button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                            @click="form.frequency = 31536000"
+                                            :class="`${
+                                                form.frequency == 31536000
+                                                    ? 'bg-gray-100 dark:bg-gray-800'
+                                                    : ''
+                                            } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
+                                        >
+                                            Une année
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <InputError
+                                class="mt-2"
+                                :message="form.errors.frequency"
+                            />
+                        </div>
                         <div class="flex justify-end">
                             <button
                                 id="dropdownUsersButton"
@@ -217,7 +363,8 @@ export default {
                                         <button
                                             @click="form.responsible = user"
                                             :class="`${
-                                                form.responsible && user.id == form.responsible.id 
+                                                form.responsible &&
+                                                user.id == form.responsible.id
                                                     ? 'bg-gray-100 dark:bg-gray-800'
                                                     : ''
                                             } flex w-full gap-2 items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white`"
@@ -249,8 +396,7 @@ export default {
                             >
                         </div>
                         <div class="w-30">
-                            <PrimaryButton
-                                @click="update"
+                            <PrimaryButton @click="update"
                                 >Enregistrer</PrimaryButton
                             >
                         </div>
@@ -341,6 +487,26 @@ export default {
                     >
                         Non défini
                     </p>
+                </div>
+                <div
+                    class="flex gap-4 mb-4 text-base font-normal text-gray-500 dark:text-gray-400"
+                >
+                    <strong class="font-semibold text-gray-900 dark:text-white"
+                        >Évaluation</strong
+                    >
+                    {{
+                        risk.evaluation_frequency == 86400
+                            ? `Tous les jours`
+                            : risk.evaluation_frequency == 604800
+                            ? `Toutes les semaines`
+                            : risk.evaluation_frequency == 2592000
+                            ? `Tous les mois`
+                            : risk.evaluation_frequency == 7776000
+                            ? `Tous les trois mois`
+                            : risk.evaluation_frequency == 15552000
+                            ? `Tous les six mois`
+                            : `Tous les ans`
+                    }}
                 </div>
             </div>
         </template>

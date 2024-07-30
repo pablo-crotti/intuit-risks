@@ -24,6 +24,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/cgi', function () {
+    return Inertia::render('ConditionsGenerales');
+})->name('cgi');
+
 Route::get('/dashboard', DashboardController::class)->middleware(['auth', EnsureUserIsActivated::class, 'verified', RegistrationSteps::class, EmergencyPlanActive::class])->name('dashboard');
 
 Route::middleware('auth', EnsureUserIsActivated::class)->group(function () {

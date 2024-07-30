@@ -4,6 +4,7 @@ import { initFlowbite } from "flowbite";
 
 import InfosModal from "@/Components/InfosModal.vue";
 import ProbabilityAndImpactSelect from "@/Components/Risks/Forms/ProbabilityAndImpactSelect.vue";
+import ProbabilityAndImpactTooltip from "@/Components/Risks/Components/ProbabilityAndImpactTooltip.vue";
 
 export default {
     props: {
@@ -30,11 +31,21 @@ export default {
             required: false,
             default: null,
         },
+        registration_step: {
+            type: Number,
+            required: true,
+        },
+    },
+    data() {
+        return {
+            newSelection: [],
+        };
     },
     emits: ["newCategorySelected", "validateSelection"],
     components: {
         InfosModal,
         ProbabilityAndImpactSelect,
+        ProbabilityAndImpactTooltip,
     },
     methods: {
         insertRisk(risk) {
@@ -52,6 +63,8 @@ export default {
                 preserveState: true,
                 onError: (errors) => console.error(errors),
             });
+
+            this.newSelection.push(risk.id);
         },
         updateRisk(evaluation, selector, newValue) {
             switch (selector) {
@@ -73,6 +86,18 @@ export default {
                 preserveState: true,
                 onError: (errors) => console.error(errors),
             });
+        },
+        getProbabilityName(probability) {
+            switch (probability) {
+                case 1:
+                    return "Peu probable";
+                case 2:
+                    return "Peu probable";
+                case 3:
+                    return "Probable";
+                case 4:
+                    return "Très probable";
+            }
         },
     },
     mounted() {
@@ -212,7 +237,7 @@ export default {
             <label class="flex">
                 <div class="w-full">
                     <p
-                        class="font-normal text-lg text-gray-900 dark:text-white"
+                        class="font-normal text-lg text-gray-900 dark:text-white mb-2"
                     >
                         {{ risk.name }}
                     </p>
@@ -221,7 +246,18 @@ export default {
                     </p>
                 </div>
                 <div class="h-full flex justify-end items-center w-16">
+                    <span
+                        v-if="
+                            companyRisks?.find((r) => r.risk_id === risk.id) &&
+                            registration_step == 3 &&
+                            !newSelection.includes(risk.id)
+                        "
+                        class="min-w-max text-white text-xs bg-primary-500 px-2 py-1 rounded-lg"
+                    >
+                        Déjà sélectionné
+                    </span>
                     <input
+                        v-else
                         id="red-checkbox"
                         type="checkbox"
                         :checked="
@@ -233,11 +269,36 @@ export default {
                     />
                 </div>
             </label>
+
             <div
                 v-if="companyRisks?.find((r) => r.risk_id === risk.id)"
                 class="w-full mt-4 pt-4"
             >
+                <div
+                    class="flex gap-4 items-center"
+                    v-if="
+                        companyRisks?.find((r) => r.risk_id === risk.id) &&
+                        registration_step == 3 &&
+                        !newSelection.includes(risk.id)
+                    "
+                >
+                    <ProbabilityAndImpactTooltip
+                        type="probability"
+                        :value="
+                            companyRisks?.find((r) => r.risk_id === risk.id)
+                                .evaluations[0].probability
+                        "
+                    />
+                    <ProbabilityAndImpactTooltip
+                        type="impact"
+                        :value="
+                            companyRisks?.find((r) => r.risk_id === risk.id)
+                                .evaluations[0].probability
+                        "
+                    />
+                </div>
                 <ProbabilityAndImpactSelect
+                    v-else
                     :probability="
                         companyRisks?.find((r) => r.risk_id === risk.id)
                             .evaluations[0].probability

@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps, onMounted, ref } from "vue";
 
 import Setup from "@/Pages/Logged/EmergencyPlan/Partials/Setup.vue";
 import Manage from "@/Pages/Logged/EmergencyPlan/Partials/Manage.vue";
@@ -7,6 +7,8 @@ import DangerButton from "@/Components/DangerButton.vue";
 import Modal from "@/Components/Modal.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import { useForm } from "@inertiajs/vue3";
+
+import { initFlowbite } from "flowbite";
 
 const props = defineProps({
     risk: {
@@ -28,6 +30,10 @@ const end = () => {
 
     form.patch(`/emergency-plan/${props.risk.id}/end`);
 };
+
+onMounted(() => {
+    initFlowbite();
+});
 </script>
 
 <template>

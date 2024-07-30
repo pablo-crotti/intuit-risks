@@ -54,6 +54,9 @@ class DashboardController extends Controller
             ->get();
 
         $mainRisks = CompanyRiskEvaluation::whereIn('id', $recentEvaluations->pluck('id'))
+            ->whereHas('companyRisk', function ($query) use ($company_id) {
+                $query->where('company_id', $company_id);
+            })
             ->with('companyRisk')
             ->get();
 

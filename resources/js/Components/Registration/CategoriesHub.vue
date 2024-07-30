@@ -9,6 +9,14 @@ export default {
             type: Array,
             required: true,
         },
+        risks: {
+            type: Array,
+            required: true,
+        },
+        companyRisks: {
+            type: Array,
+            required: true,
+        },
     },
     emits: ["newCategorySelected", "validateSelection"],
 };
@@ -83,33 +91,19 @@ export default {
                         />
                     </svg>
                 </span>
-
-                <!-- <button
-                    type="button"
-                    @click="$emit('newCategorySelected', category.id)"
-                    class="text-white  hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-1 text-center inline-flex items-center dark:hover:bg-gray-800 dark:focus:ring-primary-800"
-                >
-                    Voir les risques
-                    <svg
-                        class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 14 10"
-                    >
-                        <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9"
-                        />
-                    </svg>
-                </button> -->
             </div>
 
             <p class="text-gray-500 dark:text-gray-400">
                 {{ category.description_short }}
+            </p>
+            <p class="text-gray-500 dark:text-gray-400 text-right">
+                {{
+                    companyRisks.filter(
+                        (risk) => risk.category_id === category.id
+                    ).length
+                }}
+                /
+                {{ category.risks_count }}
             </p>
         </button>
     </div>

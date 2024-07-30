@@ -26,7 +26,7 @@ class RegistrationRisksController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
+
         $company_id = auth()->user()->company_id;
 
         $organization_id = Company::where('id', $company_id)->first()->organization_type_id;
@@ -59,7 +59,9 @@ class RegistrationRisksController extends Controller
             'organization' => $organizationType,
             'categories' => $categoriesWithCounts,
             'risks' => $risks,
-            'companyRisks' => $companyRisks
+            'companyRisks' => $companyRisks,
+            'registration_step' => auth()->user()->registration_step
+
         ]);
     }
 

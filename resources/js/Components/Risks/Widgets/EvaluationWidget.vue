@@ -9,6 +9,7 @@ import PrimaryButtonMono from "@/Components/PrimaryButtonMono.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import DateText from "@/Components/DateText.vue";
 import ProbabilityAndImpactTooltip from "@/Components/Risks/Components/ProbabilityAndImpactTooltip.vue";
+import CustomRange from "@/Components/Risks/Components/CustomRange.vue";
 
 export default {
     props: {
@@ -36,6 +37,7 @@ export default {
         PrimaryButton,
         DateText,
         ProbabilityAndImpactTooltip,
+        CustomRange,
     },
     methods: {
         storeNewEvaluation() {
@@ -67,6 +69,7 @@ export default {
                 <template #body>
                     <div class="w-full">
                         <div class="relative mb-12">
+                            <!-- <CustomRange /> -->
                             <label
                                 for="labels-range-input"
                                 class="font-normal text-lg text-gray-700 dark:text-white"
@@ -96,6 +99,7 @@ export default {
                                 class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"
                                 >Très probable</span
                             >
+                            <!-- -->
                         </div>
                         <div class="relative mb-6">
                             <label

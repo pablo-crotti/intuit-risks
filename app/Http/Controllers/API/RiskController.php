@@ -55,6 +55,7 @@ class RiskController extends Controller
             "title" => "required|string",
             "description" => "required|string",
             "category" => "required|array",
+            "frequency" => "required|numeric",
 
         ]);
 
@@ -71,6 +72,7 @@ class RiskController extends Controller
         $update->name = $request->title;
         $update->description = $request->description;
         $update->responsible_id = $responsible;
+        $update->evaluation_frequency = $request->frequency;
         $update->save();
 
         return back()->withInput();

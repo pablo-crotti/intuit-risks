@@ -1,98 +1,102 @@
-<script setup>
-import { defineProps, onMounted, ref } from "vue";
+<script>
 import { initFlowbite } from "flowbite";
+import axios from "axios";
 
 import UserImgPlaceholder from "@/Icons/UserImgPlaceholder.vue";
 import DangerButton from "@/Components/DangerButton.vue";
 import { useForm } from "@inertiajs/vue3";
 
-const props = defineProps({
-    risk: {
-        type: Object,
-        required: true,
+export default {
+    props: {
+        risk: {
+            type: Object,
+            required: true,
+        },
+        user: {
+            type: Object,
+            required: true,
+        },
     },
-    user: {
-        type: Object,
-        required: true,
+    data() {
+        return {
+            actions: [],
+            informations: [],
+            setupCompleted: false,
+            users: [],
+            form: useForm({
+                task: "",
+                responsible: null,
+            }),
+        };
     },
-});
+    components: {
+        UserImgPlaceholder,
+        DangerButton,
+    },
+    methods: {
+        setActionsAndInformations() {
+            if (this.risk && this.risk.emergency_plan_actions) {
+                this.informations = this.risk.emergency_plan_actions.filter(
+                    (action) => action.is_information == true
+                );
+                this.actions = this.risk.emergency_plan_actions.filter(
+                    (action) => action.is_information == false
+                );
+            }
+        },
+        close(id) {
+            const closeButton = document.querySelector(
+                `#dropdownUsersRedButton-${id}`
+            );
+            if (closeButton) {
+                const clickEvent = new MouseEvent("click", {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window,
+                });
+                closeButton.dispatchEvent(clickEvent);
+            }
+        },
+        verifySetupCompleted() {
+            if (this.risk && this.risk.emergency_plan_actions) {
+                const uncompleted = this.risk.emergency_plan_actions.filter(
+                    (action) => !action.agent_id
+                );
+                this.setupCompleted = uncompleted.length === 0;
+            }
+        },
+        setUser(action, user) {
+            this.form.task = action;
+            this.form.responsible = user;
 
-const actions = ref([]);
-const informations = ref([]);
-
-const setActionsAndInformations = () => {
-    informations.value = props.risk.emergency_plan_actions.filter(
-        (action) => action.is_information == true
-    );
-    actions.value = props.risk.emergency_plan_actions.filter(
-        (action) => action.is_information == false
-    );
-};
-
-const close = (id) => {
-    const closeButton = document.querySelector(`#dropdownUsersRedButton-${id}`);
-
-    if (closeButton) {
-        const clickEvent = new MouseEvent("click", {
-            bubbles: true,
-            cancelable: true,
-            view: window,
+            this.form.patch(`${this.risk.id}/agents`, {
+                onSuccess: () => {
+                    this.setActionsAndInformations();
+                    this.verifySetupCompleted();
+                    this.close(action);
+                },
+            });
+        },
+        start() {
+            this.form.patch(`/emergency-plan/${this.risk.id}/start`, {
+                onSuccess: () => {
+                    console.log("Emergency plan started.");
+                },
+                onError: (errors) => {
+                    console.error("Error starting emergency plan:", errors);
+                },
+            });
+        },
+    },
+    mounted() {
+        axios.get("/api/users").then((response) => {
+            this.users = response.data;
+            initFlowbite();
         });
-        closeButton.dispatchEvent(clickEvent);
-    }
+        this.setActionsAndInformations();
+        this.verifySetupCompleted();
+    },
 };
-
-const setupCompleted = ref(true);
-
-const verifySetupCompleted = () => {
-    const uncompleted = props.risk.emergency_plan_actions.filter(
-        (action) => !action.agent_id
-    );
-
-    if (uncompleted.length == 0) {
-        setupCompleted.value = true;
-    }
-};
-
-const users = ref([]);
-
-const form = useForm({
-    task: "",
-    responsible: null,
-});
-
-axios.get("/api/users").then((response) => {
-    users.value = response.data;
-});
-
-const setUser = (action, user) => {
-    form.task = action;
-    form.responsible = user;
-
-    form.patch(`${props.risk.id}/agents`, {
-        onSuccess: () => {
-            setActionsAndInformations();
-            verifySetupCompleted();
-            close(action);
-        },
-    });
-};
-
-const start = () => {
-    form.patch(`/emergency-plan/${props.risk.id}/start`, {
-        onSuccess: () => {
-            console.log("Emergency plan started.");
-        },
-        onError: (errors) => {
-            console.error("Error starting emergency plan:", errors);
-        },
-    });
-};
-
-onMounted(() => {
-    setActionsAndInformations();
-    initFlowbite();
-});
 </script>
 
 <template>

@@ -21,6 +21,7 @@
     "dependencies": {
         "@mistralai/mistralai": "^0.5.0",
         "apexcharts": "^3.49.1",
-        "flowbite": "^2.3.0"
+        "flowbite": "^2.3.0",
+        "ollama": "^0.5.6"
     }
 }

@@ -11,6 +11,16 @@ use Symfony\Component\Routing\Requirement\Requirement;
 
 class EmergencyPlanController extends Controller
 {
+    public function execute()
+    {
+        $risk = CompanyRisk::find(request()->route('id'));
+        $risk->update([
+            'emergencyPlanStatus' => 1
+        ]);
+
+        return redirect()->route('dashboard');
+    }
+
     public function index()
     {
         $risk = CompanyRisk::with(['author', 'category', 'responsible', 'emergencyPlanActions'])->find(request()->route('id'));
@@ -96,16 +106,6 @@ class EmergencyPlanController extends Controller
             'response' => null,
             'agent_id' => null
 
-        ]);
-
-        return redirect()->route('dashboard');
-    }
-
-    public function execute()
-    {
-        $risk = CompanyRisk::find(request()->route('id'));
-        $risk->update([
-            'emergencyPlanStatus' => 1
         ]);
 
         return redirect()->route('dashboard');

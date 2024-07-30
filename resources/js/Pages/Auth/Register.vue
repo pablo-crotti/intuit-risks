@@ -25,8 +25,13 @@ const submit = () => {
 <template>
     <Head title="S'enregistrer" />
 
-    <div class="min-h-screen w-screen  flex justify-center flex-wrap md:flex-nowrap">
-        <form @submit.prevent="submit" class="w-full flex flex-col justify-center">
+    <div
+        class="min-h-screen w-screen flex justify-center flex-wrap md:flex-nowrap"
+    >
+        <form
+            @submit.prevent="submit"
+            class="w-full flex flex-col justify-center"
+        >
             <div class="w-full h-max flex justify-center items-center py-8">
                 <div
                     class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
@@ -39,7 +44,9 @@ const submit = () => {
                         </h1>
                         <form class="space-y-4 md:space-y-6" action="#">
                             <div>
-                                <InputLabel for="name">Nom complet</InputLabel>
+                                <InputLabel for="name"
+                                    >Nom complet *</InputLabel
+                                >
 
                                 <TextInput
                                     id="name"
@@ -58,7 +65,7 @@ const submit = () => {
                             </div>
 
                             <div>
-                                <InputLabel for="email">Email</InputLabel>
+                                <InputLabel for="email">Email *</InputLabel>
 
                                 <TextInput
                                     id="email"
@@ -77,7 +84,7 @@ const submit = () => {
 
                             <div>
                                 <InputLabel for="password"
-                                    >Mot de passe</InputLabel
+                                    >Mot de passe *</InputLabel
                                 >
 
                                 <TextInput
@@ -98,7 +105,7 @@ const submit = () => {
 
                             <div class="mt-4">
                                 <InputLabel for="password_confirmation"
-                                    >Confirmer mot de passe</InputLabel
+                                    >Confirmer mot de passe *</InputLabel
                                 >
 
                                 <TextInput
@@ -113,14 +120,19 @@ const submit = () => {
 
                                 <InputError
                                     class="mt-2"
-                                    :message="form.errors.password_confirmation" />
+                                    :message="form.errors.password_confirmation"
+                                />
                             </div>
                             <div class="mt-4">
                                 <InputLabel for="avatar">Avatar</InputLabel>
-                                <InputFile :id="`avatar`" @selectFile="(f) => form.avatar=f" />
+                                <InputFile
+                                    :id="`avatar`"
+                                    @selectFile="(f) => (form.avatar = f)"
+                                />
                                 <InputError
                                     class="mt-2"
-                                    :message="form.errors.avatar" />
+                                    :message="form.errors.avatar"
+                                />
                             </div>
 
                             <div class="flex items-start">
@@ -141,14 +153,14 @@ const submit = () => {
                                         >J'accepte les
                                         <a
                                             class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                                            href="#"
+                                            href="/cgi"
                                             >Conditions Générales</a
-                                        ></label
+                                        >
+                                        *</label
                                     >
                                 </div>
                             </div>
-                            <InputError
-                                    :message="form.errors.terms" />
+                            <InputError :message="form.errors.terms" />
                             <PrimaryButton
                                 @click="submit"
                                 :class="{ 'opacity-25': form.processing }"
@@ -183,7 +195,9 @@ const submit = () => {
                     <span class="text-primary-400">opportunités</span>
                     durables
                 </h2>
-                <p class="mb-6 text-lg text-center md:text-left font-normal text-gray-200 lg:text-xl">
+                <p
+                    class="mb-6 text-lg text-center md:text-left font-normal text-gray-200 lg:text-xl"
+                >
                     Dans un monde en perpétuelle évolution, la gestion des
                     risques est devenue une composante essentielle pour assurer
                     la pérennité et la croissance des entreprises. IntuitRisks
@@ -194,5 +208,4 @@ const submit = () => {
             </div>
         </div>
     </div>
-    
 </template>

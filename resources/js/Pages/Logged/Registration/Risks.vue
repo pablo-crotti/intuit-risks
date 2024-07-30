@@ -26,6 +26,10 @@ const props = defineProps({
         required: false,
         default: null,
     },
+    registration_step: {
+        type: Number,
+        required: true,
+    },
 });
 
 const consultedCategories = ref([]);
@@ -170,6 +174,8 @@ onMounted(() => {
             v-if="!selectedCategory"
             :categories="categories"
             :consultedCategories="consultedCategories"
+            :risks="risks"
+            :companyRisks="companyRisks"
             @newCategorySelected="(id) => consultCategory(id)"
             @validateSelection="validateSelection"
         />
@@ -180,6 +186,7 @@ onMounted(() => {
             :nextCategory="nextCategory"
             :previousCategory="previousCategory"
             :category="categories[actualCategoryIndex]"
+            :registration_step="registration_step"
             @newCategorySelected="(id) => consultCategory(id)"
             @validateSelection="validateSelection"
         />
