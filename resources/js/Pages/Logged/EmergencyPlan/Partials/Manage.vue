@@ -310,7 +310,7 @@ onMounted(() => {
                     <h2
                         class="text-center text-lg text-gray-900 dark:text-white font-bold"
                     >
-                        Infomrations
+                        Informations
                     </h2>
                 </div>
                 <div class="p-4">

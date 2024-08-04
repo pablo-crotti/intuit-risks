@@ -96,7 +96,6 @@ export default {
                                 class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"
                                 >Très probable</span
                             >
-                            <!-- -->
                         </div>
                         <div class="relative mb-6">
                             <label

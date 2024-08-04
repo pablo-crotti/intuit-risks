@@ -262,7 +262,10 @@ export default {
         </template>
         <template #content>
             <div class="px-4 py-4 flex flex-col gap-4">
-                <span v-if="risk.precursors.length > 0" v-for="precursor in risk.precursors">
+                <span
+                    v-if="risk.precursors.length > 0"
+                    v-for="precursor in risk.precursors"
+                >
                     <div
                         v-if="precursor.id != 0"
                         class="flex flex-col gap-4 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700"
@@ -383,7 +386,12 @@ export default {
                         </div>
                     </div>
                 </span>
-                <p v-else class="text-gray-500 justify-center dark:text-gray-400 flex items-center gap-2">Aucun signe avant coureur identifié.</p>
+                <p
+                    v-else
+                    class="text-gray-500 justify-center dark:text-gray-400 flex items-center gap-2"
+                >
+                    Aucun signe avant coureur identifié.
+                </p>
             </div>
         </template>
     </WidgetLayout>
