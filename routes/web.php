@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\EnsureUserIsActivated;
 use App\Http\Controllers\EmergencyPlanController;
+use App\Http\Controllers\IntuitRisks\RisksController;
 use App\Http\Middleware\EmergencyPlanActive;
+use App\Http\Middleware\IsIntuitRisksAdmin;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -67,6 +69,12 @@ Route::middleware(['auth', EnsureUserIsActivated::class])->group(function () {
 
     Route::patch('/emergency-plan/{id}/action-done', [EmergencyPlanController::class, 'actionDone'])->name('emergency.plan.action.done');
     Route::patch('/emergency-plan/{id}/action-response', [EmergencyPlanController::class, 'actionResponse'])->name('emergency.plan.action.response');
+});
+
+Route::middleware(['auth', EnsureUserIsActivated::class, IsIntuitRisksAdmin::class])->group(function () {
+    Route::get('/intuit-risks/risks', [RisksController::class, 'index'])->name('intuitrisks.risks');
+    Route::post('/intuit-risks/risks', [RisksController::class, 'create'])->name('intuitrisks.risks.create');
+    Route::patch('/intuit-risks/risks/{id}', [RisksController::class, 'update'])->name('intuitrisks.risks.update');
 });
 
 

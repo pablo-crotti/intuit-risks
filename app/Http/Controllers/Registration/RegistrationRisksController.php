@@ -39,7 +39,11 @@ class RegistrationRisksController extends Controller
             return [$risk->category->id => $risk];
         });
 
-        $categoriesWithCounts = $categories->map(function ($risks) {
+        $risks = $organizationType->risks->filter(function ($risk) {
+            return $risk->is_active == 1;
+        })->groupBy('category_id');
+
+        $categoriesWithCounts = $risks->map(function ($risks) {
             $category = $risks->first()->category;
             return [
                 'id' => $category->id,
@@ -50,8 +54,6 @@ class RegistrationRisksController extends Controller
                 'risks_count' => $risks->count()
             ];
         })->values();
-
-        $risks = $organizationType->risks->groupBy('category_id');
 
         $companyRisks = CompanyRisk::with('evaluations')->where('company_id', $company_id)->get();
 
