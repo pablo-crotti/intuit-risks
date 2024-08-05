@@ -18,7 +18,49 @@ export default {
             class="font-normal text-lg text-gray-700 dark:text-white"
             >Probabilité
         </label>
-        <input
+        <div class="flex justify-between mt-2 gap-2">
+            <button
+                @click="$emit('update:probability', 1)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    probability == 1
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Peu probable
+            </button>
+            <button
+                @click="$emit('update:probability', 2)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    probability == 2
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Possible
+            </button>
+            <button
+                @click="$emit('update:probability', 3)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    probability == 3
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Probable
+            </button>
+            <button
+                @click="$emit('update:probability', 4)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    probability == 4
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Très probable
+            </button>
+        </div>
+        <!-- <input
             id="labels-range-input"
             type="range"
             :value="probability"
@@ -42,7 +84,7 @@ export default {
         <span
             class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"
             >Très probable</span
-        >
+        > -->
     </div>
     <div class="relative mb-6">
         <label
@@ -50,7 +92,49 @@ export default {
             class="font-normal text-lg text-gray-700 dark:text-white"
             >Impact</label
         >
-        <input
+        <div class="flex justify-between mt-2 gap-2">
+            <button
+                @click="$emit('update:impact', 1)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    impact == 1
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Mineur
+            </button>
+            <button
+                @click="$emit('update:impact', 2)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    impact == 2
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Significatif
+            </button>
+            <button
+                @click="$emit('update:impact', 3)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    impact == 3
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Important
+            </button>
+            <button
+                @click="$emit('update:impact', 4)"
+                :class="`w-1/4 px-4 py-2 border rounded-md ${
+                    impact == 4
+                        ? 'bg-primary-500 border-primary-500 dark:bg-primary-600 dark:border-primary-600 text-white'
+                        : 'border-gray-400 text-gray-500 dark:border-gray-600 dark:text-gray-400 hover:bg-gray-400 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white duration-300'
+                }`"
+            >
+                Majeur
+            </button>
+        </div>
+        <!-- <input
             id="labels-range-input"
             type="range"
             :value="impact"
@@ -74,6 +158,6 @@ export default {
         <span
             class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6"
             >Majeur</span
-        >
+        > -->
     </div>
 </template>

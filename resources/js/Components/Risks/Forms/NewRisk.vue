@@ -63,7 +63,6 @@ export default {
                 onError: () => {
                     this.isLoading = false;
                 },
-
             });
         },
         async askMistral() {
@@ -78,14 +77,17 @@ export default {
                 organization_type: company.data.organization_type.name,
             };
 
-            const newRiskFromAI = await askMistral.askRisk(companyForAI, this.risks, this.categories);
+            const newRiskFromAI = await askMistral.askRisk(
+                companyForAI,
+                this.risks,
+                this.categories
+            );
 
             this.form.title = newRiskFromAI.title;
             this.form.description = newRiskFromAI.description;
             this.form.category = newRiskFromAI.category;
 
             this.isLoading = false;
-        
         },
     },
     mounted() {
@@ -150,7 +152,7 @@ export default {
                         />
                     </svg>
                 </button>
-                <button
+                <!-- <button
                     @click="(AIrisk = true), askMistral()"
                     class="group text-left inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:hover:text-white duration-300"
                 >
@@ -187,7 +189,7 @@ export default {
                             d="M1 5h12m0 0L9 1m4 4L9 9"
                         />
                     </svg>
-                </button>
+                </button> -->
             </div>
             <div v-else>
                 <div class="w-full flex justify-end">
@@ -210,7 +212,11 @@ export default {
                         <template v-slot:radio>
                             <li v-for="category in categories">
                                 <button
-                                    :class="`${form.category.id == category.id ? 'bg-white dark:bg-gray-700' : ''} text-left px-4 py-2 hover:bg-white dark:hover:bg-gray-700 w-full`"
+                                    :class="`${
+                                        form.category.id == category.id
+                                            ? 'bg-white dark:bg-gray-700'
+                                            : ''
+                                    } text-left px-4 py-2 hover:bg-white dark:hover:bg-gray-700 w-full`"
                                     @click.prevent="
                                         (form.category = category),
                                             (manualClose = true)

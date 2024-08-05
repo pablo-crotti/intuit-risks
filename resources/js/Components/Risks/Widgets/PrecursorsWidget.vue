@@ -13,6 +13,7 @@ import TextInput from "@/Components/TextInput.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import DropdownRadio from "@/Components/DropdownRadio.vue";
 import DangerIcon from "@/Icons/DangerIcon.vue";
+import InfosModal from "@/Components/InfosModal.vue";
 
 export default {
     props: {
@@ -41,6 +42,7 @@ export default {
         InputLabel,
         DropdownRadio,
         DangerIcon,
+        InfosModal,
     },
     methods: {
         async generatePrecursors() {
@@ -155,110 +157,156 @@ export default {
 <template>
     <Loader v-if="isLoading" />
     <WidgetLayout>
-        <template #title>Signes avant coureurs </template>
+        <template #title>Signes avant-coureurs </template>
         <template #action>
-            <CustomModal
-                :id="`update-signs-${risk.id}`"
-                :manualClose="manualClose"
-                @manualClosed="() => (manualClose = false)"
-                title="Signes avant coureurs"
-            >
-                <template #body>
-                    <div class="w-full">
-                        <div class="mb-4">
-                            <button
-                                @click="generatePrecursors"
-                                class="text-gray-700 dark:text-gray-300 hover:text-primary-500 flex gap-2 items-center"
-                            >
-                                Génération IA
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    class="size-5"
-                                >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 0 1 .75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 0 1 9.75 22.5a.75.75 0 0 1-.75-.75v-4.131A15.838 15.838 0 0 1 6.382 15H2.25a.75.75 0 0 1-.75-.75 6.75 6.75 0 0 1 7.815-6.666ZM15 6.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"
-                                        clip-rule="evenodd"
-                                    />
-                                    <path
-                                        d="M5.26 17.242a.75.75 0 1 0-.897-1.203 5.243 5.243 0 0 0-2.05 5.022.75.75 0 0 0 .625.627 5.243 5.243 0 0 0 5.022-2.051.75.75 0 1 0-1.202-.897 3.744 3.744 0 0 1-3.008 1.51c0-1.23.592-2.323 1.51-3.008Z"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="mb-8 flex justify-between">
-                            <InputLabel
-                                for="signs"
-                                :value="`Signes avant coureurs`"
-                            />
-                            <TextInput
-                                id="signs"
-                                v-model="sign"
-                                placeholder="Signes avant coureurs"
-                            />
-                            <div class="w-28 ml-4">
-                                <PrimaryButtonMono @click="addPrecursor"
-                                    >Ajouter</PrimaryButtonMono
-                                >
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-4">
-                            <div
-                                v-for="(precursor, index) in precursors"
-                                :key="precursor"
-                                class="flex justify-between items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700"
-                            >
-                                <p
-                                    class="text-base font-normal text-gray-700 dark:text-gray-300"
-                                >
-                                    {{ precursor.name }}
-                                </p>
+            <div class="flex gap-2 items-center">
+                <InfosModal
+                    title="Les signes avant-coureurs"
+                    id="precursors-infos-modal"
+                >
+                    <p
+                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+                    >
+                        Les signes avant-coureurs sont des indicateurs précoces
+                        qui peuvent signaler l'apparition d'un risque. Ils
+                        permettent d'anticiper les problèmes potentiels avant
+                        qu'ils ne se manifestent pleinement. En surveillant ces
+                        signes, les organisations peuvent prendre des mesures
+                        proactives pour atténuer les risques avant qu'ils ne
+                        deviennent critiques.
+                    </p>
+                    <p
+                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+                    >
+                        Des signes avant-coureurs peuvent être enregistrés pour
+                        chaque risque. Leur statut peut être suivi selon trois
+                        données : aucun signe, à surveiller et en cours.
+                    </p>
+                    <p
+                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+                    >
+                        <strong>Aucun signe :</strong> Aucun indicateur n'a été
+                        détecté pour le moment.
+                    </p>
+                    <p
+                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+                    >
+                        <strong>À surveiller :</strong> Des indicateurs
+                        potentiels ont été identifiés et doivent être surveillés
+                        de près.
+                    </p>
+                    <p
+                        class="text-base leading-relaxed text-gray-500 dark:text-gray-400"
+                    >
+                        <strong>En cours :</strong> Des signes concrets ont été
+                        observés, nécessitant une action immédiate.
+                    </p>
+                </InfosModal>
+                <CustomModal
+                    :id="`update-signs-${risk.id}`"
+                    :manualClose="manualClose"
+                    @manualClosed="() => (manualClose = false)"
+                    title="Signes avant-coureurs"
+                >
+                    <template #body>
+                        <div class="w-full">
+                            <!-- <div class="mb-4">
                                 <button
-                                    class="bg-red rounded-md hover:opacity-85 w-6 h-6 flex justify-center items-center ml-6"
-                                    @click="
-                                        deletePrecursor(index, precursor.id)
-                                    "
+                                    @click="generatePrecursors"
+                                    class="text-gray-700 dark:text-gray-300 hover:text-primary-500 flex gap-2 items-center"
                                 >
+                                    Génération IA
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
                                         viewBox="0 0 24 24"
-                                        class="size-6 text-white"
-                                        stroke-width="1.5"
-                                        stroke="currentColor"
+                                        fill="currentColor"
+                                        class="size-5"
                                     >
                                         <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M6 18 18 6M6 6l12 12"
+                                            fill-rule="evenodd"
+                                            d="M9.315 7.584C12.195 3.883 16.695 1.5 21.75 1.5a.75.75 0 0 1 .75.75c0 5.056-2.383 9.555-6.084 12.436A6.75 6.75 0 0 1 9.75 22.5a.75.75 0 0 1-.75-.75v-4.131A15.838 15.838 0 0 1 6.382 15H2.25a.75.75 0 0 1-.75-.75 6.75 6.75 0 0 1 7.815-6.666ZM15 6.75a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"
+                                            clip-rule="evenodd"
+                                        />
+                                        <path
+                                            d="M5.26 17.242a.75.75 0 1 0-.897-1.203 5.243 5.243 0 0 0-2.05 5.022.75.75 0 0 0 .625.627 5.243 5.243 0 0 0 5.022-2.051.75.75 0 1 0-1.202-.897 3.744 3.744 0 0 1-3.008 1.51c0-1.23.592-2.323 1.51-3.008Z"
                                         />
                                     </svg>
                                 </button>
+                            </div> -->
+                            <div class="mb-8 flex justify-between">
+                                <InputLabel
+                                    for="signs"
+                                    :value="`Signes avant-coureurs`"
+                                />
+                                <TextInput
+                                    id="signs"
+                                    v-model="sign"
+                                    placeholder="Signes avant-coureurs"
+                                />
+                                <div class="w-28 ml-4">
+                                    <PrimaryButtonMono @click="addPrecursor"
+                                        >Ajouter</PrimaryButtonMono
+                                    >
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-4">
+                                <div
+                                    v-for="(precursor, index) in precursors"
+                                    :key="precursor"
+                                    class="flex justify-between items-center px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700"
+                                >
+                                    <p
+                                        class="text-base font-normal text-gray-700 dark:text-gray-300"
+                                    >
+                                        {{ precursor.name }}
+                                    </p>
+                                    <button
+                                        class="bg-red rounded-md hover:opacity-85 w-6 h-6 flex justify-center items-center ml-6"
+                                        @click="
+                                            deletePrecursor(index, precursor.id)
+                                        "
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            class="size-6 text-white"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M6 18 18 6M6 6l12 12"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </template>
-                <template #footer>
-                    <div class="w-full flex justify-end gap-4">
-                        <div class="w-30">
-                            <PrimaryButtonMono
-                                :data-modal-hide="`update-signs-${risk.id}`"
-                                >Annuler</PrimaryButtonMono
-                            >
+                    </template>
+                    <template #footer>
+                        <div class="w-full flex justify-end gap-4">
+                            <div class="w-30">
+                                <PrimaryButtonMono
+                                    :data-modal-hide="`update-signs-${risk.id}`"
+                                    >Annuler</PrimaryButtonMono
+                                >
+                            </div>
+                            <div class="w-30">
+                                <PrimaryButton
+                                    @click="storePrecursors"
+                                    :disabled="!precursorsUpdated"
+                                    :class="
+                                        !precursorsUpdated ? 'opacity-50' : ''
+                                    "
+                                    >Enregistrer</PrimaryButton
+                                >
+                            </div>
                         </div>
-                        <div class="w-30">
-                            <PrimaryButton
-                                @click="storePrecursors"
-                                :disabled="!precursorsUpdated"
-                                :class="!precursorsUpdated ? 'opacity-50' : ''"
-                                >Enregistrer</PrimaryButton
-                            >
-                        </div>
-                    </div>
-                </template>
-            </CustomModal>
+                    </template>
+                </CustomModal>
+            </div>
         </template>
         <template #content>
             <div class="px-4 py-4 flex flex-col gap-4">
@@ -390,7 +438,7 @@ export default {
                     v-else
                     class="text-gray-500 justify-center dark:text-gray-400 flex items-center gap-2"
                 >
-                    Aucun signe avant coureur identifié.
+                    Aucun signe avant-coureur identifié.
                 </p>
             </div>
         </template>

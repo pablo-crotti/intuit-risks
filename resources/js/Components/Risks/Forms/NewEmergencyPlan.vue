@@ -215,7 +215,7 @@ export default {
         :id="`update-emergency-plan-${risk.id}`"
     >
         <template #body>
-            <div class="mb-4">
+            <!-- <div class="mb-4">
                 <button
                     @click="generateEmergencyPlan"
                     class="text-gray-700 dark:text-gray-300 hover:text-primary-500 flex gap-2 items-center"
@@ -237,7 +237,7 @@ export default {
                         />
                     </svg>
                 </button>
-            </div>
+            </div> -->
             <div class="mb-8 flex justify-between">
                 <TextInput
                     id="infos"

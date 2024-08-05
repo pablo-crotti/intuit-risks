@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import RiskAndCategory from "@/Components/Risks/Components/RiskAndCategory.vue";
 import Pagination from "@/Components/Pagination.vue";
 import DropdownRadio from "@/Components/DropdownRadio.vue";
@@ -10,7 +10,8 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import InputError from "@/Components/InputError.vue";
-import { useForm } from "@inertiajs/vue3";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head, useForm } from "@inertiajs/vue3";
 
 const props = defineProps(["risks", "categories", "organizations"]);
 const filteredRisks = ref(props.risks);
@@ -144,7 +145,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="px-8 py-8">
+    <Head title="Créateur de risques de base" />
+
+    <AuthenticatedLayout>
         <Modal
             :show="showModal"
             @close="
@@ -425,5 +428,5 @@ onMounted(() => {
                 "
             />
         </div>
-    </div>
+    </AuthenticatedLayout>
 </template>

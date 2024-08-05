@@ -7,6 +7,7 @@ import DashboardIcon from "@/Icons/Navigation/DashboardIcon.vue";
 import UserImgPlaceholder from "@/Icons/UserImgPlaceholder.vue";
 import RisksIcon from "@/Icons/Navigation/RisksIcon.vue";
 import UsersIcon from "@/Icons/Navigation/UsersIcon.vue";
+import Rocket from "@/Icons/Navigation/Rocket.vue";
 import Loader from "@/Components/Loader.vue";
 
 const showingNavigationDropdown = ref(false);
@@ -161,6 +162,14 @@ onMounted(() => {
                         :isActive="route().current('admin.users')"
                     >
                         <UsersIcon />
+                    </AdminNavigationLink>
+                    <AdminNavigationLink
+                        v-if="$page.props.auth.user.is_intuitrisks_admin"
+                        href="/intuit-risks/risks"
+                        title="Risques de base"
+                        :isActive="route().current('intuitrisks.risks')"
+                    >
+                        <Rocket />
                     </AdminNavigationLink>
                 </ul>
             </div>

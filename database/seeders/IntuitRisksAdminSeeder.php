@@ -19,7 +19,7 @@ class IntuitRisksAdminSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@intuit-risks.ch',
-            'password' => Hash::make('1234'),
+            'password' => Hash::make('1n7ui7-r1sK'),
             'is_admin' => true,
             'is_active' => true,
             'is_intuitrisks_admin' => true
