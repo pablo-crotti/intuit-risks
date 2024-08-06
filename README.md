@@ -22,6 +22,11 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 2. **Node.js**: Version 16 or higher
 3. **Composer**: PHP package manager
 4. **npm or yarn**: JavaScript package managers
+5. **Olama**: Ensure Olama CLI is installed locally. Install it globally using npm:
+
+    ```bash
+    npm install -g ollama
+    ```
 
 ### Setup
 
@@ -58,7 +63,14 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 
     ```
 
-6. **Install frontend dependencies**
+6. **Run the seeders**
+
+    ```bash
+    php artisan db:seed
+
+    ```
+
+7. **Install frontend dependencies**
 
     ```bash
     npm install
@@ -72,8 +84,9 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 
     ```
 
-7. **Run the development server**
-   Start the backend development server :
+8. **Run the development server**
+
+    Start the backend development server :
 
     ```bash
     php artisan serve
@@ -92,11 +105,6 @@ To get started with the IntuitRisks project, follow these steps to set up the de
     yarn dev
     ```
 
-8. **Build frontend assets**
+### Access the application
 
-    ```bash
-    npm run dev
-    /*OR*/
-    yarn dev
-
-    ```
+Once the servers are running, open your browser and navigate to: `http://localhost:8000`
