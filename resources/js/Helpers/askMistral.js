@@ -1,7 +1,15 @@
 import ollama from "ollama"
 
-
-
+/**
+ * Sends a request to the Mistral model to get a response based on the provided message.
+ *
+ * @param {Object[]} message - The array of messages to send to the Mistral model.
+ * @param {Object} message[] - An object representing a message in the conversation.
+ * @param {string} message[].role - The role of the message, such as "system" or "user".
+ * @param {string} message[].content - The content of the message.
+ * @returns {Promise<Object>} The response from the Mistral model in JSON format.
+ * @throws {Error} If an error occurs during the request.
+ */
 const askMistral = async (message) => {
     try {
         const completion = await ollama.chat({
@@ -16,21 +24,24 @@ const askMistral = async (message) => {
         throw new Error("Une erreur est survenue, veuillez réessayer.");
     }
 }
-
 /**
- * Asks Mistral AI to establish an emergency plan for a given risk.
+ * Develops an emergency plan for a given crisis by providing key information and essential tasks.
  *
- * @param {Object} risk - The risk object containing 'description', 'probability', and 'impact'.
- * @param {string} risk.description - The description of the risk.
- * @param {number} risk.probability - The probability of the risk (between 0 and 4).
- * @param {number} risk.impact - The impact of the risk (between 0 and 4).
- * @param {Object} companyInfos - The company information object containing 'employees'.
- * @param {number} companyInfos.employees - The number of employees in the company.
- * @returns {Promise<Object>} A promise that resolves to an object containing 'informations' and 'taches'.
- * @throws {Error} Throws an error if there's a problem with the Mistral AI request.
+ * @param {Object} risk - The details of the crisis.
+ * @param {string} risk.name - The name of the crisis.
+ * @param {string} risk.description - The description of the crisis.
+ * @param {Object[]} company - The details of the company.
+ * @param {string} company.organization_type - The type of organization of the company.
+ * @param {string} company.country - The country where the company is based.
+ * @param {string} company.city - The city where the company is based.
+ * @param {number} company.employees - The number of employees in the company.
+ * @param {string} company.sector - The primary business sector of the company.
+ * @param {Object[]} informations - The information already identified.
+ * @param {string} informations[].information - An identified piece of information.
+ * @param {Object[]} actions - The actions already identified.
+ * @param {string} actions[].action - An identified action.
+ * @returns {Promise<Object>} An emergency plan containing the crucial information and tasks to be completed, in JSON format.
  */
-
-
 const askEmergencyPlan = async (risk, company, informations, actions) => {
     const message = [
         {
@@ -47,6 +58,21 @@ const askEmergencyPlan = async (risk, company, informations, actions) => {
     return await askMistral(message);
 }
 
+
+/**
+ * Determines the most relevant precursors for a given crisis.
+ *
+ * @param {Object} risk - The details of the crisis.
+ * @param {string} risk.name - The name of the crisis.
+ * @param {string} risk.description - The description of the crisis.
+ * @param {Object} company - The details of the company.
+ * @param {string} company.organization_type - The type of organization of the company.
+ * @param {string} company.country - The country where the company is based.
+ * @param {string} company.city - The city where the company is based.
+ * @param {number} company.employees - The number of employees in the company.
+ * @param {string} company.sector - The primary business sector of the company.
+ * @returns {Promise<Object>} A list of precursors for the crisis, in JSON format.
+ */
 const askPrecursors = async (risk, company) => {
 
     const message = [
@@ -62,7 +88,25 @@ const askPrecursors = async (risk, company) => {
     ]
     return await askMistral(message);
 }
-
+/**
+ * Suggests a potential risk that has not yet been identified.
+ *
+ * @param {Object} company - The details of the company.
+ * @param {string} company.organization_type - The type of organization of the company.
+ * @param {string} company.country - The country where the company is based.
+ * @param {string} company.city - The city where the company is based.
+ * @param {number} company.employees - The number of employees in the company.
+ * @param {string} company.sector - The primary business sector of the company.
+ * @param {Object[]} risks - The risks already identified.
+ * @param {string} risks[].name - The name of the risk.
+ * @param {string} risks[].description - The description of the risk.
+ * @param {Object[]} categories - The available categories.
+ * @param {string} categories[].id - The ID of the category.
+ * @param {string} categories[].label - The label of the category.
+ * @param {string} categories[].name - The name of the category.
+ * @param {string} categories[].color - The color of the category (hex code).
+ * @returns {Promise<Object>} A new potential risk, in JSON format.
+ */
 const askRisk = async (company, risks, categories) => {
 
     const message = [
@@ -81,6 +125,22 @@ const askRisk = async (company, risks, categories) => {
     return await askMistral(message);
 }
 
+/**
+ * Suggests a task to reduce a specific risk, avoiding tasks that have already been identified.
+ *
+ * @param {Object} company - The details of the company.
+ * @param {string} company.organization_type - The type of organization of the company.
+ * @param {string} company.country - The country where the company is based.
+ * @param {string} company.city - The city where the company is based.
+ * @param {number} company.employees - The number of employees in the company.
+ * @param {string} company.sector - The primary business sector of the company.
+ * @param {Object} risk - The details of the risk.
+ * @param {string} risk.name - The name of the risk.
+ * @param {string} risk.description - The description of the risk.
+ * @param {Object[]} risk.reduction_plan_tasks - The tasks already identified to reduce the risk.
+ * @param {string} risk.reduction_plan_tasks[].action - An identified task.
+ * @returns {Promise<Object>} A new task to reduce the risk, in JSON format.
+ */
 const askReductionPlanTask = async (company, risk) => {
     const message = [
         {
