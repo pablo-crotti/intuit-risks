@@ -42,7 +42,7 @@ endpoints:
         name: 'newEvaluationData[].id'
         description: ''
         required: true
-        example: 1
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -60,7 +60,7 @@ endpoints:
         name: 'newEvaluationData[].impact'
         description: ''
         required: true
-        example: 18
+        example: 2
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -68,9 +68,9 @@ endpoints:
     cleanBodyParameters:
       newEvaluationData:
         -
-          id: 1
+          id: 3
           probability: 3
-          impact: 18
+          impact: 2
     fileParameters: []
     responses:
       -
@@ -102,7 +102,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - EZ3gf58ahPbvd4e1kcaD66V
+      - hv3Pbg8V5Dade6afEkZ641c
     controller: null
     method: null
     route: null
@@ -138,7 +138,7 @@ endpoints:
         name: risk_id
         description: ''
         required: true
-        example: 12
+        example: 14
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -156,22 +156,22 @@ endpoints:
         name: impact
         description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
         required: true
-        example: 3
+        example: 2
         type: integer
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      risk_id: 12
+      risk_id: 14
       probability: 1
-      impact: 3
+      impact: 2
     fileParameters: []
     responses: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - kav6eg5adf4E6Dh18Zb3PVc
+      - g3DahkfV854PaEZdbev166c
     controller: null
     method: null
     route: null

@@ -85,7 +85,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 5Ph61f8a3E4cdkD6gbveVaZ
+      - 48afV16E5dcgvkZaD6bPeh3
     controller: null
     method: null
     route: null

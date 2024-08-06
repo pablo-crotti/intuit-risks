@@ -56,7 +56,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - c18afDe6dgh53EkP4bZV6va
+      - Ek83De4v1dgbaacf566PhVZ
     controller: null
     method: null
     route: null
@@ -91,7 +91,7 @@ endpoints:
         name: name
         description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
         required: true
-        example: utrlcdvieudui
+        example: vdcwsl
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -100,7 +100,7 @@ endpoints:
         name: organization
         description: ''
         required: true
-        example: 11
+        example: 7
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -109,7 +109,7 @@ endpoints:
         name: sector
         description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
         required: true
-        example: eeyyawxxkvutdemmrgjv
+        example: cdmpdwgwksjdmatlxeak
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -118,7 +118,7 @@ endpoints:
         name: country
         description: ''
         required: true
-        example: 2
+        example: 3
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -127,7 +127,7 @@ endpoints:
         name: employees
         description: 'Le champ value doit être au moins de 0.'
         required: true
-        example: 13
+        example: 74
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -136,18 +136,18 @@ endpoints:
         name: city
         description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
         required: true
-        example: vrhoyr
+        example: w
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: utrlcdvieudui
-      organization: 11
-      sector: eeyyawxxkvutdemmrgjv
-      country: 2
-      employees: 13
-      city: vrhoyr
+      name: vdcwsl
+      organization: 7
+      sector: cdmpdwgwksjdmatlxeak
+      country: 3
+      employees: 74
+      city: w
     fileParameters: []
     responses:
       -
@@ -188,7 +188,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - a5ZD66Vk4PEbhfacve1d83g
+      - E4fe5ab6acdkV361hvg8DPZ
     controller: null
     method: null
     route: null

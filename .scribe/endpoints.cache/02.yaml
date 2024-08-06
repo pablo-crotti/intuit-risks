@@ -106,7 +106,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 4ha8k63a1VDPbv6fcg5eZdE
+      - D3ZaP45gc8k1h6aVfvedb6E
     controller: null
     method: null
     route: null
@@ -178,7 +178,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 1Ddc4fahkaEvVZ358e6gb6P
+      - hE13aZc5a4Vegv8b6PkDfd6
     controller: null
     method: null
     route: null
@@ -273,13 +273,13 @@ endpoints:
         name: id
         description: 'The ID of the risk.'
         required: true
-        example: porro
+        example: dolorem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: porro
+      id: dolorem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -404,7 +404,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - VEbv6afZgh4c3d8DeaP6k15
+      - hdfV3eEa6PcZD865gab1k4v
     controller: null
     method: null
     route: null
@@ -438,7 +438,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: provident
+        example: repellat
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -447,7 +447,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Delectus non dicta unde facilis non voluptatum.'
+        example: 'Voluptas sed voluptatem sequi.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -465,7 +465,7 @@ endpoints:
         name: probability
         description: ''
         required: true
-        example: 3323478.45
+        example: 0.737065223
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -474,24 +474,24 @@ endpoints:
         name: impact
         description: ''
         required: true
-        example: 282.61232
+        example: 2440522.9929
         type: number
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: provident
-      description: 'Delectus non dicta unde facilis non voluptatum.'
+      title: repellat
+      description: 'Voluptas sed voluptatem sequi.'
       category: []
-      probability: 3323478.45
-      impact: 282.61232
+      probability: 0.737065223
+      impact: 2440522.9929
     fileParameters: []
     responses: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - v6a3k1ag8bE5fVDd6chP4eZ
+      - 4ZVE1PeadD5bvkfh3866gca
     controller: null
     method: null
     route: null
@@ -521,13 +521,13 @@ endpoints:
         name: id
         description: 'The ID of the risk.'
         required: true
-        example: dolore
+        example: nam
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: dolore
+      id: nam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -535,7 +535,7 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: rerum
+        example: nihil
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -544,7 +544,7 @@ endpoints:
         name: description
         description: ''
         required: true
-        example: 'Pariatur aut impedit quasi dolores debitis rem voluptatem.'
+        example: 'Aut officia et est molestiae quasi sed ex provident.'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -562,23 +562,23 @@ endpoints:
         name: frequency
         description: ''
         required: true
-        example: 23825.952471754
+        example: 4.4
         type: number
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      title: rerum
-      description: 'Pariatur aut impedit quasi dolores debitis rem voluptatem.'
+      title: nihil
+      description: 'Aut officia et est molestiae quasi sed ex provident.'
       category: []
-      frequency: 23825.952471754
+      frequency: 4.4
     fileParameters: []
     responses: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 4hE6ed36Z8gfVvbD1aka5cP
+      - hbP4a16D6fk3EdV5vagce8Z
     controller: null
     method: null
     route: null
@@ -608,13 +608,13 @@ endpoints:
         name: id
         description: 'The ID of the risk.'
         required: true
-        example: quasi
+        example: exercitationem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: quasi
+      id: exercitationem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -622,20 +622,20 @@ endpoints:
         name: strategy
         description: ''
         required: true
-        example: animi
+        example: eos
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      strategy: animi
+      strategy: eos
     fileParameters: []
     responses: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - aE6dfegPv4ba18h53V6kDcZ
+      - 4PV6ZDvecaEb1kfg35d6ha8
     controller: null
     method: null
     route: null

@@ -17,11 +17,10 @@ defineProps({
         required: true,
     },
 });
-
 </script>
 
 <template>
-    <Head title="Welcome" />
+    <Head title="Bienvenue" />
     <div
         class="w-screen h-screen flex flex-col justify-center items-center gap-4 gradient-bg"
     >
@@ -49,9 +48,12 @@ defineProps({
                         efficace
                     </div>
                 </div>
-            </div> 
+            </div>
         </h2>
-        <div class="flex justify-center gap-4 mt-10" v-if="!canLogin">
+        <div
+            class="flex justify-center gap-4 mt-10"
+            v-if="$page.props.auth.user"
+        >
             <a
                 :href="route('dashboard')"
                 class="cursor-pointer relative inline-flex items-center rounded-lg border-2 px-6 py-2 text-lg font-medium text-white md:py-3 md:px-8 border-primary-600 bg-primary-600 hover:border-primary-500 hover:bg-primary-500 duration-300"
@@ -75,8 +77,12 @@ defineProps({
 </template>
 <style>
 .gradient-bg {
-background: rgb(55,65,113);
-background: linear-gradient(0deg, rgba(55,65,113,1) 0%, rgba(17,24,39,1) 100%); 
+    background: rgb(55, 65, 113);
+    background: linear-gradient(
+        0deg,
+        rgba(55, 65, 113, 1) 0%,
+        rgba(17, 24, 39, 1) 100%
+    );
 }
 @media screen and (max-width: 767px) {
     .animated-text {

@@ -33,7 +33,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - DPZ6eaEbgf1vdhV3a8kc654
+      - bc3adehk686DEP1Vg4fZva5
     controller: null
     method: null
     route: null
@@ -70,7 +70,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - adV668Dh5P3ebkgavfc4Z1E
+      - EZhad63vge81k4bcDfa6V5P
     controller: null
     method: null
     route: null
@@ -107,7 +107,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - kca3aZ4Efv81e6P5VdDbhg6
+      - 65kePZ8Vg1da43vbDc6faEh
     controller: null
     method: null
     route: null

@@ -474,7 +474,7 @@ Retrieve a list of active users for the authenticated user's company.</a>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>https://intuit-risks.iviou.ch</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -513,14 +513,14 @@ Show the registration view for new users to create an account.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/register" \
+    --get "https://intuit-risks.iviou.ch/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register"
+    "https://intuit-risks.iviou.ch/register"
 );
 
 const headers = {
@@ -536,7 +536,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register';
+$url = 'https://intuit-risks.iviou.ch/register';
 $response = $client-&gt;get(
     $url,
     [
@@ -631,12 +631,12 @@ Validate the registration details and create a new user account.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/register" \
+    "https://intuit-risks.iviou.ch/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"pxffqavvbmpjaycudsxgncvld\",
-    \"password\": \"et\",
+    \"name\": \"ajajshdzqvx\",
+    \"password\": \"sequi\",
     \"terms\": true
 }"
 </code></pre></div>
@@ -644,7 +644,7 @@ Validate the registration details and create a new user account.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register"
+    "https://intuit-risks.iviou.ch/register"
 );
 
 const headers = {
@@ -653,8 +653,8 @@ const headers = {
 };
 
 let body = {
-    "name": "pxffqavvbmpjaycudsxgncvld",
-    "password": "et",
+    "name": "ajajshdzqvx",
+    "password": "sequi",
     "terms": true
 };
 
@@ -667,7 +667,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register';
+$url = 'https://intuit-risks.iviou.ch/register';
 $response = $client-&gt;post(
     $url,
     [
@@ -676,8 +676,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'pxffqavvbmpjaycudsxgncvld',
-            'password' =&gt; 'et',
+            'name' =&gt; 'ajajshdzqvx',
+            'password' =&gt; 'sequi',
             'terms' =&gt; true,
         ],
     ]
@@ -777,10 +777,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTregister"
-               value="pxffqavvbmpjaycudsxgncvld"
+               value="ajajshdzqvx"
                data-component="body">
     <br>
-<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>pxffqavvbmpjaycudsxgncvld</code></p>
+<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>ajajshdzqvx</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -799,10 +799,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTregister"
-               value="et"
+               value="sequi"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>sequi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>terms</code></b>&nbsp;&nbsp;
@@ -842,14 +842,14 @@ Show the registration view for users who have received a registration token.</h2
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/user-register/iure" \
+    --get "https://intuit-risks.iviou.ch/user-register/autem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/user-register/iure"
+    "https://intuit-risks.iviou.ch/user-register/autem"
 );
 
 const headers = {
@@ -865,7 +865,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/user-register/iure';
+$url = 'https://intuit-risks.iviou.ch/user-register/autem';
 $response = $client-&gt;get(
     $url,
     [
@@ -959,10 +959,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="token"                data-endpoint="GETuser-register--token-"
-               value="iure"
+               value="autem"
                data-component="url">
     <br>
-<p>Example: <code>iure</code></p>
+<p>Example: <code>autem</code></p>
             </div>
                     </form>
 
@@ -981,20 +981,20 @@ Validate the registration details and complete the registration process for the 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/user-register" \
+    "https://intuit-risks.iviou.ch/user-register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"password\": \"temporibus\",
     \"terms\": true,
-    \"token\": \"sit\"
+    \"token\": \"cumque\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/user-register"
+    "https://intuit-risks.iviou.ch/user-register"
 );
 
 const headers = {
@@ -1005,7 +1005,7 @@ const headers = {
 let body = {
     "password": "temporibus",
     "terms": true,
-    "token": "sit"
+    "token": "cumque"
 };
 
 fetch(url, {
@@ -1017,7 +1017,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/user-register';
+$url = 'https://intuit-risks.iviou.ch/user-register';
 $response = $client-&gt;post(
     $url,
     [
@@ -1028,7 +1028,7 @@ $response = $client-&gt;post(
         'json' =&gt; [
             'password' =&gt; 'temporibus',
             'terms' =&gt; true,
-            'token' =&gt; 'sit',
+            'token' =&gt; 'cumque',
         ],
     ]
 );
@@ -1159,10 +1159,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="token"                data-endpoint="POSTuser-register"
-               value="sit"
+               value="cumque"
                data-component="body">
     <br>
-<p>Example: <code>sit</code></p>
+<p>Example: <code>cumque</code></p>
         </div>
         </form>
 
@@ -1181,14 +1181,14 @@ Display the login form to the user.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/login" \
+    --get "https://intuit-risks.iviou.ch/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/login"
+    "https://intuit-risks.iviou.ch/login"
 );
 
 const headers = {
@@ -1204,7 +1204,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/login';
+$url = 'https://intuit-risks.iviou.ch/login';
 $response = $client-&gt;get(
     $url,
     [
@@ -1300,19 +1300,19 @@ Authenticate the user and redirect to the intended location or dashboard.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/login" \
+    "https://intuit-risks.iviou.ch/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"kobe.conn@example.com\",
-    \"password\": \"5L~\\/G{Zc0\"
+    \"email\": \"anais.macejkovic@example.com\",
+    \"password\": \"R4lqUk$(&gt;\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/login"
+    "https://intuit-risks.iviou.ch/login"
 );
 
 const headers = {
@@ -1321,8 +1321,8 @@ const headers = {
 };
 
 let body = {
-    "email": "kobe.conn@example.com",
-    "password": "5L~\/G{Zc0"
+    "email": "anais.macejkovic@example.com",
+    "password": "R4lqUk$(&gt;"
 };
 
 fetch(url, {
@@ -1334,7 +1334,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/login';
+$url = 'https://intuit-risks.iviou.ch/login';
 $response = $client-&gt;post(
     $url,
     [
@@ -1343,8 +1343,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'kobe.conn@example.com',
-            'password' =&gt; '5L~/G{Zc0',
+            'email' =&gt; 'anais.macejkovic@example.com',
+            'password' =&gt; 'R4lqUk$(&gt;',
         ],
     ]
 );
@@ -1421,10 +1421,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTlogin"
-               value="kobe.conn@example.com"
+               value="anais.macejkovic@example.com"
                data-component="body">
     <br>
-<p>Le champ value doit être une adresse e-mail valide. Example: <code>kobe.conn@example.com</code></p>
+<p>Le champ value doit être une adresse e-mail valide. Example: <code>anais.macejkovic@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1432,10 +1432,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTlogin"
-               value="5L~/G{Zc0"
+               value="R4lqUk$(>"
                data-component="body">
     <br>
-<p>Example: <code>5L~/G{Zc0</code></p>
+<p>Example: <code>R4lqUk$(&gt;</code></p>
         </div>
         </form>
 
@@ -1454,14 +1454,14 @@ Show the view where users can request a password reset link.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/forgot-password" \
+    --get "https://intuit-risks.iviou.ch/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/forgot-password"
+    "https://intuit-risks.iviou.ch/forgot-password"
 );
 
 const headers = {
@@ -1477,7 +1477,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/forgot-password';
+$url = 'https://intuit-risks.iviou.ch/forgot-password';
 $response = $client-&gt;get(
     $url,
     [
@@ -1573,18 +1573,18 @@ Validate the email address and handle the request to send a password reset link.
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/forgot-password" \
+    "https://intuit-risks.iviou.ch/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"reuben83@example.net\"
+    \"email\": \"kertzmann.kenyon@example.com\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/forgot-password"
+    "https://intuit-risks.iviou.ch/forgot-password"
 );
 
 const headers = {
@@ -1593,7 +1593,7 @@ const headers = {
 };
 
 let body = {
-    "email": "reuben83@example.net"
+    "email": "kertzmann.kenyon@example.com"
 };
 
 fetch(url, {
@@ -1605,7 +1605,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/forgot-password';
+$url = 'https://intuit-risks.iviou.ch/forgot-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -1614,7 +1614,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'reuben83@example.net',
+            'email' =&gt; 'kertzmann.kenyon@example.com',
         ],
     ]
 );
@@ -1704,10 +1704,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTforgot-password"
-               value="reuben83@example.net"
+               value="kertzmann.kenyon@example.com"
                data-component="body">
     <br>
-<p>Le champ value doit être une adresse e-mail valide. Example: <code>reuben83@example.net</code></p>
+<p>Le champ value doit être une adresse e-mail valide. Example: <code>kertzmann.kenyon@example.com</code></p>
         </div>
         </form>
 
@@ -1726,14 +1726,14 @@ Show the password reset view to the user, prefilled with email and token.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/reset-password/vel" \
+    --get "https://intuit-risks.iviou.ch/reset-password/dolores" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/reset-password/vel"
+    "https://intuit-risks.iviou.ch/reset-password/dolores"
 );
 
 const headers = {
@@ -1749,7 +1749,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/reset-password/vel';
+$url = 'https://intuit-risks.iviou.ch/reset-password/dolores';
 $response = $client-&gt;get(
     $url,
     [
@@ -1835,10 +1835,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="token"                data-endpoint="GETreset-password--token-"
-               value="vel"
+               value="dolores"
                data-component="url">
     <br>
-<p>Example: <code>vel</code></p>
+<p>Example: <code>dolores</code></p>
             </div>
                     </form>
 
@@ -1857,20 +1857,20 @@ Validate and handle the request to reset the user&#039;s password.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/reset-password" \
+    "https://intuit-risks.iviou.ch/reset-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"token\": \"dignissimos\",
-    \"email\": \"kathlyn.shields@example.org\",
-    \"password\": \"et\"
+    \"token\": \"aut\",
+    \"email\": \"odietrich@example.org\",
+    \"password\": \"sint\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/reset-password"
+    "https://intuit-risks.iviou.ch/reset-password"
 );
 
 const headers = {
@@ -1879,9 +1879,9 @@ const headers = {
 };
 
 let body = {
-    "token": "dignissimos",
-    "email": "kathlyn.shields@example.org",
-    "password": "et"
+    "token": "aut",
+    "email": "odietrich@example.org",
+    "password": "sint"
 };
 
 fetch(url, {
@@ -1893,7 +1893,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/reset-password';
+$url = 'https://intuit-risks.iviou.ch/reset-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -1902,9 +1902,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'token' =&gt; 'dignissimos',
-            'email' =&gt; 'kathlyn.shields@example.org',
-            'password' =&gt; 'et',
+            'token' =&gt; 'aut',
+            'email' =&gt; 'odietrich@example.org',
+            'password' =&gt; 'sint',
         ],
     ]
 );
@@ -1997,10 +1997,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="token"                data-endpoint="POSTreset-password"
-               value="dignissimos"
+               value="aut"
                data-component="body">
     <br>
-<p>Example: <code>dignissimos</code></p>
+<p>Example: <code>aut</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -2008,10 +2008,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTreset-password"
-               value="kathlyn.shields@example.org"
+               value="odietrich@example.org"
                data-component="body">
     <br>
-<p>Le champ value doit être une adresse e-mail valide. Example: <code>kathlyn.shields@example.org</code></p>
+<p>Le champ value doit être une adresse e-mail valide. Example: <code>odietrich@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -2019,10 +2019,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTreset-password"
-               value="et"
+               value="sint"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>sint</code></p>
         </div>
         </form>
 
@@ -2043,7 +2043,7 @@ otherwise redirect to the dashboard.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/verify-email" \
+    --get "https://intuit-risks.iviou.ch/verify-email" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2051,7 +2051,7 @@ otherwise redirect to the dashboard.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/verify-email"
+    "https://intuit-risks.iviou.ch/verify-email"
 );
 
 const headers = {
@@ -2068,7 +2068,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/verify-email';
+$url = 'https://intuit-risks.iviou.ch/verify-email';
 $response = $client-&gt;get(
     $url,
     [
@@ -2186,7 +2186,7 @@ If the email is not verified, mark it as verified and trigger the Verified event
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/verify-email/sunt/quia" \
+    --get "https://intuit-risks.iviou.ch/verify-email/iure/repudiandae" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2194,7 +2194,7 @@ If the email is not verified, mark it as verified and trigger the Verified event
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/verify-email/sunt/quia"
+    "https://intuit-risks.iviou.ch/verify-email/iure/repudiandae"
 );
 
 const headers = {
@@ -2211,7 +2211,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/verify-email/sunt/quia';
+$url = 'https://intuit-risks.iviou.ch/verify-email/iure/repudiandae';
 $response = $client-&gt;get(
     $url,
     [
@@ -2326,10 +2326,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETverify-email--id---hash-"
-               value="sunt"
+               value="iure"
                data-component="url">
     <br>
-<p>The ID of the verify email. Example: <code>sunt</code></p>
+<p>The ID of the verify email. Example: <code>iure</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>hash</code></b>&nbsp;&nbsp;
@@ -2337,10 +2337,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="hash"                data-endpoint="GETverify-email--id---hash-"
-               value="quia"
+               value="repudiandae"
                data-component="url">
     <br>
-<p>Example: <code>quia</code></p>
+<p>Example: <code>repudiandae</code></p>
             </div>
                     </form>
 
@@ -2360,7 +2360,7 @@ Send a new email verification notification to the user if their email is not ver
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/email/verification-notification" \
+    "https://intuit-risks.iviou.ch/email/verification-notification" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2368,7 +2368,7 @@ Send a new email verification notification to the user if their email is not ver
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/email/verification-notification"
+    "https://intuit-risks.iviou.ch/email/verification-notification"
 );
 
 const headers = {
@@ -2385,7 +2385,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/email/verification-notification';
+$url = 'https://intuit-risks.iviou.ch/email/verification-notification';
 $response = $client-&gt;post(
     $url,
     [
@@ -2509,7 +2509,7 @@ Display the view for confirming the user&#039;s password.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/confirm-password" \
+    --get "https://intuit-risks.iviou.ch/confirm-password" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2517,7 +2517,7 @@ Display the view for confirming the user&#039;s password.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/confirm-password"
+    "https://intuit-risks.iviou.ch/confirm-password"
 );
 
 const headers = {
@@ -2534,7 +2534,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/confirm-password';
+$url = 'https://intuit-risks.iviou.ch/confirm-password';
 $response = $client-&gt;get(
     $url,
     [
@@ -2642,7 +2642,7 @@ Validate the user&#039;s password to confirm their identity.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/confirm-password" \
+    "https://intuit-risks.iviou.ch/confirm-password" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2650,7 +2650,7 @@ Validate the user&#039;s password to confirm their identity.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/confirm-password"
+    "https://intuit-risks.iviou.ch/confirm-password"
 );
 
 const headers = {
@@ -2667,7 +2667,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/confirm-password';
+$url = 'https://intuit-risks.iviou.ch/confirm-password';
 $response = $client-&gt;post(
     $url,
     [
@@ -2786,20 +2786,20 @@ Validate and update the user&#039;s password.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/password" \
+    "https://intuit-risks.iviou.ch/password" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"current_password\": \"voluptas\",
-    \"password\": \"eveniet\"
+    \"current_password\": \"aliquid\",
+    \"password\": \"sit\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/password"
+    "https://intuit-risks.iviou.ch/password"
 );
 
 const headers = {
@@ -2809,8 +2809,8 @@ const headers = {
 };
 
 let body = {
-    "current_password": "voluptas",
-    "password": "eveniet"
+    "current_password": "aliquid",
+    "password": "sit"
 };
 
 fetch(url, {
@@ -2822,7 +2822,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/password';
+$url = 'https://intuit-risks.iviou.ch/password';
 $response = $client-&gt;put(
     $url,
     [
@@ -2832,8 +2832,8 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'current_password' =&gt; 'voluptas',
-            'password' =&gt; 'eveniet',
+            'current_password' =&gt; 'aliquid',
+            'password' =&gt; 'sit',
         ],
     ]
 );
@@ -2937,10 +2937,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="current_password"                data-endpoint="PUTpassword"
-               value="voluptas"
+               value="aliquid"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>aliquid</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -2948,10 +2948,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="PUTpassword"
-               value="eveniet"
+               value="sit"
                data-component="body">
     <br>
-<p>Example: <code>eveniet</code></p>
+<p>Example: <code>sit</code></p>
         </div>
         </form>
 
@@ -2971,7 +2971,7 @@ Logout the authenticated user and destroy the session.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/logout" \
+    "https://intuit-risks.iviou.ch/logout" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2979,7 +2979,7 @@ Logout the authenticated user and destroy the session.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/logout"
+    "https://intuit-risks.iviou.ch/logout"
 );
 
 const headers = {
@@ -2996,7 +2996,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/logout';
+$url = 'https://intuit-risks.iviou.ch/logout';
 $response = $client-&gt;post(
     $url,
     [
@@ -3105,14 +3105,14 @@ Retrieve a list of all categories.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/categories" \
+    --get "https://intuit-risks.iviou.ch/api/categories" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/categories"
+    "https://intuit-risks.iviou.ch/api/categories"
 );
 
 const headers = {
@@ -3128,7 +3128,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/categories';
+$url = 'https://intuit-risks.iviou.ch/api/categories';
 $response = $client-&gt;get(
     $url,
     [
@@ -3240,7 +3240,7 @@ Retrieve detailed information about the authenticated user&#039;s company, inclu
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/company" \
+    --get "https://intuit-risks.iviou.ch/api/company" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3248,7 +3248,7 @@ Retrieve detailed information about the authenticated user&#039;s company, inclu
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/company"
+    "https://intuit-risks.iviou.ch/api/company"
 );
 
 const headers = {
@@ -3265,7 +3265,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/company';
+$url = 'https://intuit-risks.iviou.ch/api/company';
 $response = $client-&gt;get(
     $url,
     [
@@ -3389,7 +3389,7 @@ The view includes lists of organizations and countries for user selection.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/register/company" \
+    --get "https://intuit-risks.iviou.ch/register/company" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3397,7 +3397,7 @@ The view includes lists of organizations and countries for user selection.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register/company"
+    "https://intuit-risks.iviou.ch/register/company"
 );
 
 const headers = {
@@ -3414,7 +3414,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register/company';
+$url = 'https://intuit-risks.iviou.ch/register/company';
 $response = $client-&gt;get(
     $url,
     [
@@ -3534,24 +3534,24 @@ Update the authenticated user&#039;s company ID and registration step.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/register/company" \
+    "https://intuit-risks.iviou.ch/register/company" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"utrlcdvieudui\",
-    \"organization\": 11,
-    \"sector\": \"eeyyawxxkvutdemmrgjv\",
-    \"country\": 2,
-    \"employees\": 13,
-    \"city\": \"vrhoyr\"
+    \"name\": \"vdcwsl\",
+    \"organization\": 7,
+    \"sector\": \"cdmpdwgwksjdmatlxeak\",
+    \"country\": 3,
+    \"employees\": 74,
+    \"city\": \"w\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register/company"
+    "https://intuit-risks.iviou.ch/register/company"
 );
 
 const headers = {
@@ -3561,12 +3561,12 @@ const headers = {
 };
 
 let body = {
-    "name": "utrlcdvieudui",
-    "organization": 11,
-    "sector": "eeyyawxxkvutdemmrgjv",
-    "country": 2,
-    "employees": 13,
-    "city": "vrhoyr"
+    "name": "vdcwsl",
+    "organization": 7,
+    "sector": "cdmpdwgwksjdmatlxeak",
+    "country": 3,
+    "employees": 74,
+    "city": "w"
 };
 
 fetch(url, {
@@ -3578,7 +3578,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register/company';
+$url = 'https://intuit-risks.iviou.ch/register/company';
 $response = $client-&gt;post(
     $url,
     [
@@ -3588,12 +3588,12 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'utrlcdvieudui',
-            'organization' =&gt; 11,
-            'sector' =&gt; 'eeyyawxxkvutdemmrgjv',
-            'country' =&gt; 2,
-            'employees' =&gt; 13,
-            'city' =&gt; 'vrhoyr',
+            'name' =&gt; 'vdcwsl',
+            'organization' =&gt; 7,
+            'sector' =&gt; 'cdmpdwgwksjdmatlxeak',
+            'country' =&gt; 3,
+            'employees' =&gt; 74,
+            'city' =&gt; 'w',
         ],
     ]
 );
@@ -3709,10 +3709,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTregister-company"
-               value="utrlcdvieudui"
+               value="vdcwsl"
                data-component="body">
     <br>
-<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>utrlcdvieudui</code></p>
+<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>vdcwsl</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>organization</code></b>&nbsp;&nbsp;
@@ -3720,10 +3720,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="organization"                data-endpoint="POSTregister-company"
-               value="11"
+               value="7"
                data-component="body">
     <br>
-<p>Example: <code>11</code></p>
+<p>Example: <code>7</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>sector</code></b>&nbsp;&nbsp;
@@ -3731,10 +3731,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="sector"                data-endpoint="POSTregister-company"
-               value="eeyyawxxkvutdemmrgjv"
+               value="cdmpdwgwksjdmatlxeak"
                data-component="body">
     <br>
-<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>eeyyawxxkvutdemmrgjv</code></p>
+<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>cdmpdwgwksjdmatlxeak</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
@@ -3742,10 +3742,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="country"                data-endpoint="POSTregister-company"
-               value="2"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>2</code></p>
+<p>Example: <code>3</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>employees</code></b>&nbsp;&nbsp;
@@ -3753,10 +3753,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="employees"                data-endpoint="POSTregister-company"
-               value="13"
+               value="74"
                data-component="body">
     <br>
-<p>Le champ value doit être au moins de 0. Example: <code>13</code></p>
+<p>Le champ value doit être au moins de 0. Example: <code>74</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
@@ -3764,10 +3764,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="POSTregister-company"
-               value="vrhoyr"
+               value="w"
                data-component="body">
     <br>
-<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>vrhoyr</code></p>
+<p>Le champ value ne doit pas être supérieur à 255 caractères. Example: <code>w</code></p>
         </div>
         </form>
 
@@ -3793,7 +3793,7 @@ The view also includes the company&#039;s existing risks and the current registr
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/register/risks" \
+    --get "https://intuit-risks.iviou.ch/register/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3801,7 +3801,7 @@ The view also includes the company&#039;s existing risks and the current registr
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register/risks"
+    "https://intuit-risks.iviou.ch/register/risks"
 );
 
 const headers = {
@@ -3818,7 +3818,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register/risks';
+$url = 'https://intuit-risks.iviou.ch/register/risks';
 $response = $client-&gt;get(
     $url,
     [
@@ -3987,7 +3987,7 @@ The method validates the input and creates or updates the company risk and its e
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/register/risks" \
+    "https://intuit-risks.iviou.ch/register/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3995,7 +3995,7 @@ The method validates the input and creates or updates the company risk and its e
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register/risks"
+    "https://intuit-risks.iviou.ch/register/risks"
 );
 
 const headers = {
@@ -4012,7 +4012,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register/risks';
+$url = 'https://intuit-risks.iviou.ch/register/risks';
 $response = $client-&gt;post(
     $url,
     [
@@ -4146,14 +4146,14 @@ Includes related data such as risk details, categories, and evaluations.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/risks" \
+    --get "https://intuit-risks.iviou.ch/risks" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/risks"
+    "https://intuit-risks.iviou.ch/risks"
 );
 
 const headers = {
@@ -4169,7 +4169,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/risks';
+$url = 'https://intuit-risks.iviou.ch/risks';
 $response = $client-&gt;get(
     $url,
     [
@@ -4287,14 +4287,14 @@ reduction plan tasks, and emergency plan actions associated with the risk.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/risks/porro" \
+    --get "https://intuit-risks.iviou.ch/risks/dolorem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/risks/porro"
+    "https://intuit-risks.iviou.ch/risks/dolorem"
 );
 
 const headers = {
@@ -4310,7 +4310,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/risks/porro';
+$url = 'https://intuit-risks.iviou.ch/risks/dolorem';
 $response = $client-&gt;get(
     $url,
     [
@@ -4447,10 +4447,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETrisks--id-"
-               value="porro"
+               value="dolorem"
                data-component="url">
     <br>
-<p>The ID of the risk. Example: <code>porro</code></p>
+<p>The ID of the risk. Example: <code>dolorem</code></p>
             </div>
                     </form>
 
@@ -4470,7 +4470,7 @@ Retrieve a list of all risks associated with the authenticated user&#039;s compa
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/risks" \
+    --get "https://intuit-risks.iviou.ch/api/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4478,7 +4478,7 @@ Retrieve a list of all risks associated with the authenticated user&#039;s compa
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/risks"
+    "https://intuit-risks.iviou.ch/api/risks"
 );
 
 const headers = {
@@ -4495,7 +4495,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/risks';
+$url = 'https://intuit-risks.iviou.ch/api/risks';
 $response = $client-&gt;get(
     $url,
     [
@@ -4613,23 +4613,23 @@ Create a new risk for the authenticated user&#039;s company and evaluate it.</h2
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/risks" \
+    "https://intuit-risks.iviou.ch/api/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"title\": \"provident\",
-    \"description\": \"Delectus non dicta unde facilis non voluptatum.\",
+    \"title\": \"repellat\",
+    \"description\": \"Voluptas sed voluptatem sequi.\",
     \"category\": [],
-    \"probability\": 3323478.45,
-    \"impact\": 282.61232
+    \"probability\": 0.737065223,
+    \"impact\": 2440522.9929
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/risks"
+    "https://intuit-risks.iviou.ch/api/risks"
 );
 
 const headers = {
@@ -4639,11 +4639,11 @@ const headers = {
 };
 
 let body = {
-    "title": "provident",
-    "description": "Delectus non dicta unde facilis non voluptatum.",
+    "title": "repellat",
+    "description": "Voluptas sed voluptatem sequi.",
     "category": [],
-    "probability": 3323478.45,
-    "impact": 282.61232
+    "probability": 0.737065223,
+    "impact": 2440522.9929
 };
 
 fetch(url, {
@@ -4655,7 +4655,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/risks';
+$url = 'https://intuit-risks.iviou.ch/api/risks';
 $response = $client-&gt;post(
     $url,
     [
@@ -4665,11 +4665,11 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'title' =&gt; 'provident',
-            'description' =&gt; 'Delectus non dicta unde facilis non voluptatum.',
+            'title' =&gt; 'repellat',
+            'description' =&gt; 'Voluptas sed voluptatem sequi.',
             'category' =&gt; [],
-            'probability' =&gt; 3323478.45,
-            'impact' =&gt; 282.61232,
+            'probability' =&gt; 0.737065223,
+            'impact' =&gt; 2440522.9929,
         ],
     ]
 );
@@ -4750,10 +4750,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="POSTapi-risks"
-               value="provident"
+               value="repellat"
                data-component="body">
     <br>
-<p>Example: <code>provident</code></p>
+<p>Example: <code>repellat</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -4761,10 +4761,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="POSTapi-risks"
-               value="Delectus non dicta unde facilis non voluptatum."
+               value="Voluptas sed voluptatem sequi."
                data-component="body">
     <br>
-<p>Example: <code>Delectus non dicta unde facilis non voluptatum.</code></p>
+<p>Example: <code>Voluptas sed voluptatem sequi.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
@@ -4783,10 +4783,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="probability"                data-endpoint="POSTapi-risks"
-               value="3323478.45"
+               value="0.737065223"
                data-component="body">
     <br>
-<p>Example: <code>3323478.45</code></p>
+<p>Example: <code>0.737065223</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>impact</code></b>&nbsp;&nbsp;
@@ -4794,10 +4794,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="impact"                data-endpoint="POSTapi-risks"
-               value="282.61232"
+               value="2440522.9929"
                data-component="body">
     <br>
-<p>Example: <code>282.61232</code></p>
+<p>Example: <code>2440522.9929</code></p>
         </div>
         </form>
 
@@ -4817,22 +4817,22 @@ Update details of an existing risk, including category, title, description, and 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/risks/dolore" \
+    "https://intuit-risks.iviou.ch/api/risks/nam" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"title\": \"rerum\",
-    \"description\": \"Pariatur aut impedit quasi dolores debitis rem voluptatem.\",
+    \"title\": \"nihil\",
+    \"description\": \"Aut officia et est molestiae quasi sed ex provident.\",
     \"category\": [],
-    \"frequency\": 23825.952471754
+    \"frequency\": 4.4
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/risks/dolore"
+    "https://intuit-risks.iviou.ch/api/risks/nam"
 );
 
 const headers = {
@@ -4842,10 +4842,10 @@ const headers = {
 };
 
 let body = {
-    "title": "rerum",
-    "description": "Pariatur aut impedit quasi dolores debitis rem voluptatem.",
+    "title": "nihil",
+    "description": "Aut officia et est molestiae quasi sed ex provident.",
     "category": [],
-    "frequency": 23825.952471754
+    "frequency": 4.4
 };
 
 fetch(url, {
@@ -4857,7 +4857,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/risks/dolore';
+$url = 'https://intuit-risks.iviou.ch/api/risks/nam';
 $response = $client-&gt;put(
     $url,
     [
@@ -4867,10 +4867,10 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'title' =&gt; 'rerum',
-            'description' =&gt; 'Pariatur aut impedit quasi dolores debitis rem voluptatem.',
+            'title' =&gt; 'nihil',
+            'description' =&gt; 'Aut officia et est molestiae quasi sed ex provident.',
             'category' =&gt; [],
-            'frequency' =&gt; 23825.952471754,
+            'frequency' =&gt; 4.4,
         ],
     ]
 );
@@ -4951,10 +4951,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-risks--id-"
-               value="dolore"
+               value="nam"
                data-component="url">
     <br>
-<p>The ID of the risk. Example: <code>dolore</code></p>
+<p>The ID of the risk. Example: <code>nam</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -4963,10 +4963,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="title"                data-endpoint="PUTapi-risks--id-"
-               value="rerum"
+               value="nihil"
                data-component="body">
     <br>
-<p>Example: <code>rerum</code></p>
+<p>Example: <code>nihil</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -4974,10 +4974,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="description"                data-endpoint="PUTapi-risks--id-"
-               value="Pariatur aut impedit quasi dolores debitis rem voluptatem."
+               value="Aut officia et est molestiae quasi sed ex provident."
                data-component="body">
     <br>
-<p>Example: <code>Pariatur aut impedit quasi dolores debitis rem voluptatem.</code></p>
+<p>Example: <code>Aut officia et est molestiae quasi sed ex provident.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
@@ -4996,10 +4996,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="frequency"                data-endpoint="PUTapi-risks--id-"
-               value="23825.952471754"
+               value="4.4"
                data-component="body">
     <br>
-<p>Example: <code>23825.952471754</code></p>
+<p>Example: <code>4.4</code></p>
         </div>
         </form>
 
@@ -5019,19 +5019,19 @@ Update the strategy associated with a specific risk.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/risks/quasi/strategy" \
+    "https://intuit-risks.iviou.ch/api/risks/exercitationem/strategy" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"strategy\": \"animi\"
+    \"strategy\": \"eos\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/risks/quasi/strategy"
+    "https://intuit-risks.iviou.ch/api/risks/exercitationem/strategy"
 );
 
 const headers = {
@@ -5041,7 +5041,7 @@ const headers = {
 };
 
 let body = {
-    "strategy": "animi"
+    "strategy": "eos"
 };
 
 fetch(url, {
@@ -5053,7 +5053,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/risks/quasi/strategy';
+$url = 'https://intuit-risks.iviou.ch/api/risks/exercitationem/strategy';
 $response = $client-&gt;put(
     $url,
     [
@@ -5063,7 +5063,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'strategy' =&gt; 'animi',
+            'strategy' =&gt; 'eos',
         ],
     ]
 );
@@ -5144,10 +5144,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-risks--id--strategy"
-               value="quasi"
+               value="exercitationem"
                data-component="url">
     <br>
-<p>The ID of the risk. Example: <code>quasi</code></p>
+<p>The ID of the risk. Example: <code>exercitationem</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -5156,10 +5156,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="strategy"                data-endpoint="PUTapi-risks--id--strategy"
-               value="animi"
+               value="eos"
                data-component="body">
     <br>
-<p>Example: <code>animi</code></p>
+<p>Example: <code>eos</code></p>
         </div>
         </form>
 
@@ -5187,7 +5187,7 @@ Retrieves and processes data to display on the dashboard, including:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/dashboard" \
+    --get "https://intuit-risks.iviou.ch/dashboard" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5195,7 +5195,7 @@ Retrieves and processes data to display on the dashboard, including:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/dashboard"
+    "https://intuit-risks.iviou.ch/dashboard"
 );
 
 const headers = {
@@ -5212,7 +5212,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/dashboard';
+$url = 'https://intuit-risks.iviou.ch/dashboard';
 $response = $client-&gt;get(
     $url,
     [
@@ -5363,20 +5363,20 @@ Create a new task associated with a risk reduction plan.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/risks/molestias/tasks" \
+    "https://intuit-risks.iviou.ch/api/risks/possimus/tasks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"responsible\": \"enim\",
-    \"task\": \"voluptatem\"
+    \"responsible\": \"laudantium\",
+    \"task\": \"corrupti\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/risks/molestias/tasks"
+    "https://intuit-risks.iviou.ch/api/risks/possimus/tasks"
 );
 
 const headers = {
@@ -5386,8 +5386,8 @@ const headers = {
 };
 
 let body = {
-    "responsible": "enim",
-    "task": "voluptatem"
+    "responsible": "laudantium",
+    "task": "corrupti"
 };
 
 fetch(url, {
@@ -5399,7 +5399,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/risks/molestias/tasks';
+$url = 'https://intuit-risks.iviou.ch/api/risks/possimus/tasks';
 $response = $client-&gt;post(
     $url,
     [
@@ -5409,8 +5409,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'responsible' =&gt; 'enim',
-            'task' =&gt; 'voluptatem',
+            'responsible' =&gt; 'laudantium',
+            'task' =&gt; 'corrupti',
         ],
     ]
 );
@@ -5491,10 +5491,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-risks--id--tasks"
-               value="molestias"
+               value="possimus"
                data-component="url">
     <br>
-<p>The ID of the risk. Example: <code>molestias</code></p>
+<p>The ID of the risk. Example: <code>possimus</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -5503,10 +5503,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="responsible"                data-endpoint="POSTapi-risks--id--tasks"
-               value="enim"
+               value="laudantium"
                data-component="body">
     <br>
-<p>Example: <code>enim</code></p>
+<p>Example: <code>laudantium</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>task</code></b>&nbsp;&nbsp;
@@ -5514,10 +5514,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="task"                data-endpoint="POSTapi-risks--id--tasks"
-               value="voluptatem"
+               value="corrupti"
                data-component="body">
     <br>
-<p>Example: <code>voluptatem</code></p>
+<p>Example: <code>corrupti</code></p>
         </div>
         </form>
 
@@ -5537,20 +5537,20 @@ Update the status and optional remark of a specific task.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/reduction-plan/tasks/qui/evaluate" \
+    "https://intuit-risks.iviou.ch/api/reduction-plan/tasks/eveniet/evaluate" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"status\": \"-1\",
-    \"remark\": \"qui\"
+    \"status\": \"1\",
+    \"remark\": \"incidunt\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/reduction-plan/tasks/qui/evaluate"
+    "https://intuit-risks.iviou.ch/api/reduction-plan/tasks/eveniet/evaluate"
 );
 
 const headers = {
@@ -5560,8 +5560,8 @@ const headers = {
 };
 
 let body = {
-    "status": "-1",
-    "remark": "qui"
+    "status": "1",
+    "remark": "incidunt"
 };
 
 fetch(url, {
@@ -5573,7 +5573,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/reduction-plan/tasks/qui/evaluate';
+$url = 'https://intuit-risks.iviou.ch/api/reduction-plan/tasks/eveniet/evaluate';
 $response = $client-&gt;put(
     $url,
     [
@@ -5583,8 +5583,8 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'status' =&gt; '-1',
-            'remark' =&gt; 'qui',
+            'status' =&gt; '1',
+            'remark' =&gt; 'incidunt',
         ],
     ]
 );
@@ -5665,10 +5665,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PUTapi-reduction-plan-tasks--id--evaluate"
-               value="qui"
+               value="eveniet"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>qui</code></p>
+<p>The ID of the task. Example: <code>eveniet</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -5677,10 +5677,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="PUTapi-reduction-plan-tasks--id--evaluate"
-               value="-1"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>-1</code></p>
+<p>Example: <code>1</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>-1</code></li> <li><code>1</code></li></ul>
         </div>
@@ -5690,10 +5690,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="remark"                data-endpoint="PUTapi-reduction-plan-tasks--id--evaluate"
-               value="qui"
+               value="incidunt"
                data-component="body">
     <br>
-<p>Example: <code>qui</code></p>
+<p>Example: <code>incidunt</code></p>
         </div>
         </form>
 
@@ -5713,7 +5713,7 @@ Delete a specific task by its ID.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/reduction-plan/tasks/deleniti" \
+    "https://intuit-risks.iviou.ch/api/reduction-plan/tasks/mollitia" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5721,7 +5721,7 @@ Delete a specific task by its ID.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/reduction-plan/tasks/deleniti"
+    "https://intuit-risks.iviou.ch/api/reduction-plan/tasks/mollitia"
 );
 
 const headers = {
@@ -5738,7 +5738,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/reduction-plan/tasks/deleniti';
+$url = 'https://intuit-risks.iviou.ch/api/reduction-plan/tasks/mollitia';
 $response = $client-&gt;delete(
     $url,
     [
@@ -5826,10 +5826,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="DELETEapi-reduction-plan-tasks--id-"
-               value="deleniti"
+               value="mollitia"
                data-component="url">
     <br>
-<p>The ID of the task. Example: <code>deleniti</code></p>
+<p>The ID of the task. Example: <code>mollitia</code></p>
             </div>
                     </form>
 
@@ -5854,7 +5854,7 @@ If the `emergencyPlanStatus` of the risk is 0 (not executed), redirects to the d
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/emergency-plan/et" \
+    --get "https://intuit-risks.iviou.ch/emergency-plan/omnis" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5862,7 +5862,7 @@ If the `emergencyPlanStatus` of the risk is 0 (not executed), redirects to the d
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/et"
+    "https://intuit-risks.iviou.ch/emergency-plan/omnis"
 );
 
 const headers = {
@@ -5879,7 +5879,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/et';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/omnis';
 $response = $client-&gt;get(
     $url,
     [
@@ -5905,7 +5905,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-set-cookie: XSRF-TOKEN=eyJpdiI6ImthTW9CK0JueGt3VWM2OUhOMHpoZGc9PSIsInZhbHVlIjoicVhXNko1UGExU2JqWnZIandGVzlNdlF5d3VGZzJlUmVCdDFDN2pDRlVEVlY1TVVFNndNNjk1ZmJPRXdzM1NHSnBpcDU3ZDRJaHgxdGtpcjUveUZEemo0RC9tRlBKaXorQjFqMnNZVXVqK1RENjM2QkdzZzhPbUUyMm9xbFFpamEiLCJtYWMiOiJmNWI2MTNmZTBlZGRjYjRjYWU0ZWUyYjQyZjUwN2U0OGRmMDgzZmFjNzFiYWYzZDEwYWEwNjRjODRmYTQ0M2E1IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6IktVYTJqSjFRT3Bja3FaUHRvWWRCbFE9PSIsInZhbHVlIjoianNJSHp3TXU1dENIL0YzQkpPZ2VUVU5pQVQ1UFY5QzZDQ0I4WWwrRjkvOUV3Q3hpblZHTnRucWtjVU1iWitvamlEbWxlTDdyRVBSZG9SMERYdzRhOUZDQmM2SjdvUUVFRFNxdEVPU1FiWmh6OXJXTWlwOUl3OERhcktEMXVMMFkiLCJtYWMiOiI2ZWIxNjBkMzU4OWJjOGYxOGQxMjJlMmU4OGE5NWRhZWYzZWYzNDZiZWYwMWI1YTNhNzM1YmI4MWI1MjQ1YjJhIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImI1RjQrZ3gxc1llMGhka3F4NmJ5L1E9PSIsInZhbHVlIjoiRWR2UGRrc2g3b2tEd3ZKcW1OZ1M5MDA2bUJINHFJbysrWVdKYVpVK1JRMGxHWDkza0QvV244dEtleS9LblRvaVVZeCtSdnlqdktpaTlOSGVaUWxmaStrckxyMGh2Yzc5NnFNSVl0eHlYL2RUQ3pvVzlsNDZXZEx5dkJWWFh6SEQiLCJtYWMiOiJkMjhlYzQ4ZDAwYzBjYjg3NWY3OTcwYmY0MGE2YmMxODJhMTkyMzFkZGE2YmJjOTUwODJhNjZlZGEwNzYwZjA0IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6IkFGUVFGME5qb2NyUWJXcE5EZWVNTkE9PSIsInZhbHVlIjoicDQwcFFGeDgvR2gyY29iNlVPcWZKL2hTNmlwZDhGRm54QjFzOTBXbjUwT0ZHdmRNdE9zS2FKeXFMdkhvclFyT25BMWdkTjZXbnlGRXdWOHNNSVlROEVIaUl5c1NsLzQxNHVvTmtmZDVReHhiTzdTRGc3RWtlTEE2U3ZrOEFBS0siLCJtYWMiOiIyZTc1ZmJhZTEwZDczNTg2YWE2M2Y5MzFkNTMyZGY4YTA2ZjZmZDUxYWNkNTIwMmY4N2Y2MzcwYzgwYTM0ZmNiIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -5983,10 +5983,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="GETemergency-plan--id-"
-               value="et"
+               value="omnis"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>et</code></p>
+<p>The ID of the emergency plan. Example: <code>omnis</code></p>
             </div>
                     </form>
 
@@ -6007,20 +6007,20 @@ then updates the responsible agent for the specified emergency plan action.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/emergency-plan/rerum/agents" \
+    "https://intuit-risks.iviou.ch/emergency-plan/adipisci/agents" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"task\": \"in\",
-    \"responsible\": \"quas\"
+    \"task\": \"culpa\",
+    \"responsible\": \"quo\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/rerum/agents"
+    "https://intuit-risks.iviou.ch/emergency-plan/adipisci/agents"
 );
 
 const headers = {
@@ -6030,8 +6030,8 @@ const headers = {
 };
 
 let body = {
-    "task": "in",
-    "responsible": "quas"
+    "task": "culpa",
+    "responsible": "quo"
 };
 
 fetch(url, {
@@ -6043,7 +6043,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/rerum/agents';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/adipisci/agents';
 $response = $client-&gt;patch(
     $url,
     [
@@ -6053,8 +6053,8 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'task' =&gt; 'in',
-            'responsible' =&gt; 'quas',
+            'task' =&gt; 'culpa',
+            'responsible' =&gt; 'quo',
         ],
     ]
 );
@@ -6135,10 +6135,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--agents"
-               value="rerum"
+               value="adipisci"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>rerum</code></p>
+<p>The ID of the emergency plan. Example: <code>adipisci</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -6147,10 +6147,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="task"                data-endpoint="PATCHemergency-plan--id--agents"
-               value="in"
+               value="culpa"
                data-component="body">
     <br>
-<p>Example: <code>in</code></p>
+<p>Example: <code>culpa</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>responsible</code></b>&nbsp;&nbsp;
@@ -6158,10 +6158,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="responsible"                data-endpoint="PATCHemergency-plan--id--agents"
-               value="quas"
+               value="quo"
                data-component="body">
     <br>
-<p>Example: <code>quas</code></p>
+<p>Example: <code>quo</code></p>
         </div>
         </form>
 
@@ -6182,7 +6182,7 @@ Redirects the user back to the dashboard.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/emergency-plan/voluptas/execute" \
+    "https://intuit-risks.iviou.ch/emergency-plan/occaecati/execute" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6190,7 +6190,7 @@ Redirects the user back to the dashboard.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/voluptas/execute"
+    "https://intuit-risks.iviou.ch/emergency-plan/occaecati/execute"
 );
 
 const headers = {
@@ -6207,7 +6207,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/voluptas/execute';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/occaecati/execute';
 $response = $client-&gt;patch(
     $url,
     [
@@ -6295,10 +6295,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--execute"
-               value="voluptas"
+               value="occaecati"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>voluptas</code></p>
+<p>The ID of the emergency plan. Example: <code>occaecati</code></p>
             </div>
                     </form>
 
@@ -6318,7 +6318,7 @@ Updates the `emergencyPlanStatus` of the specified risk to 2 (started).</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/emergency-plan/quisquam/start" \
+    "https://intuit-risks.iviou.ch/emergency-plan/quasi/start" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6326,7 +6326,7 @@ Updates the `emergencyPlanStatus` of the specified risk to 2 (started).</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/quisquam/start"
+    "https://intuit-risks.iviou.ch/emergency-plan/quasi/start"
 );
 
 const headers = {
@@ -6343,7 +6343,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/quisquam/start';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/quasi/start';
 $response = $client-&gt;patch(
     $url,
     [
@@ -6431,10 +6431,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--start"
-               value="quisquam"
+               value="quasi"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>quisquam</code></p>
+<p>The ID of the emergency plan. Example: <code>quasi</code></p>
             </div>
                     </form>
 
@@ -6455,7 +6455,7 @@ and resets all associated emergency plan actions.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/emergency-plan/perspiciatis/end" \
+    "https://intuit-risks.iviou.ch/emergency-plan/ipsum/end" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6463,7 +6463,7 @@ and resets all associated emergency plan actions.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/perspiciatis/end"
+    "https://intuit-risks.iviou.ch/emergency-plan/ipsum/end"
 );
 
 const headers = {
@@ -6480,7 +6480,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/perspiciatis/end';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/ipsum/end';
 $response = $client-&gt;patch(
     $url,
     [
@@ -6568,10 +6568,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--end"
-               value="perspiciatis"
+               value="ipsum"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>perspiciatis</code></p>
+<p>The ID of the emergency plan. Example: <code>ipsum</code></p>
             </div>
                     </form>
 
@@ -6591,19 +6591,19 @@ Validates the request for action ID, then updates the action status to 1 (done).
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/emergency-plan/itaque/action-done" \
+    "https://intuit-risks.iviou.ch/emergency-plan/laborum/action-done" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"id\": \"iusto\"
+    \"id\": \"repudiandae\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/itaque/action-done"
+    "https://intuit-risks.iviou.ch/emergency-plan/laborum/action-done"
 );
 
 const headers = {
@@ -6613,7 +6613,7 @@ const headers = {
 };
 
 let body = {
-    "id": "iusto"
+    "id": "repudiandae"
 };
 
 fetch(url, {
@@ -6625,7 +6625,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/itaque/action-done';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/laborum/action-done';
 $response = $client-&gt;patch(
     $url,
     [
@@ -6635,7 +6635,7 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'id' =&gt; 'iusto',
+            'id' =&gt; 'repudiandae',
         ],
     ]
 );
@@ -6716,10 +6716,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--action-done"
-               value="itaque"
+               value="laborum"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>itaque</code></p>
+<p>The ID of the emergency plan. Example: <code>laborum</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -6728,10 +6728,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--action-done"
-               value="iusto"
+               value="repudiandae"
                data-component="body">
     <br>
-<p>Example: <code>iusto</code></p>
+<p>Example: <code>repudiandae</code></p>
         </div>
         </form>
 
@@ -6752,20 +6752,20 @@ then updates the action&#039;s response field.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/emergency-plan/magnam/action-response" \
+    "https://intuit-risks.iviou.ch/emergency-plan/reprehenderit/action-response" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"id\": \"quae\",
-    \"response\": \"quo\"
+    \"id\": \"sit\",
+    \"response\": \"rerum\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/emergency-plan/magnam/action-response"
+    "https://intuit-risks.iviou.ch/emergency-plan/reprehenderit/action-response"
 );
 
 const headers = {
@@ -6775,8 +6775,8 @@ const headers = {
 };
 
 let body = {
-    "id": "quae",
-    "response": "quo"
+    "id": "sit",
+    "response": "rerum"
 };
 
 fetch(url, {
@@ -6788,7 +6788,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/emergency-plan/magnam/action-response';
+$url = 'https://intuit-risks.iviou.ch/emergency-plan/reprehenderit/action-response';
 $response = $client-&gt;patch(
     $url,
     [
@@ -6798,8 +6798,8 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'id' =&gt; 'quae',
-            'response' =&gt; 'quo',
+            'id' =&gt; 'sit',
+            'response' =&gt; 'rerum',
         ],
     ]
 );
@@ -6880,10 +6880,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--action-response"
-               value="magnam"
+               value="reprehenderit"
                data-component="url">
     <br>
-<p>The ID of the emergency plan. Example: <code>magnam</code></p>
+<p>The ID of the emergency plan. Example: <code>reprehenderit</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -6892,10 +6892,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHemergency-plan--id--action-response"
-               value="quae"
+               value="sit"
                data-component="body">
     <br>
-<p>Example: <code>quae</code></p>
+<p>Example: <code>sit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>response</code></b>&nbsp;&nbsp;
@@ -6903,10 +6903,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="response"                data-endpoint="PATCHemergency-plan--id--action-response"
-               value="quo"
+               value="rerum"
                data-component="body">
     <br>
-<p>Example: <code>quo</code></p>
+<p>Example: <code>rerum</code></p>
         </div>
         </form>
 
@@ -6926,7 +6926,7 @@ Store new risk emergency plan actions and delete specified actions.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/risks/explicabo/emergency-plan" \
+    "https://intuit-risks.iviou.ch/api/risks/ipsum/emergency-plan" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -6935,7 +6935,7 @@ Store new risk emergency plan actions and delete specified actions.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/risks/explicabo/emergency-plan"
+    "https://intuit-risks.iviou.ch/api/risks/ipsum/emergency-plan"
 );
 
 const headers = {
@@ -6952,7 +6952,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/risks/explicabo/emergency-plan';
+$url = 'https://intuit-risks.iviou.ch/api/risks/ipsum/emergency-plan';
 $response = $client-&gt;post(
     $url,
     [
@@ -7040,10 +7040,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-risks--id--emergency-plan"
-               value="explicabo"
+               value="ipsum"
                data-component="url">
     <br>
-<p>The ID of the risk. Example: <code>explicabo</code></p>
+<p>The ID of the risk. Example: <code>ipsum</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -7101,16 +7101,16 @@ Validate and update the risk evaluation details for the given risk ID.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/register/risks" \
+    "https://intuit-risks.iviou.ch/register/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"newEvaluationData\": [
         {
-            \"id\": 1,
+            \"id\": 3,
             \"probability\": 3,
-            \"impact\": 18
+            \"impact\": 2
         }
     ]
 }"
@@ -7119,7 +7119,7 @@ Validate and update the risk evaluation details for the given risk ID.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register/risks"
+    "https://intuit-risks.iviou.ch/register/risks"
 );
 
 const headers = {
@@ -7131,9 +7131,9 @@ const headers = {
 let body = {
     "newEvaluationData": [
         {
-            "id": 1,
+            "id": 3,
             "probability": 3,
-            "impact": 18
+            "impact": 2
         }
     ]
 };
@@ -7147,7 +7147,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register/risks';
+$url = 'https://intuit-risks.iviou.ch/register/risks';
 $response = $client-&gt;patch(
     $url,
     [
@@ -7159,9 +7159,9 @@ $response = $client-&gt;patch(
         'json' =&gt; [
             'newEvaluationData' =&gt; [
                 [
-                    'id' =&gt; 1,
+                    'id' =&gt; 3,
                     'probability' =&gt; 3,
-                    'impact' =&gt; 18,
+                    'impact' =&gt; 2,
                 ],
             ],
         ],
@@ -7278,10 +7278,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="newEvaluationData.0.id"                data-endpoint="PATCHregister-risks"
-               value="1"
+               value="3"
                data-component="body">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>3</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>probability</code></b>&nbsp;&nbsp;
@@ -7300,10 +7300,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="newEvaluationData.0.impact"                data-endpoint="PATCHregister-risks"
-               value="18"
+               value="2"
                data-component="body">
     <br>
-<p>Example: <code>18</code></p>
+<p>Example: <code>2</code></p>
                     </div>
                                     </details>
         </div>
@@ -7327,21 +7327,21 @@ and associates it with the currently authenticated user.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/evaluations" \
+    "https://intuit-risks.iviou.ch/api/evaluations" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"risk_id\": 12,
+    \"risk_id\": 14,
     \"probability\": 1,
-    \"impact\": 3
+    \"impact\": 2
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/evaluations"
+    "https://intuit-risks.iviou.ch/api/evaluations"
 );
 
 const headers = {
@@ -7351,9 +7351,9 @@ const headers = {
 };
 
 let body = {
-    "risk_id": 12,
+    "risk_id": 14,
     "probability": 1,
-    "impact": 3
+    "impact": 2
 };
 
 fetch(url, {
@@ -7365,7 +7365,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/evaluations';
+$url = 'https://intuit-risks.iviou.ch/api/evaluations';
 $response = $client-&gt;post(
     $url,
     [
@@ -7375,9 +7375,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'risk_id' =&gt; 12,
+            'risk_id' =&gt; 14,
             'probability' =&gt; 1,
-            'impact' =&gt; 3,
+            'impact' =&gt; 2,
         ],
     ]
 );
@@ -7458,10 +7458,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="risk_id"                data-endpoint="POSTapi-evaluations"
-               value="12"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>12</code></p>
+<p>Example: <code>14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>probability</code></b>&nbsp;&nbsp;
@@ -7480,10 +7480,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="impact"                data-endpoint="POSTapi-evaluations"
-               value="3"
+               value="2"
                data-component="body">
     <br>
-<p>Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5. Example: <code>3</code></p>
+<p>Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5. Example: <code>2</code></p>
         </div>
         </form>
 
@@ -7507,7 +7507,7 @@ Add new precursors for a company risk.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/precursors" \
+    "https://intuit-risks.iviou.ch/api/precursors" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7515,7 +7515,7 @@ Add new precursors for a company risk.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/precursors"
+    "https://intuit-risks.iviou.ch/api/precursors"
 );
 
 const headers = {
@@ -7532,7 +7532,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/precursors';
+$url = 'https://intuit-risks.iviou.ch/api/precursors';
 $response = $client-&gt;post(
     $url,
     [
@@ -7631,7 +7631,7 @@ Delete specified precursors by their IDs.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/precursors" \
+    "https://intuit-risks.iviou.ch/api/precursors" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7639,7 +7639,7 @@ Delete specified precursors by their IDs.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/precursors"
+    "https://intuit-risks.iviou.ch/api/precursors"
 );
 
 const headers = {
@@ -7656,7 +7656,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/precursors';
+$url = 'https://intuit-risks.iviou.ch/api/precursors';
 $response = $client-&gt;delete(
     $url,
     [
@@ -7755,7 +7755,7 @@ Update the status of a specific precursor.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/api/precursors" \
+    "https://intuit-risks.iviou.ch/api/precursors" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7763,7 +7763,7 @@ Update the status of a specific precursor.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/precursors"
+    "https://intuit-risks.iviou.ch/api/precursors"
 );
 
 const headers = {
@@ -7780,7 +7780,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/precursors';
+$url = 'https://intuit-risks.iviou.ch/api/precursors';
 $response = $client-&gt;patch(
     $url,
     [
@@ -7884,7 +7884,7 @@ Return the data to be rendered on the `IntuitRisks/Risks` view.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/intuit-risks/risks" \
+    --get "https://intuit-risks.iviou.ch/intuit-risks/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7892,7 +7892,7 @@ Return the data to be rendered on the `IntuitRisks/Risks` view.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/intuit-risks/risks"
+    "https://intuit-risks.iviou.ch/intuit-risks/risks"
 );
 
 const headers = {
@@ -7909,7 +7909,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/intuit-risks/risks';
+$url = 'https://intuit-risks.iviou.ch/intuit-risks/risks';
 $response = $client-&gt;get(
     $url,
     [
@@ -8045,22 +8045,22 @@ Associate the risk with the specified organization types.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/intuit-risks/risks" \
+    "https://intuit-risks.iviou.ch/intuit-risks/risks" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"tempore\",
-    \"category\": \"optio\",
-    \"desc\": \"sint\",
-    \"organization_types\": \"facere\"
+    \"name\": \"laboriosam\",
+    \"category\": \"ea\",
+    \"desc\": \"consequatur\",
+    \"organization_types\": \"voluptatem\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/intuit-risks/risks"
+    "https://intuit-risks.iviou.ch/intuit-risks/risks"
 );
 
 const headers = {
@@ -8070,10 +8070,10 @@ const headers = {
 };
 
 let body = {
-    "name": "tempore",
-    "category": "optio",
-    "desc": "sint",
-    "organization_types": "facere"
+    "name": "laboriosam",
+    "category": "ea",
+    "desc": "consequatur",
+    "organization_types": "voluptatem"
 };
 
 fetch(url, {
@@ -8085,7 +8085,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/intuit-risks/risks';
+$url = 'https://intuit-risks.iviou.ch/intuit-risks/risks';
 $response = $client-&gt;post(
     $url,
     [
@@ -8095,10 +8095,10 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'tempore',
-            'category' =&gt; 'optio',
-            'desc' =&gt; 'sint',
-            'organization_types' =&gt; 'facere',
+            'name' =&gt; 'laboriosam',
+            'category' =&gt; 'ea',
+            'desc' =&gt; 'consequatur',
+            'organization_types' =&gt; 'voluptatem',
         ],
     ]
 );
@@ -8208,10 +8208,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTintuit-risks-risks"
-               value="tempore"
+               value="laboriosam"
                data-component="body">
     <br>
-<p>Example: <code>tempore</code></p>
+<p>Example: <code>laboriosam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
@@ -8219,10 +8219,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTintuit-risks-risks"
-               value="optio"
+               value="ea"
                data-component="body">
     <br>
-<p>Example: <code>optio</code></p>
+<p>Example: <code>ea</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>desc</code></b>&nbsp;&nbsp;
@@ -8230,10 +8230,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="desc"                data-endpoint="POSTintuit-risks-risks"
-               value="sint"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>sint</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>organization_types</code></b>&nbsp;&nbsp;
@@ -8241,10 +8241,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="organization_types"                data-endpoint="POSTintuit-risks-risks"
-               value="facere"
+               value="voluptatem"
                data-component="body">
     <br>
-<p>Example: <code>facere</code></p>
+<p>Example: <code>voluptatem</code></p>
         </div>
         </form>
 
@@ -8266,22 +8266,22 @@ Update the associated organization types for the risk.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/intuit-risks/risks/at" \
+    "https://intuit-risks.iviou.ch/intuit-risks/risks/eum" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"unde\",
-    \"category\": \"quia\",
-    \"desc\": \"eos\",
-    \"organization_types\": \"voluptas\"
+    \"name\": \"ipsam\",
+    \"category\": \"cum\",
+    \"desc\": \"occaecati\",
+    \"organization_types\": \"perspiciatis\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/intuit-risks/risks/at"
+    "https://intuit-risks.iviou.ch/intuit-risks/risks/eum"
 );
 
 const headers = {
@@ -8291,10 +8291,10 @@ const headers = {
 };
 
 let body = {
-    "name": "unde",
-    "category": "quia",
-    "desc": "eos",
-    "organization_types": "voluptas"
+    "name": "ipsam",
+    "category": "cum",
+    "desc": "occaecati",
+    "organization_types": "perspiciatis"
 };
 
 fetch(url, {
@@ -8306,7 +8306,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/intuit-risks/risks/at';
+$url = 'https://intuit-risks.iviou.ch/intuit-risks/risks/eum';
 $response = $client-&gt;patch(
     $url,
     [
@@ -8316,10 +8316,10 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'unde',
-            'category' =&gt; 'quia',
-            'desc' =&gt; 'eos',
-            'organization_types' =&gt; 'voluptas',
+            'name' =&gt; 'ipsam',
+            'category' =&gt; 'cum',
+            'desc' =&gt; 'occaecati',
+            'organization_types' =&gt; 'perspiciatis',
         ],
     ]
 );
@@ -8429,10 +8429,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHintuit-risks-risks--id-"
-               value="at"
+               value="eum"
                data-component="url">
     <br>
-<p>The ID of the risk. Example: <code>at</code></p>
+<p>The ID of the risk. Example: <code>eum</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -8441,10 +8441,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="PATCHintuit-risks-risks--id-"
-               value="unde"
+               value="ipsam"
                data-component="body">
     <br>
-<p>Example: <code>unde</code></p>
+<p>Example: <code>ipsam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
@@ -8452,10 +8452,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="PATCHintuit-risks-risks--id-"
-               value="quia"
+               value="cum"
                data-component="body">
     <br>
-<p>Example: <code>quia</code></p>
+<p>Example: <code>cum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>desc</code></b>&nbsp;&nbsp;
@@ -8463,10 +8463,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="desc"                data-endpoint="PATCHintuit-risks-risks--id-"
-               value="eos"
+               value="occaecati"
                data-component="body">
     <br>
-<p>Example: <code>eos</code></p>
+<p>Example: <code>occaecati</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>organization_types</code></b>&nbsp;&nbsp;
@@ -8474,10 +8474,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="organization_types"                data-endpoint="PATCHintuit-risks-risks--id-"
-               value="voluptas"
+               value="perspiciatis"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>perspiciatis</code></p>
         </div>
         </form>
 
@@ -8501,7 +8501,7 @@ Sets the user&#039;s registration step to 3 to indicate progress in the registra
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/register/risks/validate" \
+    "https://intuit-risks.iviou.ch/register/risks/validate" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8509,7 +8509,7 @@ Sets the user&#039;s registration step to 3 to indicate progress in the registra
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/register/risks/validate"
+    "https://intuit-risks.iviou.ch/register/risks/validate"
 );
 
 const headers = {
@@ -8526,7 +8526,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/register/risks/validate';
+$url = 'https://intuit-risks.iviou.ch/register/risks/validate';
 $response = $client-&gt;post(
     $url,
     [
@@ -8635,14 +8635,14 @@ and any status messages from the session.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/profile" \
+    --get "https://intuit-risks.iviou.ch/profile" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/profile"
+    "https://intuit-risks.iviou.ch/profile"
 );
 
 const headers = {
@@ -8658,7 +8658,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/profile';
+$url = 'https://intuit-risks.iviou.ch/profile';
 $response = $client-&gt;get(
     $url,
     [
@@ -8683,7 +8683,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-set-cookie: XSRF-TOKEN=eyJpdiI6IkZHOGxuaXNyVnVCSlBYUGlzVHkvclE9PSIsInZhbHVlIjoiMTgwL05VWGZlZkRkbWdPZG1DT1U2am02VHFTQmRsR3NodklGaGpRWi9hSjlZZ2pYVTRZQjY4UHkyVGc4Sk4yV3JaRWxQSk16STY4TUZVYmQxcHJKRkRMZUxjWEt3NC9UbHZmWlhtOEoxZmZoa0daaU1GZlRPRExEL3pwQjg3RVYiLCJtYWMiOiJhYjNlNWY4MDI5MGU1Njg4ZjYzMGQxZWViNWVkM2VkYjYzYzNhNjA1OTBlNDcwODdiN2Y5NTFhNzc2YjU1OTdiIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6ImxwKzJPZHZmaTVRRnQ3Qnl0VnBzY0E9PSIsInZhbHVlIjoiZkNLMHJIbXhsTnBXWE9XelBzZFRyanRRclhYSmsvQkplRXRmVkx5ZVozK0ZOL3U4eFQ1VElWYytOSjBERWk3LzVTOEFLVUVRSzFpRWVEWGJiSHcxN2grc08yYnN4dEtyV00yVnRtSnJSNEdpdFQrWHhCN1dUd1grek9pSCtXOUsiLCJtYWMiOiI0OTJiN2M4NGZhYTk0N2RhMTUzOTlkNDRmNzhlY2EzYmZkZWZhNmY0NThmMjg0Yjk4MzY4NjhkZmEyMmUyMzk3IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6IllqTVU1QWpnTzhOUGdBaG1KajE1Q1E9PSIsInZhbHVlIjoiajNGcGNZcHBMUjV6bmVBN1VMcStvaXdqNUNJL3FqSjk4blhNYWNDM1Fka0U0eUdIbHNKUnBZWkpzQkFYVURJcE5IK0xIVU5HSFhybGYxcERUckg3a3pTSlYzbGdWWGtFcTgwTzZuaWcyTkRzQWYzbFF5RnYxNFNCRks2WDdVTTAiLCJtYWMiOiIzNDA1OGZiYzM3MmM5YTdlYTZhYmI0NjI0YmFmMWZkZjc3ZmEzZWZkMTJlOTkxNmJkZDM1OGE2NjhmY2E3MTE1IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6InBjVllxZHE4eXJwYUZFR2M3ZHFQSGc9PSIsInZhbHVlIjoia20ydTEwUkRDVDlhaG90R0Z5TzhjNks5Yk9UY095VlQ1bGlGd1BCS01iQmdOK3EyTTBGYUFiUERsVm9NVnhGd1d0Mkpob1RnQ0hTUjJFMU5na1g5dCtJM2Z4aGV2T0dWdUc5Y3o1M3ZOTjNReEp1WWFOSGV5T0o2THhqL2JjeTkiLCJtYWMiOiI4YWIwZGI5MmY1ODkzNDY0YTM5YWI5ODYzM2YyN2RiY2JiYjg2ZWQ3ODg0OWExYzJmM2Y4ODlhMGI2MTU1NjEyIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -8762,18 +8762,18 @@ Redirects to the homepage after the account is deleted.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/profile" \
+    "https://intuit-risks.iviou.ch/profile" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"password\": \"tempore\"
+    \"password\": \"omnis\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/profile"
+    "https://intuit-risks.iviou.ch/profile"
 );
 
 const headers = {
@@ -8782,7 +8782,7 @@ const headers = {
 };
 
 let body = {
-    "password": "tempore"
+    "password": "omnis"
 };
 
 fetch(url, {
@@ -8794,7 +8794,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/profile';
+$url = 'https://intuit-risks.iviou.ch/profile';
 $response = $client-&gt;delete(
     $url,
     [
@@ -8803,7 +8803,7 @@ $response = $client-&gt;delete(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'password' =&gt; 'tempore',
+            'password' =&gt; 'omnis',
         ],
     ]
 );
@@ -8873,10 +8873,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="DELETEprofile"
-               value="tempore"
+               value="omnis"
                data-component="body">
     <br>
-<p>Example: <code>tempore</code></p>
+<p>Example: <code>omnis</code></p>
         </div>
         </form>
 
@@ -8894,7 +8894,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/admin/users" \
+    --get "https://intuit-risks.iviou.ch/admin/users" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8902,7 +8902,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/admin/users"
+    "https://intuit-risks.iviou.ch/admin/users"
 );
 
 const headers = {
@@ -8919,7 +8919,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/admin/users';
+$url = 'https://intuit-risks.iviou.ch/admin/users';
 $response = $client-&gt;get(
     $url,
     [
@@ -8945,7 +8945,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-set-cookie: XSRF-TOKEN=eyJpdiI6IlVQRW9FZnlFWnh0NFp5TW1pVzhiMXc9PSIsInZhbHVlIjoieEtuem5CdlNXVkVkcmtrdlI1TGZxSnhEelowNUFuai8vcFgxK0JBbkF6QldoTm9acUlqK2gyUVAvUHFqS3Y2SnlIWGZ2S3hJWWxkaVBLYVZQMXFrZjVaZ25xdi84QWx2QW83MVZFd2ovZjYvRE1yZFdyRzE3Qzl5Y1NmRzZmVWUiLCJtYWMiOiI2MDJkOWQxMGM4YTYxOTI3ODJkN2Q1YWUwNTJjMTRlZDFjOGYzMzcwNjYzZThkOTUzMmFjNGZiOTI3NTc4ZmEzIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6Im40aTc2M01ubng0d3JDMGs0MUE3TUE9PSIsInZhbHVlIjoiVnROUkhYdm5nbmw4UC8vQlNaYkZMeU9KcHFIbC9TU1lqK2R1RmRmOWNYUnJ2MCt0UjAwaGpTWG11N1ByRlRDVTRhODJKNmd4UUFmcTdXREh4OUdteVBONnV0VktENXdwc2o4MzFaeTA4K3hPN05lZ2MwbnN5UHRBNHp3YWd5VUgiLCJtYWMiOiIxZmIyZTgwMzQ5OTE2Mjg0YjgyZDIxNTEyMDIyZDE0MDJlYmE0OWY2ZTY1YmM4NTQzZDY0ZDg3OWZlNjU5MjEyIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+set-cookie: XSRF-TOKEN=eyJpdiI6ImdXU0Y5aUdJTTliOEoxakZwVUNoN2c9PSIsInZhbHVlIjoibytrQXp2QmlZMXFKWnVNaXdMN21GbmJ1OFJPdGptbkM0SHFKZ2dINHJVOWVFUDhwKzMwVjRvK0NWY2NJQ2FpbnVIQ0xoaUpHdkdJZjNhTE1iWjdjLzdoU2RrdHNqWU9FcmQxOWg3NVJpbWZ0anE3RFA4bDN6bjkycXRnVEx3a3EiLCJtYWMiOiI0ZDJiODc1NjBlZjBkNGI0NDhjYjkyZDUzMjlkYmZhOTA4NmY1NTQyZTEwOTNiOWVlMzFjNmZkYjYwMzFmMzhjIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6InMxZ05yM2ZWcWVxekZ2SmV0Z1JBUnc9PSIsInZhbHVlIjoicFVMUkZ2aGtvdGZNbndWQkxDaEpQc29jdlAzbnl1Rm1nRGN1QUNsdUJySFMrUTR4bEl0MWNlaEJKdm01S0JDcG5kb0xHYjBhSVFiTlFmeVR4Mmo5d0lwTWVldjZMOGxYMGpnTHNGeGEvc3ZON2JqclhXQlhZbWpZNkVIeEc2MHMiLCJtYWMiOiI2MWM3Y2QzNWZkYzEyMGU5ZDk5NjVjOGU4ODFiYzdiMTU2NmRiN2E1MzViYjgyOTVjN2U0ZmIyZmYxOTJiNDMxIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; httponly; samesite=lax
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -9032,13 +9032,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/admin/users" \
+    "https://intuit-risks.iviou.ch/admin/users" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"eos\",
-    \"email\": \"jalen.paucek@example.org\",
+    \"name\": \"dignissimos\",
+    \"email\": \"brown76@example.com\",
     \"is_admin\": false
 }"
 </code></pre></div>
@@ -9046,7 +9046,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/admin/users"
+    "https://intuit-risks.iviou.ch/admin/users"
 );
 
 const headers = {
@@ -9056,8 +9056,8 @@ const headers = {
 };
 
 let body = {
-    "name": "eos",
-    "email": "jalen.paucek@example.org",
+    "name": "dignissimos",
+    "email": "brown76@example.com",
     "is_admin": false
 };
 
@@ -9070,7 +9070,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/admin/users';
+$url = 'https://intuit-risks.iviou.ch/admin/users';
 $response = $client-&gt;post(
     $url,
     [
@@ -9080,8 +9080,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'eos',
-            'email' =&gt; 'jalen.paucek@example.org',
+            'name' =&gt; 'dignissimos',
+            'email' =&gt; 'brown76@example.com',
             'is_admin' =&gt; false,
         ],
     ]
@@ -9163,10 +9163,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTadmin-users"
-               value="eos"
+               value="dignissimos"
                data-component="body">
     <br>
-<p>Example: <code>eos</code></p>
+<p>Example: <code>dignissimos</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -9174,10 +9174,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTadmin-users"
-               value="jalen.paucek@example.org"
+               value="brown76@example.com"
                data-component="body">
     <br>
-<p>Le champ value doit être une adresse e-mail valide. Example: <code>jalen.paucek@example.org</code></p>
+<p>Le champ value doit être une adresse e-mail valide. Example: <code>brown76@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_admin</code></b>&nbsp;&nbsp;
@@ -9216,20 +9216,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PATCH \
-    "http://localhost/admin/users" \
+    "https://intuit-risks.iviou.ch/admin/users" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"id\": \"saepe\",
-    \"update\": \"status\"
+    \"id\": \"dolorem\",
+    \"update\": \"admin\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/admin/users"
+    "https://intuit-risks.iviou.ch/admin/users"
 );
 
 const headers = {
@@ -9239,8 +9239,8 @@ const headers = {
 };
 
 let body = {
-    "id": "saepe",
-    "update": "status"
+    "id": "dolorem",
+    "update": "admin"
 };
 
 fetch(url, {
@@ -9252,7 +9252,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/admin/users';
+$url = 'https://intuit-risks.iviou.ch/admin/users';
 $response = $client-&gt;patch(
     $url,
     [
@@ -9262,8 +9262,8 @@ $response = $client-&gt;patch(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'id' =&gt; 'saepe',
-            'update' =&gt; 'status',
+            'id' =&gt; 'dolorem',
+            'update' =&gt; 'admin',
         ],
     ]
 );
@@ -9344,10 +9344,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="PATCHadmin-users"
-               value="saepe"
+               value="dolorem"
                data-component="body">
     <br>
-<p>Example: <code>saepe</code></p>
+<p>Example: <code>dolorem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>update</code></b>&nbsp;&nbsp;
@@ -9355,10 +9355,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="update"                data-endpoint="PATCHadmin-users"
-               value="status"
+               value="admin"
                data-component="body">
     <br>
-<p>Example: <code>status</code></p>
+<p>Example: <code>admin</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>status</code></li> <li><code>admin</code></li></ul>
         </div>
@@ -9380,7 +9380,7 @@ Retrieve a list of active users for the authenticated user&#039;s company.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/users" \
+    --get "https://intuit-risks.iviou.ch/api/users" \
     --header "Authorization: null" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -9388,7 +9388,7 @@ Retrieve a list of active users for the authenticated user&#039;s company.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/users"
+    "https://intuit-risks.iviou.ch/api/users"
 );
 
 const headers = {
@@ -9405,7 +9405,7 @@ fetch(url, {
 
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$url = 'http://localhost/api/users';
+$url = 'https://intuit-risks.iviou.ch/api/users';
 $response = $client-&gt;get(
     $url,
     [

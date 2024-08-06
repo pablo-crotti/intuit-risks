@@ -70,7 +70,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - evb6a8gc4VhZaEPf6d135kD
+      - Vh4ed6vZg51cEa6kPafD38b
     controller: null
     method: null
     route: null
@@ -105,7 +105,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: tempore
+        example: laboriosam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -114,7 +114,7 @@ endpoints:
         name: category
         description: ''
         required: true
-        example: optio
+        example: ea
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -123,7 +123,7 @@ endpoints:
         name: desc
         description: ''
         required: true
-        example: sint
+        example: consequatur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -132,16 +132,16 @@ endpoints:
         name: organization_types
         description: ''
         required: true
-        example: facere
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: tempore
-      category: optio
-      desc: sint
-      organization_types: facere
+      name: laboriosam
+      category: ea
+      desc: consequatur
+      organization_types: voluptatem
     fileParameters: []
     responses:
       -
@@ -176,7 +176,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - vgdDZ653aeh16E4cPaVk8bf
+      - cvVZ3adaeg66fbh4851DEkP
     controller: null
     method: null
     route: null
@@ -208,13 +208,13 @@ endpoints:
         name: id
         description: 'The ID of the risk.'
         required: true
-        example: at
+        example: eum
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: at
+      id: eum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -222,7 +222,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: unde
+        example: ipsam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -231,7 +231,7 @@ endpoints:
         name: category
         description: ''
         required: true
-        example: quia
+        example: cum
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -240,7 +240,7 @@ endpoints:
         name: desc
         description: ''
         required: true
-        example: eos
+        example: occaecati
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -249,16 +249,16 @@ endpoints:
         name: organization_types
         description: ''
         required: true
-        example: voluptas
+        example: perspiciatis
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: unde
-      category: quia
-      desc: eos
-      organization_types: voluptas
+      name: ipsam
+      category: cum
+      desc: occaecati
+      organization_types: perspiciatis
     fileParameters: []
     responses:
       -
@@ -293,7 +293,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 18E6cvgad6D4Vbf5ZhPka3e
+      - 6Pfch5a6VkZge31aED48bdv
     controller: null
     method: null
     route: null

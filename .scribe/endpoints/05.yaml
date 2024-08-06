@@ -35,7 +35,7 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IkZHOGxuaXNyVnVCSlBYUGlzVHkvclE9PSIsInZhbHVlIjoiMTgwL05VWGZlZkRkbWdPZG1DT1U2am02VHFTQmRsR3NodklGaGpRWi9hSjlZZ2pYVTRZQjY4UHkyVGc4Sk4yV3JaRWxQSk16STY4TUZVYmQxcHJKRkRMZUxjWEt3NC9UbHZmWlhtOEoxZmZoa0daaU1GZlRPRExEL3pwQjg3RVYiLCJtYWMiOiJhYjNlNWY4MDI5MGU1Njg4ZjYzMGQxZWViNWVkM2VkYjYzYzNhNjA1OTBlNDcwODdiN2Y5NTFhNzc2YjU1OTdiIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6ImxwKzJPZHZmaTVRRnQ3Qnl0VnBzY0E9PSIsInZhbHVlIjoiZkNLMHJIbXhsTnBXWE9XelBzZFRyanRRclhYSmsvQkplRXRmVkx5ZVozK0ZOL3U4eFQ1VElWYytOSjBERWk3LzVTOEFLVUVRSzFpRWVEWGJiSHcxN2grc08yYnN4dEtyV00yVnRtSnJSNEdpdFQrWHhCN1dUd1grek9pSCtXOUsiLCJtYWMiOiI0OTJiN2M4NGZhYTk0N2RhMTUzOTlkNDRmNzhlY2EzYmZkZWZhNmY0NThmMjg0Yjk4MzY4NjhkZmEyMmUyMzk3IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6IllqTVU1QWpnTzhOUGdBaG1KajE1Q1E9PSIsInZhbHVlIjoiajNGcGNZcHBMUjV6bmVBN1VMcStvaXdqNUNJL3FqSjk4blhNYWNDM1Fka0U0eUdIbHNKUnBZWkpzQkFYVURJcE5IK0xIVU5HSFhybGYxcERUckg3a3pTSlYzbGdWWGtFcTgwTzZuaWcyTkRzQWYzbFF5RnYxNFNCRks2WDdVTTAiLCJtYWMiOiIzNDA1OGZiYzM3MmM5YTdlYTZhYmI0NjI0YmFmMWZkZjc3ZmEzZWZkMTJlOTkxNmJkZDM1OGE2NjhmY2E3MTE1IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6InBjVllxZHE4eXJwYUZFR2M3ZHFQSGc9PSIsInZhbHVlIjoia20ydTEwUkRDVDlhaG90R0Z5TzhjNks5Yk9UY095VlQ1bGlGd1BCS01iQmdOK3EyTTBGYUFiUERsVm9NVnhGd1d0Mkpob1RnQ0hTUjJFMU5na1g5dCtJM2Z4aGV2T0dWdUc5Y3o1M3ZOTjNReEp1WWFOSGV5T0o2THhqL2JjeTkiLCJtYWMiOiI4YWIwZGI5MmY1ODkzNDY0YTM5YWI5ODYzM2YyN2RiY2JiYjg2ZWQ3ODg0OWExYzJmM2Y4ODlhMGI2MTU1NjEyIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
@@ -74,13 +74,13 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: tempore
+        example: omnis
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      password: tempore
+      password: omnis
     fileParameters: []
     responses: []
     responseFields: []
@@ -120,14 +120,14 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          set-cookie: 'XSRF-TOKEN=eyJpdiI6IlVQRW9FZnlFWnh0NFp5TW1pVzhiMXc9PSIsInZhbHVlIjoieEtuem5CdlNXVkVkcmtrdlI1TGZxSnhEelowNUFuai8vcFgxK0JBbkF6QldoTm9acUlqK2gyUVAvUHFqS3Y2SnlIWGZ2S3hJWWxkaVBLYVZQMXFrZjVaZ25xdi84QWx2QW83MVZFd2ovZjYvRE1yZFdyRzE3Qzl5Y1NmRzZmVWUiLCJtYWMiOiI2MDJkOWQxMGM4YTYxOTI3ODJkN2Q1YWUwNTJjMTRlZDFjOGYzMzcwNjYzZThkOTUzMmFjNGZiOTI3NTc4ZmEzIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6Im40aTc2M01ubng0d3JDMGs0MUE3TUE9PSIsInZhbHVlIjoiVnROUkhYdm5nbmw4UC8vQlNaYkZMeU9KcHFIbC9TU1lqK2R1RmRmOWNYUnJ2MCt0UjAwaGpTWG11N1ByRlRDVTRhODJKNmd4UUFmcTdXREh4OUdteVBONnV0VktENXdwc2o4MzFaeTA4K3hPN05lZ2MwbnN5UHRBNHp3YWd5VUgiLCJtYWMiOiIxZmIyZTgwMzQ5OTE2Mjg0YjgyZDIxNTEyMDIyZDE0MDJlYmE0OWY2ZTY1YmM4NTQzZDY0ZDg3OWZlNjU5MjEyIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
+          set-cookie: 'XSRF-TOKEN=eyJpdiI6ImdXU0Y5aUdJTTliOEoxakZwVUNoN2c9PSIsInZhbHVlIjoibytrQXp2QmlZMXFKWnVNaXdMN21GbmJ1OFJPdGptbkM0SHFKZ2dINHJVOWVFUDhwKzMwVjRvK0NWY2NJQ2FpbnVIQ0xoaUpHdkdJZjNhTE1iWjdjLzdoU2RrdHNqWU9FcmQxOWg3NVJpbWZ0anE3RFA4bDN6bjkycXRnVEx3a3EiLCJtYWMiOiI0ZDJiODc1NjBlZjBkNGI0NDhjYjkyZDUzMjlkYmZhOTA4NmY1NTQyZTEwOTNiOWVlMzFjNmZkYjYwMzFmMzhjIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; samesite=lax; intuitrisks_session=eyJpdiI6InMxZ05yM2ZWcWVxekZ2SmV0Z1JBUnc9PSIsInZhbHVlIjoicFVMUkZ2aGtvdGZNbndWQkxDaEpQc29jdlAzbnl1Rm1nRGN1QUNsdUJySFMrUTR4bEl0MWNlaEJKdm01S0JDcG5kb0xHYjBhSVFiTlFmeVR4Mmo5d0lwTWVldjZMOGxYMGpnTHNGeGEvc3ZON2JqclhXQlhZbWpZNkVIeEc2MHMiLCJtYWMiOiI2MWM3Y2QzNWZkYzEyMGU5ZDk5NjVjOGU4ODFiYzdiMTU2NmRiN2E1MzViYjgyOTVjN2U0ZmIyZmYxOTJiNDMxIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 13:54:45 GMT; Max-Age=7200; path=/; httponly; samesite=lax'
         description: null
         custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - E5PfvbZa6Dh631dgekVa4c8
+      - 5618g4baZfevE6kcaVd3hDP
     controller: null
     method: null
     route: null
@@ -158,7 +158,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: eos
+        example: dignissimos
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -167,7 +167,7 @@ endpoints:
         name: email
         description: 'Le champ value doit être une adresse e-mail valide.'
         required: true
-        example: jalen.paucek@example.org
+        example: brown76@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -182,8 +182,8 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: eos
-      email: jalen.paucek@example.org
+      name: dignissimos
+      email: brown76@example.com
       is_admin: false
     fileParameters: []
     responses: []
@@ -191,7 +191,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - E63aD6b5cke1VZfha8Pv4gd
+      - 3VDvPek51EafZg4b6a6c8hd
     controller: null
     method: null
     route: null
@@ -222,7 +222,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: saepe
+        example: dolorem
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -231,7 +231,7 @@ endpoints:
         name: update
         description: ''
         required: true
-        example: status
+        example: admin
         type: string
         enumValues:
           - status
@@ -239,15 +239,15 @@ endpoints:
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      id: saepe
-      update: status
+      id: dolorem
+      update: admin
     fileParameters: []
     responses: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - dbka6PV6453v8E1fcDgaheZ
+      - 485a1V3adEg66PeDkchZbvf
     controller: null
     method: null
     route: null
@@ -311,7 +311,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - haPa831Vck6E5bge6v4dZfD
+      - PVfvagc6365hZ14d8ekEbDa
     controller: null
     method: null
     route: null

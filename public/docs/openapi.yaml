@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'http://localhost'
+    url: 'https://intuit-risks.iviou.ch'
 paths:
   /register:
     get:
@@ -93,7 +93,7 @@ paths:
                 name:
                   type: string
                   description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
-                  example: pxffqavvbmpjaycudsxgncvld
+                  example: ajajshdzqvx
                 email:
                   type: string
                   description: ''
@@ -101,7 +101,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: et
+                  example: sequi
                 terms:
                   type: boolean
                   description: 'Must be accepted.'
@@ -133,7 +133,7 @@ paths:
         in: path
         name: token
         description: ''
-        example: iure
+        example: autem
         required: true
         schema:
           type: string
@@ -215,7 +215,7 @@ paths:
                 token:
                   type: string
                   description: ''
-                  example: sit
+                  example: cumque
               required:
                 - password
                 - terms
@@ -272,11 +272,11 @@ paths:
                 email:
                   type: string
                   description: 'Le champ value doit être une adresse e-mail valide.'
-                  example: kobe.conn@example.com
+                  example: anais.macejkovic@example.com
                 password:
                   type: string
                   description: ''
-                  example: '5L~/G{Zc0'
+                  example: R4lqUk$(>
               required:
                 - email
                 - password
@@ -343,7 +343,7 @@ paths:
                 email:
                   type: string
                   description: 'Le champ value doit être une adresse e-mail valide.'
-                  example: reuben83@example.net
+                  example: kertzmann.kenyon@example.com
               required:
                 - email
       security: []
@@ -378,7 +378,7 @@ paths:
         in: path
         name: token
         description: ''
-        example: vel
+        example: dolores
         required: true
         schema:
           type: string
@@ -436,15 +436,15 @@ paths:
                 token:
                   type: string
                   description: ''
-                  example: dignissimos
+                  example: aut
                 email:
                   type: string
                   description: 'Le champ value doit être une adresse e-mail valide.'
-                  example: kathlyn.shields@example.org
+                  example: odietrich@example.org
                 password:
                   type: string
                   description: ''
-                  example: et
+                  example: sint
               required:
                 - token
                 - email
@@ -508,7 +508,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the verify email.'
-        example: sunt
+        example: iure
         required: true
         schema:
           type: string
@@ -516,7 +516,7 @@ paths:
         in: path
         name: hash
         description: ''
-        example: quia
+        example: repudiandae
         required: true
         schema:
           type: string
@@ -665,11 +665,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: aliquid
                 password:
                   type: string
                   description: ''
-                  example: eveniet
+                  example: sit
               required:
                 - current_password
                 - password
@@ -903,27 +903,27 @@ paths:
                 name:
                   type: string
                   description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
-                  example: utrlcdvieudui
+                  example: vdcwsl
                 organization:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 7
                 sector:
                   type: string
                   description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
-                  example: eeyyawxxkvutdemmrgjv
+                  example: cdmpdwgwksjdmatlxeak
                 country:
                   type: integer
                   description: ''
-                  example: 2
+                  example: 3
                 employees:
                   type: integer
                   description: 'Le champ value doit être au moins de 0.'
-                  example: 13
+                  example: 74
                 city:
                   type: string
                   description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
-                  example: vrhoyr
+                  example: w
               required:
                 - name
                 - organization
@@ -1324,7 +1324,7 @@ paths:
                       id:
                         type: integer
                         description: ''
-                        example: 1
+                        example: 3
                       probability:
                         type: integer
                         description: ''
@@ -1332,7 +1332,7 @@ paths:
                       impact:
                         type: integer
                         description: ''
-                        example: 18
+                        example: 2
                     required:
                       - id
                       - probability
@@ -1635,7 +1635,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the risk.'
-        example: porro
+        example: dolorem
         required: true
         schema:
           type: string
@@ -1673,11 +1673,11 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: provident
+                  example: repellat
                 description:
                   type: string
                   description: ''
-                  example: 'Delectus non dicta unde facilis non voluptatum.'
+                  example: 'Voluptas sed voluptatem sequi.'
                 category:
                   type: object
                   description: ''
@@ -1686,11 +1686,11 @@ paths:
                 probability:
                   type: number
                   description: ''
-                  example: 3323478.45
+                  example: 0.737065223
                 impact:
                   type: number
                   description: ''
-                  example: 282.61232
+                  example: 2440522.9929
               required:
                 - title
                 - description
@@ -1716,11 +1716,11 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: rerum
+                  example: nihil
                 description:
                   type: string
                   description: ''
-                  example: 'Pariatur aut impedit quasi dolores debitis rem voluptatem.'
+                  example: 'Aut officia et est molestiae quasi sed ex provident.'
                 category:
                   type: object
                   description: ''
@@ -1729,7 +1729,7 @@ paths:
                 frequency:
                   type: number
                   description: ''
-                  example: 23825.952471754
+                  example: 4.4
               required:
                 - title
                 - description
@@ -1740,7 +1740,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the risk.'
-        example: dolore
+        example: nam
         required: true
         schema:
           type: string
@@ -1763,7 +1763,7 @@ paths:
                 strategy:
                   type: string
                   description: ''
-                  example: animi
+                  example: eos
               required:
                 - strategy
     parameters:
@@ -1771,7 +1771,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the risk.'
-        example: quasi
+        example: exercitationem
         required: true
         schema:
           type: string
@@ -1957,11 +1957,11 @@ paths:
                 responsible:
                   type: string
                   description: ''
-                  example: enim
+                  example: laudantium
                 task:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: corrupti
               required:
                 - responsible
                 - task
@@ -1970,7 +1970,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the risk.'
-        example: molestias
+        example: possimus
         required: true
         schema:
           type: string
@@ -1993,14 +1993,14 @@ paths:
                 status:
                   type: string
                   description: ''
-                  example: '-1'
+                  example: '1'
                   enum:
                     - '-1'
                     - '1'
                 remark:
                   type: string
                   description: ''
-                  example: qui
+                  example: incidunt
               required:
                 - status
     parameters:
@@ -2008,7 +2008,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the task.'
-        example: qui
+        example: eveniet
         required: true
         schema:
           type: string
@@ -2026,7 +2026,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the task.'
-        example: deleniti
+        example: mollitia
         required: true
         schema:
           type: string
@@ -2056,7 +2056,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: et
+        example: omnis
         required: true
         schema:
           type: string
@@ -2079,11 +2079,11 @@ paths:
                 task:
                   type: string
                   description: ''
-                  example: in
+                  example: culpa
                 responsible:
                   type: string
                   description: ''
-                  example: quas
+                  example: quo
               required:
                 - task
                 - responsible
@@ -2092,7 +2092,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: rerum
+        example: adipisci
         required: true
         schema:
           type: string
@@ -2110,7 +2110,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: voluptas
+        example: occaecati
         required: true
         schema:
           type: string
@@ -2128,7 +2128,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: quisquam
+        example: quasi
         required: true
         schema:
           type: string
@@ -2146,7 +2146,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: perspiciatis
+        example: ipsum
         required: true
         schema:
           type: string
@@ -2169,7 +2169,7 @@ paths:
                 id:
                   type: string
                   description: ''
-                  example: iusto
+                  example: repudiandae
               required:
                 - id
     parameters:
@@ -2177,7 +2177,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: itaque
+        example: laborum
         required: true
         schema:
           type: string
@@ -2200,11 +2200,11 @@ paths:
                 id:
                   type: string
                   description: ''
-                  example: quae
+                  example: sit
                 response:
                   type: string
                   description: ''
-                  example: quo
+                  example: rerum
               required:
                 - id
                 - response
@@ -2213,7 +2213,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the emergency plan.'
-        example: magnam
+        example: reprehenderit
         required: true
         schema:
           type: string
@@ -2253,7 +2253,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the risk.'
-        example: explicabo
+        example: ipsum
         required: true
         schema:
           type: string
@@ -2276,7 +2276,7 @@ paths:
                 risk_id:
                   type: integer
                   description: ''
-                  example: 12
+                  example: 14
                 probability:
                   type: integer
                   description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
@@ -2284,7 +2284,7 @@ paths:
                 impact:
                   type: integer
                   description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
-                  example: 3
+                  example: 2
               required:
                 - risk_id
                 - probability
@@ -2495,19 +2495,19 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: tempore
+                  example: laboriosam
                 category:
                   type: string
                   description: ''
-                  example: optio
+                  example: ea
                 desc:
                   type: string
                   description: ''
-                  example: sint
+                  example: consequatur
                 organization_types:
                   type: string
                   description: ''
-                  example: facere
+                  example: voluptatem
               required:
                 - name
                 - category
@@ -2583,19 +2583,19 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: unde
+                  example: ipsam
                 category:
                   type: string
                   description: ''
-                  example: quia
+                  example: cum
                 desc:
                   type: string
                   description: ''
-                  example: eos
+                  example: occaecati
                 organization_types:
                   type: string
                   description: ''
-                  example: voluptas
+                  example: perspiciatis
               required:
                 - name
                 - category
@@ -2606,7 +2606,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the risk.'
-        example: at
+        example: eum
         required: true
         schema:
           type: string
@@ -2661,7 +2661,7 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: tempore
+                  example: omnis
               required:
                 - password
       security: []
@@ -2704,11 +2704,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: eos
+                  example: dignissimos
                 email:
                   type: string
                   description: 'Le champ value doit être une adresse e-mail valide.'
-                  example: jalen.paucek@example.org
+                  example: brown76@example.com
                 is_admin:
                   type: boolean
                   description: ''
@@ -2735,11 +2735,11 @@ paths:
                 id:
                   type: string
                   description: ''
-                  example: saepe
+                  example: dolorem
                 update:
                   type: string
                   description: ''
-                  example: status
+                  example: admin
                   enum:
                     - status
                     - admin
