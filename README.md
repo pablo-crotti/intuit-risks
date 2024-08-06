@@ -47,6 +47,56 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 4. **Generate application key**
 
     ```bash
-    cp .env.example .env
+    php artisan key:generate
+
+    ```
+
+5. **Run migrations**
+
+    ```bash
+    php artisan migrate
+
+    ```
+
+6. **Install frontend dependencies**
+
+    ```bash
+    npm install
+
+    ```
+
+    or if using yarn:
+
+    ```bash
+    yarn install
+
+    ```
+
+7. **Run the development server**
+   Start the backend development server :
+
+    ```bash
+    php artisan serve
+
+    ```
+
+    And for the frontend development server, in a new terminal window :
+
+    ```bash
+    npm run dev
+    ```
+
+    or if using yarn :
+
+    ```bash
+    yarn dev
+    ```
+
+8. **Build frontend assets**
+
+    ```bash
+    npm run dev
+    /*OR*/
+    yarn dev
 
     ```
