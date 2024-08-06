@@ -24,7 +24,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::get('/cgi', function () {
     return Inertia::render('ConditionsGenerales');

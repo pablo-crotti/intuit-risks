@@ -9,13 +9,73 @@ use Inertia\Inertia;
 class CompanyRiskController extends Controller
 {
     /**
-     * The function `display` retrieves a CompanyRisk model with related data and returns it to an
-     * Inertia view for display.
+     * @group Company Risks
+     *
+     * Display the detailed view of a specific company risk.
+     *
+     * Retrieves the detailed information of a company risk based on the provided risk ID.
+     * Includes related data such as the author, category, evaluations, precursors, responsible individuals,
+     * reduction plan tasks, and emergency plan actions associated with the risk.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing the risk ID.
+     * @param int $request->route('id') The ID of the risk to be displayed.
      * 
-     * @return The `display` function is returning an Inertia response with the data of a specific
-     * CompanyRisk model loaded with its related author, category, evaluations, and precursors. The
-     * data is fetched based on the ID provided in the route parameters. The returned data is then
-     * passed to the 'Logged/Risk' Inertia view component under the 'risk' key.
+     * @return \Inertia\Response The Inertia response rendering the detailed view of the risk.
+     * @response 200 {
+     *   "risk": {
+     *     "id": 1,
+     *     "company_id": 1,
+     *     "author": {
+     *       "id": 1,
+     *       "name": "Author Name"
+     *     },
+     *     "category": {
+     *       "id": 1,
+     *       "name": "Category Name"
+     *     },
+     *     "name": "Risk Name",
+     *     "description": "Risk Description",
+     *     "evaluations": [
+     *       {
+     *         "id": 1,
+     *         "probability": 5,
+     *         "impact": 7
+     *       }
+     *     ],
+     *     "precursors": [
+     *       {
+     *         "id": 1,
+     *         "name": "Precursor Name"
+     *       }
+     *     ],
+     *     "responsible": [
+     *       {
+     *         "id": 1,
+     *         "name": "Responsible Person Name"
+     *       }
+     *     ],
+     *     "reductionPlanTasks": [
+     *       {
+     *         "id": 1,
+     *         "action": "Task Action",
+     *         "agent": {
+     *           "id": 1,
+     *           "name": "Agent Name"
+     *         }
+     *       }
+     *     ],
+     *     "emergencyPlanActions": [
+     *       {
+     *         "id": 1,
+     *         "action": "Emergency Plan Action",
+     *         "agent": {
+     *           "id": 1,
+     *           "name": "Agent Name"
+     *         }
+     *       }
+     *     ]
+     *   }
+     * }
      */
     public function display()
     {

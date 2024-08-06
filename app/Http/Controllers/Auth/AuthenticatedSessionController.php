@@ -14,7 +14,17 @@ use Inertia\Response;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * @group Authentication
+     *
+     * Show Login Form
+     *
+     * Display the login form to the user.
+     *
+     * @return \Inertia\Response A response rendering the login form view.
+     * @response 200 {
+     *   "canResetPassword": true,
+     *   "status": null
+     * }
      */
     public function create(): Response
     {
@@ -25,7 +35,16 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * @group Authentication
+     *
+     * Handle Authentication Request
+     *
+     * Authenticate the user and redirect to the intended location or dashboard.
+     *
+     * @param \App\Http\Requests\LoginRequest $request The request object for authentication.
+     * 
+     * @return \Illuminate\Http\RedirectResponse Redirects to the intended location or dashboard.
+     * @response 302 Redirect response to the intended route.
      */
     public function store(LoginRequest $request): RedirectResponse
     {
@@ -37,7 +56,17 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Destroy an authenticated session.
+     * @group Authentication
+     *
+     * Logout and Destroy Session
+     *
+     * Logout the authenticated user and destroy the session.
+     *
+     * @param \Illuminate\Http\Request $request The request object.
+     * 
+     * @return \Illuminate\Http\RedirectResponse Redirects to the home page.
+     * @response 302 Redirect response to the home page.
+     * @authenticated
      */
     public function destroy(Request $request): RedirectResponse
     {

@@ -1,0 +1,300 @@
+name: Risks
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: intuit-risks/risks
+    metadata:
+      groupName: Risks
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Display a list of risks.
+
+        Retrieve all risks with their associated categories and organization types.
+        Return the data to be rendered on the `IntuitRisks/Risks` view.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "risks": [
+              {
+                "id": 1,
+                "name": "Risk Example",
+                "category": {
+                  "id": 2,
+                  "name": "Category Example"
+                },
+                "organizationTypes": [
+                  {
+                    "id": 3,
+                    "name": "Organization Type Example"
+                  }
+                ]
+              }
+            ],
+            "categories": [
+              {
+                "id": 2,
+                "name": "Category Example"
+              }
+            ],
+            "organizations": [
+              {
+                "id": 3,
+                "name": "Organization Type Example"
+              }
+            ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - evb6a8gc4VhZaEPf6d135kD
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: intuit-risks/risks
+    metadata:
+      groupName: Risks
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Handle the creation of a new risk.
+
+        Validate the provided risk details and create a new risk entry in the database.
+        Associate the risk with the specified organization types.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: tempore
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      category:
+        name: category
+        description: ''
+        required: true
+        example: optio
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      desc:
+        name: desc
+        description: ''
+        required: true
+        example: sint
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      organization_types:
+        name: organization_types
+        description: ''
+        required: true
+        example: facere
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: tempore
+      category: optio
+      desc: sint
+      organization_types: facere
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: 'Redirect response back to the previous page with input.'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": [
+                "The name field is required."
+              ],
+              "category": [
+                "The category field is required."
+              ],
+              "desc": [
+                "The description field is required."
+              ],
+              "organization_types": [
+                "The organization types field is required."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - vgdDZ653aeh16E4cPaVk8bf
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'intuit-risks/risks/{id}'
+    metadata:
+      groupName: Risks
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Handle the updating of an existing risk.
+
+        Validate the provided risk details and update the existing risk entry in the database.
+        If no name is provided, toggle the active status of the risk instead.
+        Update the associated organization types for the risk.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the risk.'
+        required: true
+        example: at
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: at
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: unde
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      category:
+        name: category
+        description: ''
+        required: true
+        example: quia
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      desc:
+        name: desc
+        description: ''
+        required: true
+        example: eos
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      organization_types:
+        name: organization_types
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: unde
+      category: quia
+      desc: eos
+      organization_types: voluptas
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: 'Redirect response back to the previous page with input.'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "name": [
+                "The name field is required."
+              ],
+              "category": [
+                "The category field is required."
+              ],
+              "desc": [
+                "The description field is required."
+              ],
+              "organization_types": [
+                "The organization types field is required."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 18E6cvgad6D4Vbf5ZhPka3e
+    controller: null
+    method: null
+    route: null
+    custom: []

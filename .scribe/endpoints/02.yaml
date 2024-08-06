@@ -1,0 +1,640 @@
+name: 'Company Risks'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: register/risks
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Display the risks registration view.
+
+        Fetch and process risks based on the organization type of the authenticated user's company.
+        The risks are grouped by category, and categories are aggregated with their respective risk counts.
+        The view also includes the company's existing risks and the current registration step of the user.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "organization": {
+              "id": 1,
+              "name": "Organization Type Example",
+              "risks": [
+                {
+                  "id": 1,
+                  "name": "Risk Example",
+                  "category": {
+                    "id": 1,
+                    "name": "Category Example",
+                    "color": "#FF0000",
+                    "description_short": "Short description",
+                    "description_long": "Long description"
+                  },
+                  "is_active": true
+                }
+              ]
+            },
+            "categories": [
+              {
+                "id": 1,
+                "name": "Category Example",
+                "color": "#FF0000",
+                "description_short": "Short description",
+                "description_long": "Long description",
+                "risks_count": 1
+              }
+            ],
+            "risks": [
+              {
+                "category_id": 1,
+                "risks": [
+                  {
+                    "id": 1,
+                    "name": "Risk Example",
+                    "description": "Description",
+                    "probability": 5,
+                    "impact": 7
+                  }
+                ]
+              }
+            ],
+            "companyRisks": [
+              {
+                "id": 1,
+                "company_id": 1,
+                "author_id": 1,
+                "risk_id": 1,
+                "category_id": 1,
+                "name": "Risk Example",
+                "description": "Description",
+                "evaluations": [
+                  {
+                    "id": 1,
+                    "probability": 5,
+                    "impact": 7
+                  }
+                ]
+              }
+            ],
+            "registration_step": 2
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 4ha8k63a1VDPbv6fcg5eZdE
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: register/risks
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Store a new risk or update an existing one.
+
+        If the risk already exists, its evaluations and records are deleted. Otherwise, a new risk is created and evaluated.
+        The method validates the input and creates or updates the company risk and its evaluation.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: 'Redirect response to the previous page.'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "selectedRisk.*.id": [
+                "The id field is required and must be an integer."
+              ],
+              "selectedRisk.*.category": [
+                "The category field is required and must be an integer."
+              ],
+              "selectedRisk.*.name": [
+                "The name field is required."
+              ],
+              "selectedRisk.*.description": [
+                "The description field is required."
+              ],
+              "selectedRisk.*.probability": [
+                "The probability field is required and must be an integer."
+              ],
+              "selectedRisk.*.impact": [
+                "The impact field is required and must be an integer."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 1Ddc4fahkaEvVZ358e6gb6P
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: risks
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Display a list of risks associated with the authenticated user's company.
+
+        Retrieves all company risks related to the company of the currently authenticated user.
+        Includes related data such as risk details, categories, and evaluations.
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "risks": [
+              {
+                "id": 1,
+                "company_id": 1,
+                "risk": {
+                  "id": 1,
+                  "name": "Risk Name",
+                  "description": "Risk Description"
+                },
+                "category": {
+                  "id": 1,
+                  "name": "Category Name"
+                },
+                "evaluations": [
+                  {
+                    "id": 1,
+                    "probability": 5,
+                    "impact": 7
+                  }
+                ]
+              }
+            ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'risks/{id}'
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Display the detailed view of a specific company risk.
+
+        Retrieves the detailed information of a company risk based on the provided risk ID.
+        Includes related data such as the author, category, evaluations, precursors, responsible individuals,
+        reduction plan tasks, and emergency plan actions associated with the risk.
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the risk.'
+        required: true
+        example: porro
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: porro
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "risk": {
+              "id": 1,
+              "company_id": 1,
+              "author": {
+                "id": 1,
+                "name": "Author Name"
+              },
+              "category": {
+                "id": 1,
+                "name": "Category Name"
+              },
+              "name": "Risk Name",
+              "description": "Risk Description",
+              "evaluations": [
+                {
+                  "id": 1,
+                  "probability": 5,
+                  "impact": 7
+                }
+              ],
+              "precursors": [
+                {
+                  "id": 1,
+                  "name": "Precursor Name"
+                }
+              ],
+              "responsible": [
+                {
+                  "id": 1,
+                  "name": "Responsible Person Name"
+                }
+              ],
+              "reductionPlanTasks": [
+                {
+                  "id": 1,
+                  "action": "Task Action",
+                  "agent": {
+                    "id": 1,
+                    "name": "Agent Name"
+                  }
+                }
+              ],
+              "emergencyPlanActions": [
+                {
+                  "id": 1,
+                  "action": "Emergency Plan Action",
+                  "agent": {
+                    "id": 1,
+                    "name": "Agent Name"
+                  }
+                }
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/risks
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Get Company Risks
+
+        Retrieve a list of all risks associated with the authenticated user's company.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+            {
+              "id": 1,
+              "company_id": 1,
+              "author_id": 2,
+              "category_id": 3,
+              "name": "Risk Title",
+              "description": "Risk Description",
+              "created_at": "2024-01-01T00:00:00.000000Z",
+              "updated_at": "2024-01-01T00:00:00.000000Z"
+            },
+            // ... more risks
+          ]
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - VEbv6afZgh4c3d8DeaP6k15
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/risks
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Store a New Risk
+
+        Create a new risk for the authenticated user's company and evaluate it.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: ''
+        required: true
+        example: provident
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: 'Delectus non dicta unde facilis non voluptatum.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      category:
+        name: category
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      probability:
+        name: probability
+        description: ''
+        required: true
+        example: 3323478.45
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      impact:
+        name: impact
+        description: ''
+        required: true
+        example: 282.61232
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      title: provident
+      description: 'Delectus non dicta unde facilis non voluptatum.'
+      category: []
+      probability: 3323478.45
+      impact: 282.61232
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - v6a3k1ag8bE5fVDd6chP4eZ
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/risks/{id}'
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Update Risk Information
+
+        Update details of an existing risk, including category, title, description, and evaluation frequency.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the risk.'
+        required: true
+        example: dolore
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: dolore
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: ''
+        required: true
+        example: rerum
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: 'Pariatur aut impedit quasi dolores debitis rem voluptatem.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      category:
+        name: category
+        description: ''
+        required: true
+        example: []
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      frequency:
+        name: frequency
+        description: ''
+        required: true
+        example: 23825.952471754
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      title: rerum
+      description: 'Pariatur aut impedit quasi dolores debitis rem voluptatem.'
+      category: []
+      frequency: 23825.952471754
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 4hE6ed36Z8gfVvbD1aka5cP
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/risks/{id}/strategy'
+    metadata:
+      groupName: 'Company Risks'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Update Risk Strategy
+
+        Update the strategy associated with a specific risk.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the risk.'
+        required: true
+        example: quasi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: quasi
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      strategy:
+        name: strategy
+        description: ''
+        required: true
+        example: animi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      strategy: animi
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - aE6dfegPv4ba18h53V6kDcZ
+    controller: null
+    method: null
+    route: null
+    custom: []

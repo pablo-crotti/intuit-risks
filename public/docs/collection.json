@@ -1,0 +1,2163 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "IntuitRisks",
+        "_postman_id": "fa486486-73fc-4d25-babd-a7aa34d44d9d",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display Registration View\n\nShow the registration view for new users to create an account.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \/\/ Rendered view for user registration.\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle Registration Request\n\nValidate the registration details and create a new user account.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"pxffqavvbmpjaycudsxgncvld\",\"password\":\"et\",\"terms\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the company registration route.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"name\": [\n      \"The name field is required.\"\n    ],\n    \"email\": [\n      \"The email address is not valid or is already taken.\"\n    ],\n    \"password\": [\n      \"The password confirmation does not match.\"\n    ],\n    \"terms\": [\n      \"You must accept the terms and conditions.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display User Registration View\n\nShow the registration view for users who have received a registration token.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "user-register\/:token",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/user-register\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "iure",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"company\": {\n      \"id\": 1,\n      \"name\": \"Example Company\"\n    }\n  }\n  \/\/ Rendered view for user registration.\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle User Registration Request\n\nValidate the registration details and complete the registration process for the user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "user-register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/user-register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"password\":\"temporibus\",\"terms\":true,\"token\":\"sit\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the dashboard.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"password\": [\n      \"The password confirmation does not match.\"\n    ],\n    \"terms\": [\n      \"You must accept the terms and conditions.\"\n    ],\n    \"token\": [\n      \"The registration token is required.\"\n    ],\n    \"avatar\": [\n      \"The avatar must be an image of type jpeg, png, jpg, gif, or svg and must not exceed 2048 kilobytes.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Show Login Form\n\nDisplay the login form to the user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/login"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"canResetPassword\": true,\n  \"status\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle Authentication Request\n\nAuthenticate the user and redirect to the intended location or dashboard.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"kobe.conn@example.com\",\"password\":\"5L~\\\/G{Zc0\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the intended route.",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display Password Reset Link Request View\n\nShow the view where users can request a password reset link.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "forgot-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/forgot-password"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": \"some-status\"\n  \/\/ Rendered view for requesting a password reset link.\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle Password Reset Link Request\n\nValidate the email address and handle the request to send a password reset link.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "forgot-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/forgot-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"reuben83@example.net\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response back to the previous page with a status message.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"email\": [\n      \"The email address is not valid or does not exist.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display Password Reset View\n\nShow the password reset view to the user, prefilled with email and token.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "reset-password\/:token",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/reset-password\/:token",
+                            "variable": [
+                                {
+                                    "id": "token",
+                                    "key": "token",
+                                    "value": "vel",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"email\": \"user@example.com\",\n  \"token\": \"reset-token-value\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle New Password Request\n\nValidate and handle the request to reset the user's password.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "reset-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/reset-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"token\":\"dignissimos\",\"email\":\"kathlyn.shields@example.org\",\"password\":\"et\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the login route with a status message.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"email\": [\n      \"The provided email is incorrect or expired.\"\n    ],\n    \"password\": [\n      \"The password confirmation does not match.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display Email Verification Prompt\n\nDisplay the email verification prompt if the user's email is not verified,\notherwise redirect to the dashboard.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "verify-email",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/verify-email"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": \"verification-link-sent\"\n  \/\/ Rendered view for email verification prompt.\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the dashboard if the email is verified.",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Mark Email as Verified\n\nMark the authenticated user's email address as verified.\nIf the email is already verified, redirect to the dashboard with a `verified` query parameter.\nIf the email is not verified, mark it as verified and trigger the Verified event.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "verify-email\/:id\/:hash",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/verify-email\/:id\/:hash",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sunt",
+                                    "description": "The ID of the verify email."
+                                },
+                                {
+                                    "id": "hash",
+                                    "key": "hash",
+                                    "value": "quia",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Email verified successfully.\"\n  \/\/ Redirects to the dashboard with `?verified=1` if the email is verified.\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the dashboard with a `verified` query parameter.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n  \"message\": \"Unauthorized\"\n  \/\/ If the request is made by a user who is not authenticated.\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Send Email Verification Notification\n\nSend a new email verification notification to the user if their email is not verified.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "email\/verification-notification",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/email\/verification-notification"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": \"verification-link-sent\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response back to the previous page with a status message.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n  \"message\": \"You are not authorized to access this resource.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Show Confirm Password View\n\nDisplay the view for confirming the user's password.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "confirm-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/confirm-password"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \/\/ Rendered view for password confirmation.\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Confirm User's Password\n\nValidate the user's password to confirm their identity.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "confirm-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/confirm-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the intended route.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"password\": [\n      \"The provided password is incorrect.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update User's Password\n\nValidate and update the user's password.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/password"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"current_password\":\"voluptas\",\"password\":\"eveniet\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response back to the previous page.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"current_password\": [\n      \"The current password is incorrect.\"\n    ],\n    \"password\": [\n      \"The password confirmation does not match.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout and Destroy Session\n\nLogout the authenticated user and destroy the session.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the home page.",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Categories",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get All Categories\n\nRetrieve a list of all categories.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/categories",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/categories"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Electronics\",\n    \"created_at\": \"2023-08-01T00:00:00.000000Z\",\n    \"updated_at\": \"2023-08-01T00:00:00.000000Z\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Books\",\n    \"created_at\": \"2023-08-01T00:00:00.000000Z\",\n    \"updated_at\": \"2023-08-01T00:00:00.000000Z\"\n  }\n  \/\/ ... more categories\n]",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Company",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Company Information\n\nRetrieve detailed information about the authenticated user's company, including its organization type and country.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/company",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/company"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"id\": 1,\n  \"name\": \"Acme Corporation\",\n  \"organization_type\": {\n    \"id\": 2,\n    \"type\": \"LLC\"\n  },\n  \"country\": {\n    \"id\": 1,\n    \"name\": \"United States\"\n  },\n  \"created_at\": \"2023-08-01T00:00:00.000000Z\",\n  \"updated_at\": \"2023-08-01T00:00:00.000000Z\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Company Registration",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the company registration view.\n\nRetrieve all organizations and countries, and render the `Logged\/Registration\/Company` view.\nThe view includes lists of organizations and countries for user selection.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register\/company",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register\/company"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"organizations\": [\n    {\n      \"id\": 1,\n      \"name\": \"Organization Type Example\"\n    }\n  ],\n  \"countries\": [\n    {\n      \"id\": 1,\n      \"name\": \"Country Example\"\n    }\n  ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle the creation of a new company.\n\nValidate the provided company details and create a new company entry in the database.\nUpdate the authenticated user's company ID and registration step.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register\/company",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register\/company"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"utrlcdvieudui\",\"organization\":11,\"sector\":\"eeyyawxxkvutdemmrgjv\",\"country\":2,\"employees\":13,\"city\":\"vrhoyr\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the route for registering risks.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"name\": [\n      \"The name field is required.\"\n    ],\n    \"organization\": [\n      \"The organization field is required and must be an integer.\"\n    ],\n    \"sector\": [\n      \"The sector field is required.\"\n    ],\n    \"country\": [\n      \"The country field is required and must be an integer.\"\n    ],\n    \"employees\": [\n      \"The employees field is required and must be an integer with a minimum value of 0.\"\n    ],\n    \"city\": [\n      \"The city field is required.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Company Risks",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the risks registration view.\n\nFetch and process risks based on the organization type of the authenticated user's company.\nThe risks are grouped by category, and categories are aggregated with their respective risk counts.\nThe view also includes the company's existing risks and the current registration step of the user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register\/risks"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"organization\": {\n    \"id\": 1,\n    \"name\": \"Organization Type Example\",\n    \"risks\": [\n      {\n        \"id\": 1,\n        \"name\": \"Risk Example\",\n        \"category\": {\n          \"id\": 1,\n          \"name\": \"Category Example\",\n          \"color\": \"#FF0000\",\n          \"description_short\": \"Short description\",\n          \"description_long\": \"Long description\"\n        },\n        \"is_active\": true\n      }\n    ]\n  },\n  \"categories\": [\n    {\n      \"id\": 1,\n      \"name\": \"Category Example\",\n      \"color\": \"#FF0000\",\n      \"description_short\": \"Short description\",\n      \"description_long\": \"Long description\",\n      \"risks_count\": 1\n    }\n  ],\n  \"risks\": [\n    {\n      \"category_id\": 1,\n      \"risks\": [\n        {\n          \"id\": 1,\n          \"name\": \"Risk Example\",\n          \"description\": \"Description\",\n          \"probability\": 5,\n          \"impact\": 7\n        }\n      ]\n    }\n  ],\n  \"companyRisks\": [\n    {\n      \"id\": 1,\n      \"company_id\": 1,\n      \"author_id\": 1,\n      \"risk_id\": 1,\n      \"category_id\": 1,\n      \"name\": \"Risk Example\",\n      \"description\": \"Description\",\n      \"evaluations\": [\n        {\n          \"id\": 1,\n          \"probability\": 5,\n          \"impact\": 7\n        }\n      ]\n    }\n  ],\n  \"registration_step\": 2\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a new risk or update an existing one.\n\nIf the risk already exists, its evaluations and records are deleted. Otherwise, a new risk is created and evaluated.\nThe method validates the input and creates or updates the company risk and its evaluation.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register\/risks"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response to the previous page.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"selectedRisk.*.id\": [\n      \"The id field is required and must be an integer.\"\n    ],\n    \"selectedRisk.*.category\": [\n      \"The category field is required and must be an integer.\"\n    ],\n    \"selectedRisk.*.name\": [\n      \"The name field is required.\"\n    ],\n    \"selectedRisk.*.description\": [\n      \"The description field is required.\"\n    ],\n    \"selectedRisk.*.probability\": [\n      \"The probability field is required and must be an integer.\"\n    ],\n    \"selectedRisk.*.impact\": [\n      \"The impact field is required and must be an integer.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a list of risks associated with the authenticated user's company.\n\nRetrieves all company risks related to the company of the currently authenticated user.\nIncludes related data such as risk details, categories, and evaluations.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/risks"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"risks\": [\n    {\n      \"id\": 1,\n      \"company_id\": 1,\n      \"risk\": {\n        \"id\": 1,\n        \"name\": \"Risk Name\",\n        \"description\": \"Risk Description\"\n      },\n      \"category\": {\n        \"id\": 1,\n        \"name\": \"Category Name\"\n      },\n      \"evaluations\": [\n        {\n          \"id\": 1,\n          \"probability\": 5,\n          \"impact\": 7\n        }\n      ]\n    }\n  ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the detailed view of a specific company risk.\n\nRetrieves the detailed information of a company risk based on the provided risk ID.\nIncludes related data such as the author, category, evaluations, precursors, responsible individuals,\nreduction plan tasks, and emergency plan actions associated with the risk.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "risks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/risks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "porro",
+                                    "description": "The ID of the risk."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"risk\": {\n    \"id\": 1,\n    \"company_id\": 1,\n    \"author\": {\n      \"id\": 1,\n      \"name\": \"Author Name\"\n    },\n    \"category\": {\n      \"id\": 1,\n      \"name\": \"Category Name\"\n    },\n    \"name\": \"Risk Name\",\n    \"description\": \"Risk Description\",\n    \"evaluations\": [\n      {\n        \"id\": 1,\n        \"probability\": 5,\n        \"impact\": 7\n      }\n    ],\n    \"precursors\": [\n      {\n        \"id\": 1,\n        \"name\": \"Precursor Name\"\n      }\n    ],\n    \"responsible\": [\n      {\n        \"id\": 1,\n        \"name\": \"Responsible Person Name\"\n      }\n    ],\n    \"reductionPlanTasks\": [\n      {\n        \"id\": 1,\n        \"action\": \"Task Action\",\n        \"agent\": {\n          \"id\": 1,\n          \"name\": \"Agent Name\"\n        }\n      }\n    ],\n    \"emergencyPlanActions\": [\n      {\n        \"id\": 1,\n        \"action\": \"Emergency Plan Action\",\n        \"agent\": {\n          \"id\": 1,\n          \"name\": \"Agent Name\"\n        }\n      }\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Company Risks\n\nRetrieve a list of all risks associated with the authenticated user's company.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risks"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"company_id\": 1,\n    \"author_id\": 2,\n    \"category_id\": 3,\n    \"name\": \"Risk Title\",\n    \"description\": \"Risk Description\",\n    \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n    \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n  },\n  \/\/ ... more risks\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a New Risk\n\nCreate a new risk for the authenticated user's company and evaluate it.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risks"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"provident\",\"description\":\"Delectus non dicta unde facilis non voluptatum.\",\"category\":[],\"probability\":3323478.45,\"impact\":282.61232}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Risk Information\n\nUpdate details of an existing risk, including category, title, description, and evaluation frequency.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolore",
+                                    "description": "The ID of the risk."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"rerum\",\"description\":\"Pariatur aut impedit quasi dolores debitis rem voluptatem.\",\"category\":[],\"frequency\":23825.952471754}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Risk Strategy\n\nUpdate the strategy associated with a specific risk.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risks\/:id\/strategy",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risks\/:id\/strategy",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quasi",
+                                    "description": "The ID of the risk."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"strategy\":\"animi\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the company dashboard with risk evaluations and statistics.\n\nRetrieves and processes data to display on the dashboard, including:\n- Total number of risks\n- Categorization of risks into low, moderate, and critical based on their evaluations\n- Recent evaluations with the highest criticality\n- Detailed information about the most critical risks",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "dashboard",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/dashboard"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"company\": {\n    \"id\": 1,\n    \"name\": \"Company Name\",\n    \"sector\": \"Sector\",\n    \"country\": \"Country\",\n    \"employees\": 100,\n    \"city\": \"City\"\n  },\n  \"totalRisks\": 25,\n  \"criticalityCategories\": {\n    \"low\": 5,\n    \"moderate\": 10,\n    \"critical\": 10\n  },\n  \"evaluations\": [\n    {\n      \"id\": 1,\n      \"company_risk_id\": 1,\n      \"probability\": 2,\n      \"impact\": 3,\n      \"created_at\": \"2024-08-01T00:00:00Z\"\n    }\n  ],\n  \"mainRisks\": [\n    {\n      \"id\": 1,\n      \"company_risk_id\": 1,\n      \"probability\": 5,\n      \"impact\": 7,\n      \"companyRisk\": {\n        \"id\": 1,\n        \"name\": \"Risk Name\",\n        \"description\": \"Risk Description\",\n        \"category\": {\n          \"id\": 1,\n          \"name\": \"Category Name\"\n        }\n      }\n    }\n  ]\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Reduction Plans",
+            "description": "",
+            "item": [
+                {
+                    "name": "Store Reduction Plans Task\n\nCreate a new task associated with a risk reduction plan.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risks\/:id\/tasks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risks\/:id\/tasks",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "molestias",
+                                    "description": "The ID of the risk."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"responsible\":\"enim\",\"task\":\"voluptatem\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Reduction Plans\n\nUpdate the status and optional remark of a specific task.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reduction-plan\/tasks\/:id\/evaluate",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reduction-plan\/tasks\/:id\/evaluate",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "qui",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"status\":\"-1\",\"remark\":\"qui\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete a Task\n\nDelete a specific task by its ID.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/reduction-plan\/tasks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/reduction-plan\/tasks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "deleniti",
+                                    "description": "The ID of the task."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Risk Emergency Plan",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the emergency plan execution view for a specific risk.\n\nRetrieves and displays the emergency plan details for the specified risk.\nIf the `emergencyPlanStatus` of the risk is 0 (not executed), redirects to the dashboard.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "et",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6ImthTW9CK0JueGt3VWM2OUhOMHpoZGc9PSIsInZhbHVlIjoicVhXNko1UGExU2JqWnZIandGVzlNdlF5d3VGZzJlUmVCdDFDN2pDRlVEVlY1TVVFNndNNjk1ZmJPRXdzM1NHSnBpcDU3ZDRJaHgxdGtpcjUveUZEemo0RC9tRlBKaXorQjFqMnNZVXVqK1RENjM2QkdzZzhPbUUyMm9xbFFpamEiLCJtYWMiOiJmNWI2MTNmZTBlZGRjYjRjYWU0ZWUyYjQyZjUwN2U0OGRmMDgzZmFjNzFiYWYzZDEwYWEwNjRjODRmYTQ0M2E1IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=\/; samesite=lax; intuitrisks_session=eyJpdiI6IktVYTJqSjFRT3Bja3FaUHRvWWRCbFE9PSIsInZhbHVlIjoianNJSHp3TXU1dENIL0YzQkpPZ2VUVU5pQVQ1UFY5QzZDQ0I4WWwrRjkvOUV3Q3hpblZHTnRucWtjVU1iWitvamlEbWxlTDdyRVBSZG9SMERYdzRhOUZDQmM2SjdvUUVFRFNxdEVPU1FiWmh6OXJXTWlwOUl3OERhcktEMXVMMFkiLCJtYWMiOiI2ZWIxNjBkMzU4OWJjOGYxOGQxMjJlMmU4OGE5NWRhZWYzZWYzNDZiZWYwMWI1YTNhNzM1YmI4MWI1MjQ1YjJhIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the responsible agent for a specific emergency plan action.\n\nValidates the request for task ID and responsible agent ID,\nthen updates the responsible agent for the specified emergency plan action.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id\/agents",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id\/agents",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "rerum",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"task\":\"in\",\"responsible\":\"quas\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark the emergency plan of a specific risk as executed.\n\nUpdates the `emergencyPlanStatus` of the specified risk to 1 (executed).\nRedirects the user back to the dashboard.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id\/execute",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id\/execute",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "voluptas",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark the emergency plan of a specific risk as started.\n\nUpdates the `emergencyPlanStatus` of the specified risk to 2 (started).",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id\/start",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id\/start",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quisquam",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark the emergency plan of a specific risk as ended.\n\nUpdates the `emergencyPlanStatus` of the specified risk to 0 (ended),\nand resets all associated emergency plan actions.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id\/end",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id\/end",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "perspiciatis",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark a specific emergency plan action as done.\n\nValidates the request for action ID, then updates the action status to 1 (done).",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id\/action-done",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id\/action-done",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "itaque",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"iusto\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Provide a response for a specific emergency plan action.\n\nValidates the request for action ID and response text,\nthen updates the action's response field.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "emergency-plan\/:id\/action-response",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/emergency-plan\/:id\/action-response",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "magnam",
+                                    "description": "The ID of the emergency plan."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"quae\",\"response\":\"quo\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store Risk Emergency Plan Actions\n\nStore new risk emergency plan actions and delete specified actions.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/risks\/:id\/emergency-plan",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/risks\/:id\/emergency-plan",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "explicabo",
+                                    "description": "The ID of the risk."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Risk Evaluation",
+            "description": "",
+            "item": [
+                {
+                    "name": "Update the evaluation of an existing risk.\n\nValidate and update the risk evaluation details for the given risk ID.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register\/risks"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"newEvaluationData\":[{\"id\":1,\"probability\":3,\"impact\":18}]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "No content.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"newEvaluationData.*.id\": [\n      \"The id field is required and must be an integer.\"\n    ],\n    \"newEvaluationData.*.probability\": [\n      \"The probability field is required and must be an integer.\"\n    ],\n    \"newEvaluationData.*.impact\": [\n      \"The impact field is required and must be an integer.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a new risk evaluation for a company.\n\nValidates the incoming request data to ensure that all required fields are present and within valid ranges.\nCreates a new `CompanyRiskEvaluation` instance with the provided risk ID, probability, and impact values,\nand associates it with the currently authenticated user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/evaluations",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/evaluations"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"risk_id\":12,\"probability\":1,\"impact\":3}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Risk Precursors",
+            "description": "",
+            "item": [
+                {
+                    "name": "Store Precursors\n\nAdd new precursors for a company risk.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/precursors",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/precursors"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Precursors\n\nDelete specified precursors by their IDs.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/precursors",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/precursors"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Precursor Status\n\nUpdate the status of a specific precursor.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/precursors",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/precursors"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Risks",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a list of risks.\n\nRetrieve all risks with their associated categories and organization types.\nReturn the data to be rendered on the `IntuitRisks\/Risks` view.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "intuit-risks\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/intuit-risks\/risks"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"risks\": [\n    {\n      \"id\": 1,\n      \"name\": \"Risk Example\",\n      \"category\": {\n        \"id\": 2,\n        \"name\": \"Category Example\"\n      },\n      \"organizationTypes\": [\n        {\n          \"id\": 3,\n          \"name\": \"Organization Type Example\"\n        }\n      ]\n    }\n  ],\n  \"categories\": [\n    {\n      \"id\": 2,\n      \"name\": \"Category Example\"\n    }\n  ],\n  \"organizations\": [\n    {\n      \"id\": 3,\n      \"name\": \"Organization Type Example\"\n    }\n  ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle the creation of a new risk.\n\nValidate the provided risk details and create a new risk entry in the database.\nAssociate the risk with the specified organization types.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "intuit-risks\/risks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/intuit-risks\/risks"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"tempore\",\"category\":\"optio\",\"desc\":\"sint\",\"organization_types\":\"facere\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response back to the previous page with input.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"name\": [\n      \"The name field is required.\"\n    ],\n    \"category\": [\n      \"The category field is required.\"\n    ],\n    \"desc\": [\n      \"The description field is required.\"\n    ],\n    \"organization_types\": [\n      \"The organization types field is required.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Handle the updating of an existing risk.\n\nValidate the provided risk details and update the existing risk entry in the database.\nIf no name is provided, toggle the active status of the risk instead.\nUpdate the associated organization types for the risk.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "intuit-risks\/risks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/intuit-risks\/risks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "at",
+                                    "description": "The ID of the risk."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"unde\",\"category\":\"quia\",\"desc\":\"eos\",\"organization_types\":\"voluptas\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 302,
+                            "body": "Redirect response back to the previous page with input.",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"errors\": {\n    \"name\": [\n      \"The name field is required.\"\n    ],\n    \"category\": [\n      \"The category field is required.\"\n    ],\n    \"desc\": [\n      \"The description field is required.\"\n    ],\n    \"organization_types\": [\n      \"The organization types field is required.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Registration",
+            "description": "",
+            "item": [
+                {
+                    "name": "Update the user's registration step to the next phase.\n\nSets the user's registration step to 3 to indicate progress in the registration process.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "register\/risks\/validate",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/register\/risks\/validate"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "No content.",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the user's profile form.\n\nRenders the profile edit page with information about whether the user's email must be verified\nand any status messages from the session.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "profile",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/profile"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IkZHOGxuaXNyVnVCSlBYUGlzVHkvclE9PSIsInZhbHVlIjoiMTgwL05VWGZlZkRkbWdPZG1DT1U2am02VHFTQmRsR3NodklGaGpRWi9hSjlZZ2pYVTRZQjY4UHkyVGc4Sk4yV3JaRWxQSk16STY4TUZVYmQxcHJKRkRMZUxjWEt3NC9UbHZmWlhtOEoxZmZoa0daaU1GZlRPRExEL3pwQjg3RVYiLCJtYWMiOiJhYjNlNWY4MDI5MGU1Njg4ZjYzMGQxZWViNWVkM2VkYjYzYzNhNjA1OTBlNDcwODdiN2Y5NTFhNzc2YjU1OTdiIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=\/; samesite=lax; intuitrisks_session=eyJpdiI6ImxwKzJPZHZmaTVRRnQ3Qnl0VnBzY0E9PSIsInZhbHVlIjoiZkNLMHJIbXhsTnBXWE9XelBzZFRyanRRclhYSmsvQkplRXRmVkx5ZVozK0ZOL3U4eFQ1VElWYytOSjBERWk3LzVTOEFLVUVRSzFpRWVEWGJiSHcxN2grc08yYnN4dEtyV00yVnRtSnJSNEdpdFQrWHhCN1dUd1grek9pSCtXOUsiLCJtYWMiOiI0OTJiN2M4NGZhYTk0N2RhMTUzOTlkNDRmNzhlY2EzYmZkZWZhNmY0NThmMjg0Yjk4MzY4NjhkZmEyMmUyMzk3IiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete the user's account.\n\nValidates that the provided password is correct, then logs out the user,\ndeletes the user's account, and invalidates and regenerates the session.\nRedirects to the homepage after the account is deleted.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "profile",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/profile"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"password\":\"tempore\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Company Users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "admin\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/admin\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieve all users for the authenticated user's company."
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "set-cookie",
+                                    "value": "XSRF-TOKEN=eyJpdiI6IlVQRW9FZnlFWnh0NFp5TW1pVzhiMXc9PSIsInZhbHVlIjoieEtuem5CdlNXVkVkcmtrdlI1TGZxSnhEelowNUFuai8vcFgxK0JBbkF6QldoTm9acUlqK2gyUVAvUHFqS3Y2SnlIWGZ2S3hJWWxkaVBLYVZQMXFrZjVaZ25xdi84QWx2QW83MVZFd2ovZjYvRE1yZFdyRzE3Qzl5Y1NmRzZmVWUiLCJtYWMiOiI2MDJkOWQxMGM4YTYxOTI3ODJkN2Q1YWUwNTJjMTRlZDFjOGYzMzcwNjYzZThkOTUzMmFjNGZiOTI3NTc4ZmEzIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=\/; samesite=lax; intuitrisks_session=eyJpdiI6Im40aTc2M01ubng0d3JDMGs0MUE3TUE9PSIsInZhbHVlIjoiVnROUkhYdm5nbmw4UC8vQlNaYkZMeU9KcHFIbC9TU1lqK2R1RmRmOWNYUnJ2MCt0UjAwaGpTWG11N1ByRlRDVTRhODJKNmd4UUFmcTdXREh4OUdteVBONnV0VktENXdwc2o4MzFaeTA4K3hPN05lZ2MwbnN5UHRBNHp3YWd5VUgiLCJtYWMiOiIxZmIyZTgwMzQ5OTE2Mjg0YjgyZDIxNTEyMDIyZDE0MDJlYmE0OWY2ZTY1YmM4NTQzZDY0ZDg3OWZlNjU5MjEyIiwidGFnIjoiIn0%3D; expires=Tue, 06 Aug 2024 11:11:56 GMT; Max-Age=7200; path=\/; httponly; samesite=lax"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a New User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "admin\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/admin\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"eos\",\"email\":\"jalen.paucek@example.org\",\"is_admin\":false}"
+                        },
+                        "description": "Create a new user for the authenticated user's company."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User Information",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "admin\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/admin\/users"
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"saepe\",\"update\":\"status\"}"
+                        },
+                        "description": "Update the status or admin role of a specific user."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Active Users\n\nRetrieve a list of active users for the authenticated user's company.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"company_id\": 1,\n    \"is_deleted\": false,\n    \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n    \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Jane Smith\",\n    \"email\": \"janesmith@example.com\",\n    \"company_id\": 1,\n    \"is_deleted\": false,\n    \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n    \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n  }\n  \/\/ ... more users\n]",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "apikey",
+        "apikey": [
+            {
+                "key": "in",
+                "value": "header",
+                "type": "string"
+            },
+            {
+                "key": "key",
+                "value": "Authorization",
+                "type": "string"
+            }
+        ]
+    }
+}

@@ -11,11 +11,61 @@ use App\Models\CompanyRiskEvaluation;
 class DashboardController extends Controller
 {
     /**
-     * The function retrieves and processes data related to company risks and evaluations for display
-     * on dashboard.
+     * @group Dashboard
+     *
+     * Display the company dashboard with risk evaluations and statistics.
+     *
+     * Retrieves and processes data to display on the dashboard, including:
+     * - Total number of risks
+     * - Categorization of risks into low, moderate, and critical based on their evaluations
+     * - Recent evaluations with the highest criticality
+     * - Detailed information about the most critical risks
      * 
-     * @return The code snippet provided is a PHP function that is invoked when called. It performs the
-     * following actions:
+     * @return \Inertia\Response The Inertia response rendering the dashboard view with the following data:
+     * 
+     * @response 200 {
+     *   "company": {
+     *     "id": 1,
+     *     "name": "Company Name",
+     *     "sector": "Sector",
+     *     "country": "Country",
+     *     "employees": 100,
+     *     "city": "City"
+     *   },
+     *   "totalRisks": 25,
+     *   "criticalityCategories": {
+     *     "low": 5,
+     *     "moderate": 10,
+     *     "critical": 10
+     *   },
+     *   "evaluations": [
+     *     {
+     *       "id": 1,
+     *       "company_risk_id": 1,
+     *       "probability": 2,
+     *       "impact": 3,
+     *       "created_at": "2024-08-01T00:00:00Z"
+     *     }
+     *   ],
+     *   "mainRisks": [
+     *     {
+     *       "id": 1,
+     *       "company_risk_id": 1,
+     *       "probability": 5,
+     *       "impact": 7,
+     *       "companyRisk": {
+     *         "id": 1,
+     *         "name": "Risk Name",
+     *         "description": "Risk Description",
+     *         "category": {
+     *           "id": 1,
+     *           "name": "Category Name"
+     *         }
+     *       }
+     *     }
+     *   ]
+     * }
+     * @authenticated
      */
     public function __invoke()
     {

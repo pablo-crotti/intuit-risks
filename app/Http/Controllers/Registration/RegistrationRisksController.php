@@ -14,15 +14,79 @@ class RegistrationRisksController extends Controller
 {
 
     /**
-     * The index function retrieves organization, risk categories, risks, and company risks data for
-     * display in a web page.
-     * 
-     * @return The `index` function is returning data to be used in a view. The data being returned
-     * includes:
-     * - 'organization': The organization type with risks and categories
-     * - 'categories': An array of categories with their details and the count of associated risks
-     * - 'risks': Risks grouped by category ID
-     * - 'companyRisks': Company risks with evaluations, filtered by the company ID
+     * @group Company Risks
+     *
+     * Display the risks registration view.
+     *
+     * Fetch and process risks based on the organization type of the authenticated user's company.
+     * The risks are grouped by category, and categories are aggregated with their respective risk counts.
+     * The view also includes the company's existing risks and the current registration step of the user.
+     *
+     * @return \Inertia\Response The Inertia response rendering the risks registration view.
+     * @response 200 {
+     *   "organization": {
+     *     "id": 1,
+     *     "name": "Organization Type Example",
+     *     "risks": [
+     *       {
+     *         "id": 1,
+     *         "name": "Risk Example",
+     *         "category": {
+     *           "id": 1,
+     *           "name": "Category Example",
+     *           "color": "#FF0000",
+     *           "description_short": "Short description",
+     *           "description_long": "Long description"
+     *         },
+     *         "is_active": true
+     *       }
+     *     ]
+     *   },
+     *   "categories": [
+     *     {
+     *       "id": 1,
+     *       "name": "Category Example",
+     *       "color": "#FF0000",
+     *       "description_short": "Short description",
+     *       "description_long": "Long description",
+     *       "risks_count": 1
+     *     }
+     *   ],
+     *   "risks": [
+     *     {
+     *       "category_id": 1,
+     *       "risks": [
+     *         {
+     *           "id": 1,
+     *           "name": "Risk Example",
+     *           "description": "Description",
+     *           "probability": 5,
+     *           "impact": 7
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "companyRisks": [
+     *     {
+     *       "id": 1,
+     *       "company_id": 1,
+     *       "author_id": 1,
+     *       "risk_id": 1,
+     *       "category_id": 1,
+     *       "name": "Risk Example",
+     *       "description": "Description",
+     *       "evaluations": [
+     *         {
+     *           "id": 1,
+     *           "probability": 5,
+     *           "impact": 7
+     *         }
+     *       ]
+     *     }
+     *   ],
+     *   "registration_step": 2
+     * }
+     * @authenticated
      */
     public function index()
     {
@@ -68,11 +132,49 @@ class RegistrationRisksController extends Controller
     }
 
     /**
-     * The function `store` checks if a company risk already exists, deletes existing evaluations and
-     * the risk if found, otherwise creates a new company risk and evaluation.
+     * @group Company Risks
+     *
+     * Store a new risk or update an existing one.
+     *
+     * If the risk already exists, its evaluations and records are deleted. Otherwise, a new risk is created and evaluated.
+     * The method validates the input and creates or updates the company risk and its evaluation.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing risk details.
+     * @param array $request->selectedRisk The selected risk details.
+     * @param int $request->selectedRisk.id The ID of the risk.
+     * @param int $request->selectedRisk.category The ID of the risk category.
+     * @param string $request->selectedRisk.name The name of the risk.
+     * @param string $request->selectedRisk.description The description of the risk.
+     * @param int $request->selectedRisk.probability The probability of the risk.
+     * @param int $request->selectedRisk.impact The impact of the risk.
      * 
-     * @param Request request The `store` function you provided is responsible for storing company
-     * risks and their evaluations based on the request data.
+     * @return \Illuminate\Http\RedirectResponse Redirects back with input after processing.
+     * @response 302 Redirect response to the previous page.
+     * 
+     * @throws \Illuminate\Validation\ValidationException If validation fails for any risk details.
+     * @response 422 {
+     *   "errors": {
+     *     "selectedRisk.*.id": [
+     *       "The id field is required and must be an integer."
+     *     ],
+     *     "selectedRisk.*.category": [
+     *       "The category field is required and must be an integer."
+     *     ],
+     *     "selectedRisk.*.name": [
+     *       "The name field is required."
+     *     ],
+     *     "selectedRisk.*.description": [
+     *       "The description field is required."
+     *     ],
+     *     "selectedRisk.*.probability": [
+     *       "The probability field is required and must be an integer."
+     *     ],
+     *     "selectedRisk.*.impact": [
+     *       "The impact field is required and must be an integer."
+     *     ]
+     *   }
+     * }
+     * @authenticated
      */
     public function store(Request $request)
     {
@@ -120,13 +222,36 @@ class RegistrationRisksController extends Controller
     }
 
     /**
-     * The update function in the PHP code snippet updates the probability and impact values of a
-     * company risk evaluation based on the provided request data, while the validate function updates
-     * the registration step of the authenticated user to 3.
+     * @group Risk Evaluation
+     *
+     * Update the evaluation of an existing risk.
+     *
+     * Validate and update the risk evaluation details for the given risk ID.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing evaluation details.
+     * @param array $request->newEvaluationData The new evaluation data.
+     * @param int $request->newEvaluationData.id The ID of the risk evaluation.
+     * @param int $request->newEvaluationData.probability The new probability value.
+     * @param int $request->newEvaluationData.impact The new impact value.
      * 
-     * @param Request request In the `update` function, you are trying to update the probability and
-     * impact values of a CompanyRiskEvaluation based on the data received in the request. However,
-     * there are a couple of issues in your code:
+     * @return void
+     * @response 204 No content.
+     * 
+     * @throws \Illuminate\Validation\ValidationException If validation fails for evaluation data.
+     * @response 422 {
+     *   "errors": {
+     *     "newEvaluationData.*.id": [
+     *       "The id field is required and must be an integer."
+     *     ],
+     *     "newEvaluationData.*.probability": [
+     *       "The probability field is required and must be an integer."
+     *     ],
+     *     "newEvaluationData.*.impact": [
+     *       "The impact field is required and must be an integer."
+     *     ]
+     *   }
+     * }
+     * @authenticated
      */
     public function update(Request $request)
     {
@@ -144,6 +269,17 @@ class RegistrationRisksController extends Controller
         $evaluation->save();
     }
 
+    /**
+     * @group User Registration
+     *
+     * Update the user's registration step to the next phase.
+     *
+     * Sets the user's registration step to 3 to indicate progress in the registration process.
+     *
+     * @return void
+     * @response 204 No content.
+     * @authenticated
+     */
     public function validate()
     {
         $user_id = auth()->user()->id;

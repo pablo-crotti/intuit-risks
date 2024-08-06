@@ -1,45 +1,21 @@
-import MistralClient from "@mistralai/mistralai";
-// import ollama from "ollama"
+import ollama from "ollama"
 
-const mistral = new MistralClient(import.meta.env.VITE_MISTRAL_API_KEY);
 
-/**
- * Sends a message to Mistral AI and returns the response.
- *
- * @param {Array<Object>} message - An array of message objects. Each object should have 'role' and 'content' properties.
- * @param {string} message.role - The role of the message sender (either 'system' or 'user').
- * @param {string} message.content - The content of the message.
- * @returns {Promise<Object>} A promise that resolves to the parsed JSON response from Mistral AI.
- * @throws {Error} Throws an error if there's a problem with the Mistral AI request.
- */
+
 const askMistral = async (message) => {
     try {
-        const completion = await mistral.chat({
-            model: "mistral-small-latest",
+        const completion = await ollama.chat({
+            model: "mistral",
             response_format: { type: "json_object" },
             messages: message,
 
         });
-        return JSON.parse(completion.choices[0].message.content);
+
+        return JSON.parse(completion.message.content)
     } catch (error) {
         throw new Error("Une erreur est survenue, veuillez réessayer.");
     }
 }
-
-// const askMistral = async (message) => {
-//     try {
-//         const completion = await ollama.chat({
-//             model: "mistral",
-//             response_format: { type: "json_object" },
-//             messages: message,
-
-//         });
-
-//         return JSON.parse(completion.message.content)
-//     } catch (error) {
-//         throw new Error("Une erreur est survenue, veuillez réessayer.");
-//     }
-// }
 
 /**
  * Asks Mistral AI to establish an emergency plan for a given risk.

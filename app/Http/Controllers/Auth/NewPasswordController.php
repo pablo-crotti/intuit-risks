@@ -17,7 +17,21 @@ use Inertia\Response;
 class NewPasswordController extends Controller
 {
     /**
-     * Display the password reset view.
+     * @group Authentication
+     *
+     * Display Password Reset View
+     *
+     * Show the password reset view to the user, prefilled with email and token.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing the email and token.
+     * @param string $request->email The email address of the user requesting a password reset.
+     * @param string $request->route('token') The token for password reset from the route.
+     * 
+     * @return \Inertia\Response A response rendering the password reset view.
+     * @response 200 {
+     *   "email": "user@example.com",
+     *   "token": "reset-token-value"
+     * }
      */
     public function create(Request $request): Response
     {
@@ -28,9 +42,32 @@ class NewPasswordController extends Controller
     }
 
     /**
-     * Handle an incoming new password request.
+     * @group Authentication
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * Handle New Password Request
+     *
+     * Validate and handle the request to reset the user's password.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing reset details.
+     * @param string $request->token The password reset token.
+     * @param string $request->email The email address of the user.
+     * @param string $request->password The new password.
+     * @param string $request->password_confirmation The confirmation of the new password.
+     * 
+     * @return \Illuminate\Http\RedirectResponse Redirects to the login page upon successful password reset.
+     * @response 302 Redirect response to the login route with a status message.
+     * 
+     * @throws \Illuminate\Validation\ValidationException If validation fails.
+     * @response 422 {
+     *   "errors": {
+     *     "email": [
+     *       "The provided email is incorrect or expired."
+     *     ],
+     *     "password": [
+     *       "The password confirmation does not match."
+     *     ]
+     *   }
+     * }
      */
     public function store(Request $request): RedirectResponse
     {

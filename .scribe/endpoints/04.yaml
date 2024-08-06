@@ -1,0 +1,46 @@
+name: 'User Registration'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: register/risks/validate
+    metadata:
+      groupName: 'User Registration'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Update the user's registration step to the next phase.
+
+        Sets the user's registration step to 3 to indicate progress in the registration process.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 204
+        content: 'No content.'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - a6fhv38bc4V6dZ5kE1DePga
+    controller: null
+    method: null
+    route: null
+    custom: []

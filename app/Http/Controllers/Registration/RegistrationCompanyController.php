@@ -14,13 +14,30 @@ use Inertia\Inertia;
 class RegistrationCompanyController extends Controller
 {
     /**
-     * The function retrieves and returns a list of countries and organization types for display in a
-     * company registration form using the Inertia.js framework.
+     * @group Company Registration
+     *
+     * Display the company registration view.
+     *
+     * Retrieve all organizations and countries, and render the `Logged/Registration/Company` view.
+     * The view includes lists of organizations and countries for user selection.
+     *
+     * @return \Inertia\Response The Inertia response rendering the company registration view.
+     * @response 200 {
+     *   "organizations": [
+     *     {
+     *       "id": 1,
+     *       "name": "Organization Type Example"
+     *     }
+     *   ],
+     *   "countries": [
+     *     {
+     *       "id": 1,
+     *       "name": "Country Example"
+     *     }
+     *   ]
+     * }
      * 
-     * @return The `display` function is returning a view called 'Company' with data for organizations
-     * and countries. The data for organizations is fetched from the `OrganizationType` model and the
-     * data for countries is fetched from the `Country` model, both sorted alphabetically. The data is
-     * then passed to the view using Inertia for rendering.
+     * @authenticated
      */
     public function display()
     {
@@ -32,15 +49,48 @@ class RegistrationCompanyController extends Controller
     }
 
     /**
-     * The function stores company information provided in a request, associates it with the
-     * authenticated user, and redirects to the next registration step for managing risks.
+     * @group Company Registration
+     *
+     * Handle the creation of a new company.
+     *
+     * Validate the provided company details and create a new company entry in the database.
+     * Update the authenticated user's company ID and registration step.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing company details.
+     * @param string $request->name The name of the company.
+     * @param int $request->organization The ID of the organization type.
+     * @param string $request->sector The sector in which the company operates.
+     * @param int $request->country The ID of the country where the company is based.
+     * @param int $request->employees The number of employees in the company.
+     * @param string $request->city The city where the company is located.
      * 
-     * @param Request request The `store` function you provided is a controller method that handles
-     * storing a new company record in a database. It expects a `Request` object as a parameter, which
-     * contains the data submitted by a form.
+     * @return \Illuminate\Http\RedirectResponse Redirects to the risks registration page after successful creation.
+     * @response 302 Redirect response to the route for registering risks.
      * 
-     * @return RedirectResponse A RedirectResponse is being returned. The code is redirecting to the
-     * 'register.risks.index' route with the absolute parameter set to false.
+     * @throws \Illuminate\Validation\ValidationException If validation fails for any required fields.
+     * @response 422 {
+     *   "errors": {
+     *     "name": [
+     *       "The name field is required."
+     *     ],
+     *     "organization": [
+     *       "The organization field is required and must be an integer."
+     *     ],
+     *     "sector": [
+     *       "The sector field is required."
+     *     ],
+     *     "country": [
+     *       "The country field is required and must be an integer."
+     *     ],
+     *     "employees": [
+     *       "The employees field is required and must be an integer with a minimum value of 0."
+     *     ],
+     *     "city": [
+     *       "The city field is required."
+     *     ]
+     *   }
+     * }
+     * @authenticated
      */
     public function store(Request $request): RedirectResponse
     {

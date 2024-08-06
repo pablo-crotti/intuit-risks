@@ -1,0 +1,114 @@
+name: 'Risk Precursors'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/precursors
+    metadata:
+      groupName: 'Risk Precursors'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Store Precursors
+
+        Add new precursors for a company risk.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - DPZ6eaEbgf1vdhV3a8kc654
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: api/precursors
+    metadata:
+      groupName: 'Risk Precursors'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Delete Precursors
+
+        Delete specified precursors by their IDs.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - adV668Dh5P3ebkgavfc4Z1E
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: api/precursors
+    metadata:
+      groupName: 'Risk Precursors'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Update Precursor Status
+
+        Update the status of a specific precursor.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - kca3aZ4Efv81e6P5VdDbhg6
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -1,0 +1,60 @@
+name: Company
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/company
+    metadata:
+      groupName: Company
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Get Company Information
+
+        Retrieve detailed information about the authenticated user's company, including its organization type and country.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "id": 1,
+            "name": "Acme Corporation",
+            "organization_type": {
+              "id": 2,
+              "type": "LLC"
+            },
+            "country": {
+              "id": 1,
+              "name": "United States"
+            },
+            "created_at": "2023-08-01T00:00:00.000000Z",
+            "updated_at": "2023-08-01T00:00:00.000000Z"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - kbfV8a34PEad1ceD6gvZh65
+    controller: null
+    method: null
+    route: null
+    custom: []

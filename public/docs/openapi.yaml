@@ -1,0 +1,2814 @@
+openapi: 3.0.3
+info:
+  title: IntuitRisks
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /register:
+    get:
+      summary: "Display Registration View\n\nShow the registration view for new users to create an account."
+      operationId: displayRegistrationViewShowTheRegistrationViewForNewUsersToCreateAnAccount
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  // Rendered view for user registration.\n}"
+      tags:
+        - Authentication
+      security: []
+    post:
+      summary: "Handle Registration Request\n\nValidate the registration details and create a new user account."
+      operationId: handleRegistrationRequestValidateTheRegistrationDetailsAndCreateANewUserAccount
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the company registration route.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    name:
+                      - 'The name field is required.'
+                    email:
+                      - 'The email address is not valid or is already taken.'
+                    password:
+                      - 'The password confirmation does not match.'
+                    terms:
+                      - 'You must accept the terms and conditions.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+                      email:
+                        type: array
+                        example:
+                          - 'The email address is not valid or is already taken.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password confirmation does not match.'
+                        items:
+                          type: string
+                      terms:
+                        type: array
+                        example:
+                          - 'You must accept the terms and conditions.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
+                  example: pxffqavvbmpjaycudsxgncvld
+                email:
+                  type: string
+                  description: ''
+                  example: null
+                password:
+                  type: string
+                  description: ''
+                  example: et
+                terms:
+                  type: boolean
+                  description: 'Must be accepted.'
+                  example: true
+              required:
+                - name
+                - password
+                - terms
+      security: []
+  '/user-register/{token}':
+    get:
+      summary: "Display User Registration View\n\nShow the registration view for users who have received a registration token."
+      operationId: displayUserRegistrationViewShowTheRegistrationViewForUsersWhoHaveReceivedARegistrationToken
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"company\": {\n      \"id\": 1,\n      \"name\": \"Example Company\"\n    }\n  }\n  // Rendered view for user registration.\n}"
+      tags:
+        - Authentication
+      security: []
+    parameters:
+      -
+        in: path
+        name: token
+        description: ''
+        example: iure
+        required: true
+        schema:
+          type: string
+  /user-register:
+    post:
+      summary: "Handle User Registration Request\n\nValidate the registration details and complete the registration process for the user."
+      operationId: handleUserRegistrationRequestValidateTheRegistrationDetailsAndCompleteTheRegistrationProcessForTheUser
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the dashboard.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    password:
+                      - 'The password confirmation does not match.'
+                    terms:
+                      - 'You must accept the terms and conditions.'
+                    token:
+                      - 'The registration token is required.'
+                    avatar:
+                      - 'The avatar must be an image of type jpeg, png, jpg, gif, or svg and must not exceed 2048 kilobytes.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The password confirmation does not match.'
+                        items:
+                          type: string
+                      terms:
+                        type: array
+                        example:
+                          - 'You must accept the terms and conditions.'
+                        items:
+                          type: string
+                      token:
+                        type: array
+                        example:
+                          - 'The registration token is required.'
+                        items:
+                          type: string
+                      avatar:
+                        type: array
+                        example:
+                          - 'The avatar must be an image of type jpeg, png, jpg, gif, or svg and must not exceed 2048 kilobytes.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: temporibus
+                terms:
+                  type: boolean
+                  description: 'Must be accepted.'
+                  example: true
+                token:
+                  type: string
+                  description: ''
+                  example: sit
+              required:
+                - password
+                - terms
+                - token
+      security: []
+  /login:
+    get:
+      summary: "Show Login Form\n\nDisplay the login form to the user."
+      operationId: showLoginFormDisplayTheLoginFormToTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  canResetPassword: true
+                  status: null
+                properties:
+                  canResetPassword:
+                    type: boolean
+                    example: true
+                  status:
+                    type: string
+                    example: null
+      tags:
+        - Authentication
+      security: []
+    post:
+      summary: "Handle Authentication Request\n\nAuthenticate the user and redirect to the intended location or dashboard."
+      operationId: handleAuthenticationRequestAuthenticateTheUserAndRedirectToTheIntendedLocationOrDashboard
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the intended route.'
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Le champ value doit être une adresse e-mail valide.'
+                  example: kobe.conn@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: '5L~/G{Zc0'
+              required:
+                - email
+                - password
+      security: []
+  /forgot-password:
+    get:
+      summary: "Display Password Reset Link Request View\n\nShow the view where users can request a password reset link."
+      operationId: displayPasswordResetLinkRequestViewShowTheViewWhereUsersCanRequestAPasswordResetLink
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"status\": \"some-status\"\n  // Rendered view for requesting a password reset link.\n}"
+      tags:
+        - Authentication
+      security: []
+    post:
+      summary: "Handle Password Reset Link Request\n\nValidate the email address and handle the request to send a password reset link."
+      operationId: handlePasswordResetLinkRequestValidateTheEmailAddressAndHandleTheRequestToSendAPasswordResetLink
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response back to the previous page with a status message.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    email:
+                      - 'The email address is not valid or does not exist.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email address is not valid or does not exist.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Le champ value doit être une adresse e-mail valide.'
+                  example: reuben83@example.net
+              required:
+                - email
+      security: []
+  '/reset-password/{token}':
+    get:
+      summary: "Display Password Reset View\n\nShow the password reset view to the user, prefilled with email and token."
+      operationId: displayPasswordResetViewShowThePasswordResetViewToTheUserPrefilledWithEmailAndToken
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  email: user@example.com
+                  token: reset-token-value
+                properties:
+                  email:
+                    type: string
+                    example: user@example.com
+                  token:
+                    type: string
+                    example: reset-token-value
+      tags:
+        - Authentication
+      security: []
+    parameters:
+      -
+        in: path
+        name: token
+        description: ''
+        example: vel
+        required: true
+        schema:
+          type: string
+  /reset-password:
+    post:
+      summary: "Handle New Password Request\n\nValidate and handle the request to reset the user's password."
+      operationId: handleNewPasswordRequestValidateAndHandleTheRequestToResetTheUsersPassword
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the login route with a status message.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    email:
+                      - 'The provided email is incorrect or expired.'
+                    password:
+                      - 'The password confirmation does not match.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The provided email is incorrect or expired.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password confirmation does not match.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: ''
+                  example: dignissimos
+                email:
+                  type: string
+                  description: 'Le champ value doit être une adresse e-mail valide.'
+                  example: kathlyn.shields@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: et
+              required:
+                - token
+                - email
+                - password
+      security: []
+  /verify-email:
+    get:
+      summary: "Display Email Verification Prompt\n\nDisplay the email verification prompt if the user's email is not verified,\notherwise redirect to the dashboard."
+      operationId: displayEmailVerificationPromptDisplayTheEmailVerificationPromptIfTheUsersEmailIsNotVerifiedotherwiseRedirectToTheDashboard
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"status\": \"verification-link-sent\"\n  // Rendered view for email verification prompt.\n}"
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the dashboard if the email is verified.'
+      tags:
+        - Authentication
+  '/verify-email/{id}/{hash}':
+    get:
+      summary: "Mark Email as Verified\n\nMark the authenticated user's email address as verified.\nIf the email is already verified, redirect to the dashboard with a `verified` query parameter.\nIf the email is not verified, mark it as verified and trigger the Verified event."
+      operationId: markEmailAsVerifiedMarkTheAuthenticatedUsersEmailAddressAsVerifiedIfTheEmailIsAlreadyVerifiedRedirectToTheDashboardWithAverifiedQueryParameterIfTheEmailIsNotVerifiedMarkItAsVerifiedAndTriggerTheVerifiedEvent
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"message\": \"Email verified successfully.\"\n  // Redirects to the dashboard with `?verified=1` if the email is verified.\n}"
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the dashboard with a `verified` query parameter.'
+        403:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"message\": \"Unauthorized\"\n  // If the request is made by a user who is not authenticated.\n}"
+      tags:
+        - Authentication
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the verify email.'
+        example: sunt
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: hash
+        description: ''
+        example: quia
+        required: true
+        schema:
+          type: string
+  /email/verification-notification:
+    post:
+      summary: "Send Email Verification Notification\n\nSend a new email verification notification to the user if their email is not verified."
+      operationId: sendEmailVerificationNotificationSendANewEmailVerificationNotificationToTheUserIfTheirEmailIsNotVerified
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: verification-link-sent
+                properties:
+                  status:
+                    type: string
+                    example: verification-link-sent
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response back to the previous page with a status message.'
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'You are not authorized to access this resource.'
+                properties:
+                  message:
+                    type: string
+                    example: 'You are not authorized to access this resource.'
+      tags:
+        - Authentication
+  /confirm-password:
+    get:
+      summary: "Show Confirm Password View\n\nDisplay the view for confirming the user's password."
+      operationId: showConfirmPasswordViewDisplayTheViewForConfirmingTheUsersPassword
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  // Rendered view for password confirmation.\n}"
+      tags:
+        - Authentication
+    post:
+      summary: "Confirm User's Password\n\nValidate the user's password to confirm their identity."
+      operationId: confirmUsersPasswordValidateTheUsersPasswordToConfirmTheirIdentity
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the intended route.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    password:
+                      - 'The provided password is incorrect.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      password:
+                        type: array
+                        example:
+                          - 'The provided password is incorrect.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+  /password:
+    put:
+      summary: "Update User's Password\n\nValidate and update the user's password."
+      operationId: updateUsersPasswordValidateAndUpdateTheUsersPassword
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response back to the previous page.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    current_password:
+                      - 'The current password is incorrect.'
+                    password:
+                      - 'The password confirmation does not match.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      current_password:
+                        type: array
+                        example:
+                          - 'The current password is incorrect.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password confirmation does not match.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  description: ''
+                  example: voluptas
+                password:
+                  type: string
+                  description: ''
+                  example: eveniet
+              required:
+                - current_password
+                - password
+  /logout:
+    post:
+      summary: "Logout and Destroy Session\n\nLogout the authenticated user and destroy the session."
+      operationId: logoutAndDestroySessionLogoutTheAuthenticatedUserAndDestroyTheSession
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the home page.'
+      tags:
+        - Authentication
+  /api/categories:
+    get:
+      summary: "Get All Categories\n\nRetrieve a list of all categories."
+      operationId: getAllCategoriesRetrieveAListOfAllCategories
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "[\n  {\n    \"id\": 1,\n    \"name\": \"Electronics\",\n    \"created_at\": \"2023-08-01T00:00:00.000000Z\",\n    \"updated_at\": \"2023-08-01T00:00:00.000000Z\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Books\",\n    \"created_at\": \"2023-08-01T00:00:00.000000Z\",\n    \"updated_at\": \"2023-08-01T00:00:00.000000Z\"\n  }\n  // ... more categories\n]"
+      tags:
+        - Categories
+      security: []
+  /api/company:
+    get:
+      summary: "Get Company Information\n\nRetrieve detailed information about the authenticated user's company, including its organization type and country."
+      operationId: getCompanyInformationRetrieveDetailedInformationAboutTheAuthenticatedUsersCompanyIncludingItsOrganizationTypeAndCountry
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  name: 'Acme Corporation'
+                  organization_type:
+                    id: 2
+                    type: LLC
+                  country:
+                    id: 1
+                    name: 'United States'
+                  created_at: '2023-08-01T00:00:00.000000Z'
+                  updated_at: '2023-08-01T00:00:00.000000Z'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: 'Acme Corporation'
+                  organization_type:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 2
+                      type:
+                        type: string
+                        example: LLC
+                  country:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'United States'
+                  created_at:
+                    type: string
+                    example: '2023-08-01T00:00:00.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2023-08-01T00:00:00.000000Z'
+      tags:
+        - Company
+  /register/company:
+    get:
+      summary: "Display the company registration view.\n\nRetrieve all organizations and countries, and render the `Logged/Registration/Company` view.\nThe view includes lists of organizations and countries for user selection."
+      operationId: displayTheCompanyRegistrationViewRetrieveAllOrganizationsAndCountriesAndRenderTheLoggedRegistrationCompanyViewTheViewIncludesListsOfOrganizationsAndCountriesForUserSelection
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  organizations:
+                    -
+                      id: 1
+                      name: 'Organization Type Example'
+                  countries:
+                    -
+                      id: 1
+                      name: 'Country Example'
+                properties:
+                  organizations:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Organization Type Example'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Organization Type Example'
+                  countries:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Country Example'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Country Example'
+      tags:
+        - 'Company Registration'
+    post:
+      summary: "Handle the creation of a new company.\n\nValidate the provided company details and create a new company entry in the database.\nUpdate the authenticated user's company ID and registration step."
+      operationId: handleTheCreationOfANewCompanyValidateTheProvidedCompanyDetailsAndCreateANewCompanyEntryInTheDatabaseUpdateTheAuthenticatedUsersCompanyIDAndRegistrationStep
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the route for registering risks.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    name:
+                      - 'The name field is required.'
+                    organization:
+                      - 'The organization field is required and must be an integer.'
+                    sector:
+                      - 'The sector field is required.'
+                    country:
+                      - 'The country field is required and must be an integer.'
+                    employees:
+                      - 'The employees field is required and must be an integer with a minimum value of 0.'
+                    city:
+                      - 'The city field is required.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+                      organization:
+                        type: array
+                        example:
+                          - 'The organization field is required and must be an integer.'
+                        items:
+                          type: string
+                      sector:
+                        type: array
+                        example:
+                          - 'The sector field is required.'
+                        items:
+                          type: string
+                      country:
+                        type: array
+                        example:
+                          - 'The country field is required and must be an integer.'
+                        items:
+                          type: string
+                      employees:
+                        type: array
+                        example:
+                          - 'The employees field is required and must be an integer with a minimum value of 0.'
+                        items:
+                          type: string
+                      city:
+                        type: array
+                        example:
+                          - 'The city field is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Company Registration'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
+                  example: utrlcdvieudui
+                organization:
+                  type: integer
+                  description: ''
+                  example: 11
+                sector:
+                  type: string
+                  description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
+                  example: eeyyawxxkvutdemmrgjv
+                country:
+                  type: integer
+                  description: ''
+                  example: 2
+                employees:
+                  type: integer
+                  description: 'Le champ value doit être au moins de 0.'
+                  example: 13
+                city:
+                  type: string
+                  description: 'Le champ value ne doit pas être supérieur à 255 caractères.'
+                  example: vrhoyr
+              required:
+                - name
+                - organization
+                - sector
+                - country
+                - employees
+                - city
+  /register/risks:
+    get:
+      summary: "Display the risks registration view.\n\nFetch and process risks based on the organization type of the authenticated user's company.\nThe risks are grouped by category, and categories are aggregated with their respective risk counts.\nThe view also includes the company's existing risks and the current registration step of the user."
+      operationId: displayTheRisksRegistrationViewFetchAndProcessRisksBasedOnTheOrganizationTypeOfTheAuthenticatedUsersCompanyTheRisksAreGroupedByCategoryAndCategoriesAreAggregatedWithTheirRespectiveRiskCountsTheViewAlsoIncludesTheCompanysExistingRisksAndTheCurrentRegistrationStepOfTheUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  organization:
+                    id: 1
+                    name: 'Organization Type Example'
+                    risks:
+                      -
+                        id: 1
+                        name: 'Risk Example'
+                        category:
+                          id: 1
+                          name: 'Category Example'
+                          color: '#FF0000'
+                          description_short: 'Short description'
+                          description_long: 'Long description'
+                        is_active: true
+                  categories:
+                    -
+                      id: 1
+                      name: 'Category Example'
+                      color: '#FF0000'
+                      description_short: 'Short description'
+                      description_long: 'Long description'
+                      risks_count: 1
+                  risks:
+                    -
+                      category_id: 1
+                      risks:
+                        -
+                          id: 1
+                          name: 'Risk Example'
+                          description: Description
+                          probability: 5
+                          impact: 7
+                  companyRisks:
+                    -
+                      id: 1
+                      company_id: 1
+                      author_id: 1
+                      risk_id: 1
+                      category_id: 1
+                      name: 'Risk Example'
+                      description: Description
+                      evaluations:
+                        -
+                          id: 1
+                          probability: 5
+                          impact: 7
+                  registration_step: 2
+                properties:
+                  organization:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Organization Type Example'
+                      risks:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: 'Risk Example'
+                            category:
+                              id: 1
+                              name: 'Category Example'
+                              color: '#FF0000'
+                              description_short: 'Short description'
+                              description_long: 'Long description'
+                            is_active: true
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Risk Example'
+                            category:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1
+                                name:
+                                  type: string
+                                  example: 'Category Example'
+                                color:
+                                  type: string
+                                  example: '#FF0000'
+                                description_short:
+                                  type: string
+                                  example: 'Short description'
+                                description_long:
+                                  type: string
+                                  example: 'Long description'
+                            is_active:
+                              type: boolean
+                              example: true
+                  categories:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Category Example'
+                        color: '#FF0000'
+                        description_short: 'Short description'
+                        description_long: 'Long description'
+                        risks_count: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Category Example'
+                        color:
+                          type: string
+                          example: '#FF0000'
+                        description_short:
+                          type: string
+                          example: 'Short description'
+                        description_long:
+                          type: string
+                          example: 'Long description'
+                        risks_count:
+                          type: integer
+                          example: 1
+                  risks:
+                    type: array
+                    example:
+                      -
+                        category_id: 1
+                        risks:
+                          -
+                            id: 1
+                            name: 'Risk Example'
+                            description: Description
+                            probability: 5
+                            impact: 7
+                    items:
+                      type: object
+                      properties:
+                        category_id:
+                          type: integer
+                          example: 1
+                        risks:
+                          type: array
+                          example:
+                            -
+                              id: 1
+                              name: 'Risk Example'
+                              description: Description
+                              probability: 5
+                              impact: 7
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: 'Risk Example'
+                              description:
+                                type: string
+                                example: Description
+                              probability:
+                                type: integer
+                                example: 5
+                              impact:
+                                type: integer
+                                example: 7
+                  companyRisks:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        company_id: 1
+                        author_id: 1
+                        risk_id: 1
+                        category_id: 1
+                        name: 'Risk Example'
+                        description: Description
+                        evaluations:
+                          -
+                            id: 1
+                            probability: 5
+                            impact: 7
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        company_id:
+                          type: integer
+                          example: 1
+                        author_id:
+                          type: integer
+                          example: 1
+                        risk_id:
+                          type: integer
+                          example: 1
+                        category_id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Risk Example'
+                        description:
+                          type: string
+                          example: Description
+                        evaluations:
+                          type: array
+                          example:
+                            -
+                              id: 1
+                              probability: 5
+                              impact: 7
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              probability:
+                                type: integer
+                                example: 5
+                              impact:
+                                type: integer
+                                example: 7
+                  registration_step:
+                    type: integer
+                    example: 2
+      tags:
+        - 'Company Risks'
+    post:
+      summary: "Store a new risk or update an existing one.\n\nIf the risk already exists, its evaluations and records are deleted. Otherwise, a new risk is created and evaluated.\nThe method validates the input and creates or updates the company risk and its evaluation."
+      operationId: storeANewRiskOrUpdateAnExistingOneIfTheRiskAlreadyExistsItsEvaluationsAndRecordsAreDeletedOtherwiseANewRiskIsCreatedAndEvaluatedTheMethodValidatesTheInputAndCreatesOrUpdatesTheCompanyRiskAndItsEvaluation
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response to the previous page.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    'selectedRisk.*.id':
+                      - 'The id field is required and must be an integer.'
+                    'selectedRisk.*.category':
+                      - 'The category field is required and must be an integer.'
+                    'selectedRisk.*.name':
+                      - 'The name field is required.'
+                    'selectedRisk.*.description':
+                      - 'The description field is required.'
+                    'selectedRisk.*.probability':
+                      - 'The probability field is required and must be an integer.'
+                    'selectedRisk.*.impact':
+                      - 'The impact field is required and must be an integer.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      'selectedRisk.*.id':
+                        type: array
+                        example:
+                          - 'The id field is required and must be an integer.'
+                        items:
+                          type: string
+                      'selectedRisk.*.category':
+                        type: array
+                        example:
+                          - 'The category field is required and must be an integer.'
+                        items:
+                          type: string
+                      'selectedRisk.*.name':
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+                      'selectedRisk.*.description':
+                        type: array
+                        example:
+                          - 'The description field is required.'
+                        items:
+                          type: string
+                      'selectedRisk.*.probability':
+                        type: array
+                        example:
+                          - 'The probability field is required and must be an integer.'
+                        items:
+                          type: string
+                      'selectedRisk.*.impact':
+                        type: array
+                        example:
+                          - 'The impact field is required and must be an integer.'
+                        items:
+                          type: string
+      tags:
+        - 'Company Risks'
+    patch:
+      summary: "Update the evaluation of an existing risk.\n\nValidate and update the risk evaluation details for the given risk ID."
+      operationId: updateTheEvaluationOfAnExistingRiskValidateAndUpdateTheRiskEvaluationDetailsForTheGivenRiskID
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    'newEvaluationData.*.id':
+                      - 'The id field is required and must be an integer.'
+                    'newEvaluationData.*.probability':
+                      - 'The probability field is required and must be an integer.'
+                    'newEvaluationData.*.impact':
+                      - 'The impact field is required and must be an integer.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      'newEvaluationData.*.id':
+                        type: array
+                        example:
+                          - 'The id field is required and must be an integer.'
+                        items:
+                          type: string
+                      'newEvaluationData.*.probability':
+                        type: array
+                        example:
+                          - 'The probability field is required and must be an integer.'
+                        items:
+                          type: string
+                      'newEvaluationData.*.impact':
+                        type: array
+                        example:
+                          - 'The impact field is required and must be an integer.'
+                        items:
+                          type: string
+      tags:
+        - 'Risk Evaluation'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newEvaluationData:
+                  type: array
+                  description: ''
+                  example:
+                    - []
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: ''
+                        example: 1
+                      probability:
+                        type: integer
+                        description: ''
+                        example: 3
+                      impact:
+                        type: integer
+                        description: ''
+                        example: 18
+                    required:
+                      - id
+                      - probability
+                      - impact
+  /risks:
+    get:
+      summary: "Display a list of risks associated with the authenticated user's company.\n\nRetrieves all company risks related to the company of the currently authenticated user.\nIncludes related data such as risk details, categories, and evaluations."
+      operationId: displayAListOfRisksAssociatedWithTheAuthenticatedUsersCompanyRetrievesAllCompanyRisksRelatedToTheCompanyOfTheCurrentlyAuthenticatedUserIncludesRelatedDataSuchAsRiskDetailsCategoriesAndEvaluations
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  risks:
+                    -
+                      id: 1
+                      company_id: 1
+                      risk:
+                        id: 1
+                        name: 'Risk Name'
+                        description: 'Risk Description'
+                      category:
+                        id: 1
+                        name: 'Category Name'
+                      evaluations:
+                        -
+                          id: 1
+                          probability: 5
+                          impact: 7
+                properties:
+                  risks:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        company_id: 1
+                        risk:
+                          id: 1
+                          name: 'Risk Name'
+                          description: 'Risk Description'
+                        category:
+                          id: 1
+                          name: 'Category Name'
+                        evaluations:
+                          -
+                            id: 1
+                            probability: 5
+                            impact: 7
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        company_id:
+                          type: integer
+                          example: 1
+                        risk:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Risk Name'
+                            description:
+                              type: string
+                              example: 'Risk Description'
+                        category:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Category Name'
+                        evaluations:
+                          type: array
+                          example:
+                            -
+                              id: 1
+                              probability: 5
+                              impact: 7
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 1
+                              probability:
+                                type: integer
+                                example: 5
+                              impact:
+                                type: integer
+                                example: 7
+      tags:
+        - 'Company Risks'
+      security: []
+  '/risks/{id}':
+    get:
+      summary: "Display the detailed view of a specific company risk.\n\nRetrieves the detailed information of a company risk based on the provided risk ID.\nIncludes related data such as the author, category, evaluations, precursors, responsible individuals,\nreduction plan tasks, and emergency plan actions associated with the risk."
+      operationId: displayTheDetailedViewOfASpecificCompanyRiskRetrievesTheDetailedInformationOfACompanyRiskBasedOnTheProvidedRiskIDIncludesRelatedDataSuchAsTheAuthorCategoryEvaluationsPrecursorsResponsibleIndividualsreductionPlanTasksAndEmergencyPlanActionsAssociatedWithTheRisk
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  risk:
+                    id: 1
+                    company_id: 1
+                    author:
+                      id: 1
+                      name: 'Author Name'
+                    category:
+                      id: 1
+                      name: 'Category Name'
+                    name: 'Risk Name'
+                    description: 'Risk Description'
+                    evaluations:
+                      -
+                        id: 1
+                        probability: 5
+                        impact: 7
+                    precursors:
+                      -
+                        id: 1
+                        name: 'Precursor Name'
+                    responsible:
+                      -
+                        id: 1
+                        name: 'Responsible Person Name'
+                    reductionPlanTasks:
+                      -
+                        id: 1
+                        action: 'Task Action'
+                        agent:
+                          id: 1
+                          name: 'Agent Name'
+                    emergencyPlanActions:
+                      -
+                        id: 1
+                        action: 'Emergency Plan Action'
+                        agent:
+                          id: 1
+                          name: 'Agent Name'
+                properties:
+                  risk:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      company_id:
+                        type: integer
+                        example: 1
+                      author:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Author Name'
+                      category:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Category Name'
+                      name:
+                        type: string
+                        example: 'Risk Name'
+                      description:
+                        type: string
+                        example: 'Risk Description'
+                      evaluations:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            probability: 5
+                            impact: 7
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            probability:
+                              type: integer
+                              example: 5
+                            impact:
+                              type: integer
+                              example: 7
+                      precursors:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: 'Precursor Name'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Precursor Name'
+                      responsible:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: 'Responsible Person Name'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Responsible Person Name'
+                      reductionPlanTasks:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            action: 'Task Action'
+                            agent:
+                              id: 1
+                              name: 'Agent Name'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            action:
+                              type: string
+                              example: 'Task Action'
+                            agent:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1
+                                name:
+                                  type: string
+                                  example: 'Agent Name'
+                      emergencyPlanActions:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            action: 'Emergency Plan Action'
+                            agent:
+                              id: 1
+                              name: 'Agent Name'
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            action:
+                              type: string
+                              example: 'Emergency Plan Action'
+                            agent:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1
+                                name:
+                                  type: string
+                                  example: 'Agent Name'
+      tags:
+        - 'Company Risks'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the risk.'
+        example: porro
+        required: true
+        schema:
+          type: string
+  /api/risks:
+    get:
+      summary: "Get Company Risks\n\nRetrieve a list of all risks associated with the authenticated user's company."
+      operationId: getCompanyRisksRetrieveAListOfAllRisksAssociatedWithTheAuthenticatedUsersCompany
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "[\n  {\n    \"id\": 1,\n    \"company_id\": 1,\n    \"author_id\": 2,\n    \"category_id\": 3,\n    \"name\": \"Risk Title\",\n    \"description\": \"Risk Description\",\n    \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n    \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n  },\n  // ... more risks\n]"
+      tags:
+        - 'Company Risks'
+    post:
+      summary: "Store a New Risk\n\nCreate a new risk for the authenticated user's company and evaluate it."
+      operationId: storeANewRiskCreateANewRiskForTheAuthenticatedUsersCompanyAndEvaluateIt
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Company Risks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: provident
+                description:
+                  type: string
+                  description: ''
+                  example: 'Delectus non dicta unde facilis non voluptatum.'
+                category:
+                  type: object
+                  description: ''
+                  example: []
+                  properties: {  }
+                probability:
+                  type: number
+                  description: ''
+                  example: 3323478.45
+                impact:
+                  type: number
+                  description: ''
+                  example: 282.61232
+              required:
+                - title
+                - description
+                - category
+                - probability
+                - impact
+  '/api/risks/{id}':
+    put:
+      summary: "Update Risk Information\n\nUpdate details of an existing risk, including category, title, description, and evaluation frequency."
+      operationId: updateRiskInformationUpdateDetailsOfAnExistingRiskIncludingCategoryTitleDescriptionAndEvaluationFrequency
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Company Risks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: rerum
+                description:
+                  type: string
+                  description: ''
+                  example: 'Pariatur aut impedit quasi dolores debitis rem voluptatem.'
+                category:
+                  type: object
+                  description: ''
+                  example: []
+                  properties: {  }
+                frequency:
+                  type: number
+                  description: ''
+                  example: 23825.952471754
+              required:
+                - title
+                - description
+                - category
+                - frequency
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the risk.'
+        example: dolore
+        required: true
+        schema:
+          type: string
+  '/api/risks/{id}/strategy':
+    put:
+      summary: "Update Risk Strategy\n\nUpdate the strategy associated with a specific risk."
+      operationId: updateRiskStrategyUpdateTheStrategyAssociatedWithASpecificRisk
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Company Risks'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                strategy:
+                  type: string
+                  description: ''
+                  example: animi
+              required:
+                - strategy
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the risk.'
+        example: quasi
+        required: true
+        schema:
+          type: string
+  /dashboard:
+    get:
+      summary: "Display the company dashboard with risk evaluations and statistics.\n\nRetrieves and processes data to display on the dashboard, including:\n- Total number of risks\n- Categorization of risks into low, moderate, and critical based on their evaluations\n- Recent evaluations with the highest criticality\n- Detailed information about the most critical risks"
+      operationId: displayTheCompanyDashboardWithRiskEvaluationsAndStatisticsRetrievesAndProcessesDataToDisplayOnTheDashboardIncludingTotalNumberOfRisksCategorizationOfRisksIntoLowModerateAndCriticalBasedOnTheirEvaluationsRecentEvaluationsWithTheHighestCriticalityDetailedInformationAboutTheMostCriticalRisks
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  company:
+                    id: 1
+                    name: 'Company Name'
+                    sector: Sector
+                    country: Country
+                    employees: 100
+                    city: City
+                  totalRisks: 25
+                  criticalityCategories:
+                    low: 5
+                    moderate: 10
+                    critical: 10
+                  evaluations:
+                    -
+                      id: 1
+                      company_risk_id: 1
+                      probability: 2
+                      impact: 3
+                      created_at: '2024-08-01T00:00:00Z'
+                  mainRisks:
+                    -
+                      id: 1
+                      company_risk_id: 1
+                      probability: 5
+                      impact: 7
+                      companyRisk:
+                        id: 1
+                        name: 'Risk Name'
+                        description: 'Risk Description'
+                        category:
+                          id: 1
+                          name: 'Category Name'
+                properties:
+                  company:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Company Name'
+                      sector:
+                        type: string
+                        example: Sector
+                      country:
+                        type: string
+                        example: Country
+                      employees:
+                        type: integer
+                        example: 100
+                      city:
+                        type: string
+                        example: City
+                  totalRisks:
+                    type: integer
+                    example: 25
+                  criticalityCategories:
+                    type: object
+                    properties:
+                      low:
+                        type: integer
+                        example: 5
+                      moderate:
+                        type: integer
+                        example: 10
+                      critical:
+                        type: integer
+                        example: 10
+                  evaluations:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        company_risk_id: 1
+                        probability: 2
+                        impact: 3
+                        created_at: '2024-08-01T00:00:00Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        company_risk_id:
+                          type: integer
+                          example: 1
+                        probability:
+                          type: integer
+                          example: 2
+                        impact:
+                          type: integer
+                          example: 3
+                        created_at:
+                          type: string
+                          example: '2024-08-01T00:00:00Z'
+                  mainRisks:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        company_risk_id: 1
+                        probability: 5
+                        impact: 7
+                        companyRisk:
+                          id: 1
+                          name: 'Risk Name'
+                          description: 'Risk Description'
+                          category:
+                            id: 1
+                            name: 'Category Name'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        company_risk_id:
+                          type: integer
+                          example: 1
+                        probability:
+                          type: integer
+                          example: 5
+                        impact:
+                          type: integer
+                          example: 7
+                        companyRisk:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Risk Name'
+                            description:
+                              type: string
+                              example: 'Risk Description'
+                            category:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1
+                                name:
+                                  type: string
+                                  example: 'Category Name'
+      tags:
+        - Dashboard
+  '/api/risks/{id}/tasks':
+    post:
+      summary: "Store Reduction Plans Task\n\nCreate a new task associated with a risk reduction plan."
+      operationId: storeReductionPlansTaskCreateANewTaskAssociatedWithARiskReductionPlan
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Reduction Plans'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                responsible:
+                  type: string
+                  description: ''
+                  example: enim
+                task:
+                  type: string
+                  description: ''
+                  example: voluptatem
+              required:
+                - responsible
+                - task
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the risk.'
+        example: molestias
+        required: true
+        schema:
+          type: string
+  '/api/reduction-plan/tasks/{id}/evaluate':
+    put:
+      summary: "Update Reduction Plans\n\nUpdate the status and optional remark of a specific task."
+      operationId: updateReductionPlansUpdateTheStatusAndOptionalRemarkOfASpecificTask
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Reduction Plans'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: ''
+                  example: '-1'
+                  enum:
+                    - '-1'
+                    - '1'
+                remark:
+                  type: string
+                  description: ''
+                  example: qui
+              required:
+                - status
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: qui
+        required: true
+        schema:
+          type: string
+  '/api/reduction-plan/tasks/{id}':
+    delete:
+      summary: "Delete a Task\n\nDelete a specific task by its ID."
+      operationId: deleteATaskDeleteASpecificTaskByItsID
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Reduction Plans'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the task.'
+        example: deleniti
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}':
+    get:
+      summary: "Display the emergency plan execution view for a specific risk.\n\nRetrieves and displays the emergency plan details for the specified risk.\nIf the `emergencyPlanStatus` of the risk is 0 (not executed), redirects to the dashboard."
+      operationId: displayTheEmergencyPlanExecutionViewForASpecificRiskRetrievesAndDisplaysTheEmergencyPlanDetailsForTheSpecifiedRiskIfTheemergencyPlanStatusOfTheRiskIs0notExecutedRedirectsToTheDashboard
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Risk Emergency Plan'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: et
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}/agents':
+    patch:
+      summary: "Update the responsible agent for a specific emergency plan action.\n\nValidates the request for task ID and responsible agent ID,\nthen updates the responsible agent for the specified emergency plan action."
+      operationId: updateTheResponsibleAgentForASpecificEmergencyPlanActionValidatesTheRequestForTaskIDAndResponsibleAgentIDthenUpdatesTheResponsibleAgentForTheSpecifiedEmergencyPlanAction
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task:
+                  type: string
+                  description: ''
+                  example: in
+                responsible:
+                  type: string
+                  description: ''
+                  example: quas
+              required:
+                - task
+                - responsible
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: rerum
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}/execute':
+    patch:
+      summary: "Mark the emergency plan of a specific risk as executed.\n\nUpdates the `emergencyPlanStatus` of the specified risk to 1 (executed).\nRedirects the user back to the dashboard."
+      operationId: markTheEmergencyPlanOfASpecificRiskAsExecutedUpdatesTheemergencyPlanStatusOfTheSpecifiedRiskTo1executedRedirectsTheUserBackToTheDashboard
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: voluptas
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}/start':
+    patch:
+      summary: "Mark the emergency plan of a specific risk as started.\n\nUpdates the `emergencyPlanStatus` of the specified risk to 2 (started)."
+      operationId: markTheEmergencyPlanOfASpecificRiskAsStartedUpdatesTheemergencyPlanStatusOfTheSpecifiedRiskTo2started
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: quisquam
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}/end':
+    patch:
+      summary: "Mark the emergency plan of a specific risk as ended.\n\nUpdates the `emergencyPlanStatus` of the specified risk to 0 (ended),\nand resets all associated emergency plan actions."
+      operationId: markTheEmergencyPlanOfASpecificRiskAsEndedUpdatesTheemergencyPlanStatusOfTheSpecifiedRiskTo0endedandResetsAllAssociatedEmergencyPlanActions
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: perspiciatis
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}/action-done':
+    patch:
+      summary: "Mark a specific emergency plan action as done.\n\nValidates the request for action ID, then updates the action status to 1 (done)."
+      operationId: markASpecificEmergencyPlanActionAsDoneValidatesTheRequestForActionIDThenUpdatesTheActionStatusTo1done
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: iusto
+              required:
+                - id
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: itaque
+        required: true
+        schema:
+          type: string
+  '/emergency-plan/{id}/action-response':
+    patch:
+      summary: "Provide a response for a specific emergency plan action.\n\nValidates the request for action ID and response text,\nthen updates the action's response field."
+      operationId: provideAResponseForASpecificEmergencyPlanActionValidatesTheRequestForActionIDAndResponseTextthenUpdatesTheActionsResponseField
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: quae
+                response:
+                  type: string
+                  description: ''
+                  example: quo
+              required:
+                - id
+                - response
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the emergency plan.'
+        example: magnam
+        required: true
+        schema:
+          type: string
+  '/api/risks/{id}/emergency-plan':
+    post:
+      summary: "Store Risk Emergency Plan Actions\n\nStore new risk emergency plan actions and delete specified actions."
+      operationId: storeRiskEmergencyPlanActionsStoreNewRiskEmergencyPlanActionsAndDeleteSpecifiedActions
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Emergency Plan'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                informations:
+                  type: object
+                  description: ''
+                  example: null
+                  properties: {  }
+                actions:
+                  type: object
+                  description: ''
+                  example: null
+                  properties: {  }
+                toDelete:
+                  type: object
+                  description: ''
+                  example: null
+                  properties: {  }
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the risk.'
+        example: explicabo
+        required: true
+        schema:
+          type: string
+  /api/evaluations:
+    post:
+      summary: "Store a new risk evaluation for a company.\n\nValidates the incoming request data to ensure that all required fields are present and within valid ranges.\nCreates a new `CompanyRiskEvaluation` instance with the provided risk ID, probability, and impact values,\nand associates it with the currently authenticated user."
+      operationId: storeANewRiskEvaluationForACompanyValidatesTheIncomingRequestDataToEnsureThatAllRequiredFieldsArePresentAndWithinValidRangesCreatesANewCompanyRiskEvaluationInstanceWithTheProvidedRiskIDProbabilityAndImpactValuesandAssociatesItWithTheCurrentlyAuthenticatedUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Evaluation'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                risk_id:
+                  type: integer
+                  description: ''
+                  example: 12
+                probability:
+                  type: integer
+                  description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
+                  example: 1
+                impact:
+                  type: integer
+                  description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
+                  example: 3
+              required:
+                - risk_id
+                - probability
+                - impact
+  /api/precursors:
+    post:
+      summary: "Store Precursors\n\nAdd new precursors for a company risk."
+      operationId: storePrecursorsAddNewPrecursorsForACompanyRisk
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Precursors'
+    delete:
+      summary: "Delete Precursors\n\nDelete specified precursors by their IDs."
+      operationId: deletePrecursorsDeleteSpecifiedPrecursorsByTheirIDs
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Precursors'
+    patch:
+      summary: "Update Precursor Status\n\nUpdate the status of a specific precursor."
+      operationId: updatePrecursorStatusUpdateTheStatusOfASpecificPrecursor
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Risk Precursors'
+  /intuit-risks/risks:
+    get:
+      summary: "Display a list of risks.\n\nRetrieve all risks with their associated categories and organization types.\nReturn the data to be rendered on the `IntuitRisks/Risks` view."
+      operationId: displayAListOfRisksRetrieveAllRisksWithTheirAssociatedCategoriesAndOrganizationTypesReturnTheDataToBeRenderedOnTheIntuitRisksRisksView
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  risks:
+                    -
+                      id: 1
+                      name: 'Risk Example'
+                      category:
+                        id: 2
+                        name: 'Category Example'
+                      organizationTypes:
+                        -
+                          id: 3
+                          name: 'Organization Type Example'
+                  categories:
+                    -
+                      id: 2
+                      name: 'Category Example'
+                  organizations:
+                    -
+                      id: 3
+                      name: 'Organization Type Example'
+                properties:
+                  risks:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Risk Example'
+                        category:
+                          id: 2
+                          name: 'Category Example'
+                        organizationTypes:
+                          -
+                            id: 3
+                            name: 'Organization Type Example'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Risk Example'
+                        category:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2
+                            name:
+                              type: string
+                              example: 'Category Example'
+                        organizationTypes:
+                          type: array
+                          example:
+                            -
+                              id: 3
+                              name: 'Organization Type Example'
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 3
+                              name:
+                                type: string
+                                example: 'Organization Type Example'
+                  categories:
+                    type: array
+                    example:
+                      -
+                        id: 2
+                        name: 'Category Example'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 2
+                        name:
+                          type: string
+                          example: 'Category Example'
+                  organizations:
+                    type: array
+                    example:
+                      -
+                        id: 3
+                        name: 'Organization Type Example'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 3
+                        name:
+                          type: string
+                          example: 'Organization Type Example'
+      tags:
+        - Risks
+    post:
+      summary: "Handle the creation of a new risk.\n\nValidate the provided risk details and create a new risk entry in the database.\nAssociate the risk with the specified organization types."
+      operationId: handleTheCreationOfANewRiskValidateTheProvidedRiskDetailsAndCreateANewRiskEntryInTheDatabaseAssociateTheRiskWithTheSpecifiedOrganizationTypes
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response back to the previous page with input.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    name:
+                      - 'The name field is required.'
+                    category:
+                      - 'The category field is required.'
+                    desc:
+                      - 'The description field is required.'
+                    organization_types:
+                      - 'The organization types field is required.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+                      category:
+                        type: array
+                        example:
+                          - 'The category field is required.'
+                        items:
+                          type: string
+                      desc:
+                        type: array
+                        example:
+                          - 'The description field is required.'
+                        items:
+                          type: string
+                      organization_types:
+                        type: array
+                        example:
+                          - 'The organization types field is required.'
+                        items:
+                          type: string
+      tags:
+        - Risks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: tempore
+                category:
+                  type: string
+                  description: ''
+                  example: optio
+                desc:
+                  type: string
+                  description: ''
+                  example: sint
+                organization_types:
+                  type: string
+                  description: ''
+                  example: facere
+              required:
+                - name
+                - category
+                - desc
+                - organization_types
+  '/intuit-risks/risks/{id}':
+    patch:
+      summary: "Handle the updating of an existing risk.\n\nValidate the provided risk details and update the existing risk entry in the database.\nIf no name is provided, toggle the active status of the risk instead.\nUpdate the associated organization types for the risk."
+      operationId: handleTheUpdatingOfAnExistingRiskValidateTheProvidedRiskDetailsAndUpdateTheExistingRiskEntryInTheDatabaseIfNoNameIsProvidedToggleTheActiveStatusOfTheRiskInsteadUpdateTheAssociatedOrganizationTypesForTheRisk
+      description: ''
+      parameters: []
+      responses:
+        302:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 'Redirect response back to the previous page with input.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    name:
+                      - 'The name field is required.'
+                    category:
+                      - 'The category field is required.'
+                    desc:
+                      - 'The description field is required.'
+                    organization_types:
+                      - 'The organization types field is required.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+                      category:
+                        type: array
+                        example:
+                          - 'The category field is required.'
+                        items:
+                          type: string
+                      desc:
+                        type: array
+                        example:
+                          - 'The description field is required.'
+                        items:
+                          type: string
+                      organization_types:
+                        type: array
+                        example:
+                          - 'The organization types field is required.'
+                        items:
+                          type: string
+      tags:
+        - Risks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: unde
+                category:
+                  type: string
+                  description: ''
+                  example: quia
+                desc:
+                  type: string
+                  description: ''
+                  example: eos
+                organization_types:
+                  type: string
+                  description: ''
+                  example: voluptas
+              required:
+                - name
+                - category
+                - desc
+                - organization_types
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the risk.'
+        example: at
+        required: true
+        schema:
+          type: string
+  /register/risks/validate:
+    post:
+      summary: "Update the user's registration step to the next phase.\n\nSets the user's registration step to 3 to indicate progress in the registration process."
+      operationId: updateTheUsersRegistrationStepToTheNextPhaseSetsTheUsersRegistrationStepTo3ToIndicateProgressInTheRegistrationProcess
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+      tags:
+        - 'User Registration'
+  /profile:
+    get:
+      summary: "Display the user's profile form.\n\nRenders the profile edit page with information about whether the user's email must be verified\nand any status messages from the session."
+      operationId: displayTheUsersProfileFormRendersTheProfileEditPageWithInformationAboutWhetherTheUsersEmailMustBeVerifiedandAnyStatusMessagesFromTheSession
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+      security: []
+    delete:
+      summary: "Delete the user's account.\n\nValidates that the provided password is correct, then logs out the user,\ndeletes the user's account, and invalidates and regenerates the session.\nRedirects to the homepage after the account is deleted."
+      operationId: deleteTheUsersAccountValidatesThatTheProvidedPasswordIsCorrectThenLogsOutTheUserdeletesTheUsersAccountAndInvalidatesAndRegeneratesTheSessionRedirectsToTheHomepageAfterTheAccountIsDeleted
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: ''
+                  example: tempore
+              required:
+                - password
+      security: []
+  /admin/users:
+    get:
+      summary: 'Get Company Users'
+      operationId: getCompanyUsers
+      description: "Retrieve all users for the authenticated user's company."
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Users
+    post:
+      summary: 'Create a New User'
+      operationId: createANewUser
+      description: "Create a new user for the authenticated user's company."
+      parameters: []
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: eos
+                email:
+                  type: string
+                  description: 'Le champ value doit être une adresse e-mail valide.'
+                  example: jalen.paucek@example.org
+                is_admin:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - name
+                - email
+                - is_admin
+    patch:
+      summary: 'Update User Information'
+      operationId: updateUserInformation
+      description: 'Update the status or admin role of a specific user.'
+      parameters: []
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ''
+                  example: saepe
+                update:
+                  type: string
+                  description: ''
+                  example: status
+                  enum:
+                    - status
+                    - admin
+              required:
+                - id
+                - update
+  /api/users:
+    get:
+      summary: "Get Active Users\n\nRetrieve a list of active users for the authenticated user's company."
+      operationId: getActiveUsersRetrieveAListOfActiveUsersForTheAuthenticatedUsersCompany
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "[\n  {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"company_id\": 1,\n    \"is_deleted\": false,\n    \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n    \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Jane Smith\",\n    \"email\": \"janesmith@example.com\",\n    \"company_id\": 1,\n    \"is_deleted\": false,\n    \"created_at\": \"2024-01-01T00:00:00.000000Z\",\n    \"updated_at\": \"2024-01-01T00:00:00.000000Z\"\n  }\n  // ... more users\n]"
+      tags:
+        - Users
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: Categories
+    description: ''
+  -
+    name: Company
+    description: ''
+  -
+    name: 'Company Registration'
+    description: ''
+  -
+    name: 'Company Risks'
+    description: ''
+  -
+    name: Dashboard
+    description: ''
+  -
+    name: 'Reduction Plans'
+    description: ''
+  -
+    name: 'Risk Emergency Plan'
+    description: ''
+  -
+    name: 'Risk Evaluation'
+    description: ''
+  -
+    name: 'Risk Precursors'
+    description: ''
+  -
+    name: Risks
+    description: ''
+  -
+    name: 'User Registration'
+    description: ''
+  -
+    name: Users
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: "Authentication for this API is managed through Laravel Breeze, a simple and minimal authentication package for Laravel.\n\n**To authenticate:**\n1. **Register**: Use the `/register` endpoint to create a new account.\n2. **Login**: Use the `/login` endpoint with your credentials to obtain a session. \n   You will need to include the `Authorization` header with the token received upon successful login for subsequent API requests.\n3. **Logout**: Use the `/logout` endpoint to end your session.\n\nAfter logging in, Laravel Breeze will set a session cookie which can be used for authentication in subsequent requests. For API calls, ensure the `Authorization` header is included with your requests.\n\nFor more details on how to use Laravel Breeze for authentication, refer to the [Laravel Breeze documentation](https://laravel.com/docs/8.x/starter-kits#laravel-breeze)."
+security:
+  -
+    default: []

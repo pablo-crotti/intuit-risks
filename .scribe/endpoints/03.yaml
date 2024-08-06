@@ -1,0 +1,176 @@
+name: 'Risk Evaluation'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - PATCH
+    uri: register/risks
+    metadata:
+      groupName: 'Risk Evaluation'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Update the evaluation of an existing risk.
+
+        Validate and update the risk evaluation details for the given risk ID.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      newEvaluationData:
+        name: newEvaluationData
+        description: ''
+        required: false
+        example:
+          - []
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'newEvaluationData[].id':
+        name: 'newEvaluationData[].id'
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'newEvaluationData[].probability':
+        name: 'newEvaluationData[].probability'
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      'newEvaluationData[].impact':
+        name: 'newEvaluationData[].impact'
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      newEvaluationData:
+        -
+          id: 1
+          probability: 3
+          impact: 18
+    fileParameters: []
+    responses:
+      -
+        status: 204
+        content: 'No content.'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+            "errors": {
+              "newEvaluationData.*.id": [
+                "The id field is required and must be an integer."
+              ],
+              "newEvaluationData.*.probability": [
+                "The probability field is required and must be an integer."
+              ],
+              "newEvaluationData.*.impact": [
+                "The impact field is required and must be an integer."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - EZ3gf58ahPbvd4e1kcaD66V
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/evaluations
+    metadata:
+      groupName: 'Risk Evaluation'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: |-
+        Store a new risk evaluation for a company.
+
+        Validates the incoming request data to ensure that all required fields are present and within valid ranges.
+        Creates a new `CompanyRiskEvaluation` instance with the provided risk ID, probability, and impact values,
+        and associates it with the currently authenticated user.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'null'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      risk_id:
+        name: risk_id
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      probability:
+        name: probability
+        description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      impact:
+        name: impact
+        description: 'Le champ value doit être au moins de 1. Le champ value ne doit pas être supérieur à 5.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      risk_id: 12
+      probability: 1
+      impact: 3
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - kav6eg5adf4E6Dh18Zb3PVc
+    controller: null
+    method: null
+    route: null
+    custom: []

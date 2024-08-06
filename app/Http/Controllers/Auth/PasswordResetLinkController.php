@@ -13,7 +13,17 @@ use Inertia\Response;
 class PasswordResetLinkController extends Controller
 {
     /**
-     * Display the password reset link request view.
+     * @group Authentication
+     *
+     * Display Password Reset Link Request View
+     *
+     * Show the view where users can request a password reset link.
+     *
+     * @return \Inertia\Response A response rendering the password reset request view.
+     * @response 200 {
+     *   "status": "some-status"
+     *   // Rendered view for requesting a password reset link.
+     * }
      */
     public function create(): Response
     {
@@ -23,9 +33,26 @@ class PasswordResetLinkController extends Controller
     }
 
     /**
-     * Handle an incoming password reset link request.
+     * @group Authentication
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * Handle Password Reset Link Request
+     *
+     * Validate the email address and handle the request to send a password reset link.
+     *
+     * @param \Illuminate\Http\Request $request The request object containing the email.
+     * @param string $request->email The email address to which the reset link will be sent.
+     * 
+     * @return \Illuminate\Http\RedirectResponse Redirects back to the previous page with a status message if the reset link is sent successfully.
+     * @response 302 Redirect response back to the previous page with a status message.
+     * 
+     * @throws \Illuminate\Validation\ValidationException If the email validation fails.
+     * @response 422 {
+     *   "errors": {
+     *     "email": [
+     *       "The email address is not valid or does not exist."
+     *     ]
+     *   }
+     * }
      */
     public function store(Request $request): RedirectResponse
     {

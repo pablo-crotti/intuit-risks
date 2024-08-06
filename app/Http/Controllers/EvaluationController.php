@@ -8,16 +8,18 @@ use App\Models\CompanyRiskEvaluation;
 class EvaluationController extends Controller
 {
     /**
-     * The function stores a new company risk evaluation based on the provided risk ID, probability,
-     * and impact values.
+     * @group Risk Evaluation
      * 
-     * @param Request request The `store` function in the code snippet is responsible for storing a new
-     * `CompanyRiskEvaluation` record based on the data provided in the request. Here's a breakdown of
-     * the code:
+     * Store a new risk evaluation for a company.
+     *
+     * Validates the incoming request data to ensure that all required fields are present and within valid ranges.
+     * Creates a new `CompanyRiskEvaluation` instance with the provided risk ID, probability, and impact values,
+     * and associates it with the currently authenticated user.
+     *
+     * @param \Illuminate\Http\Request $request The incoming request containing the evaluation data.
      * 
-     * @return The `back()->withInput()` method is being used to redirect the user back to the previous
-     * page with the input data that was submitted. This is commonly used to display any validation
-     * errors or to maintain the form data that was entered by the user.
+     * @return \Illuminate\Http\RedirectResponse A redirect response back to the previous page with input.
+     * @authenticated
      */
     public function store(Request $request)
     {

@@ -10,14 +10,40 @@ use App\Models\CompanyRiskEvaluation;
 class CompanyRisksController extends Controller
 {
     /**
-     * The `display` function retrieves company risks with related data and returns them for display
-     * using the Inertia.js framework.
-     * 
-     * @return The `display` function is returning an Inertia response with the data of company risks
-     * related to the authenticated user's company. The function retrieves company risks along with
-     * their related risk, category, and evaluations data based on the company ID of the authenticated
-     * user. Finally, it returns a view named 'Logged/Risks' with the retrieved company risks data
-     * passed as 'risks' to the view.
+     * @group Company Risks
+     *
+     * Display a list of risks associated with the authenticated user's company.
+     *
+     * Retrieves all company risks related to the company of the currently authenticated user.
+     * Includes related data such as risk details, categories, and evaluations.
+     *
+     * @param \Illuminate\Http\Request $request The request object used to fetch the risks.
+     *
+     * @return \Inertia\Response The Inertia response rendering the list of company risks.
+     * @response 200 {
+     *   "risks": [
+     *     {
+     *       "id": 1,
+     *       "company_id": 1,
+     *       "risk": {
+     *         "id": 1,
+     *         "name": "Risk Name",
+     *         "description": "Risk Description"
+     *       },
+     *       "category": {
+     *         "id": 1,
+     *         "name": "Category Name"
+     *       },
+     *       "evaluations": [
+     *         {
+     *           "id": 1,
+     *           "probability": 5,
+     *           "impact": 7
+     *         }
+     *       ]
+     *     }
+     *   ]
+     * }
      */
     public function index()
     {
