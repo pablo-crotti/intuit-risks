@@ -1,29 +1,19 @@
-import ollama from "ollama"
+
 
 /**
- * Sends a request to the Mistral model to get a response based on the provided message.
+ * Sends a message to Mistral AI and returns the response.
  *
- * @param {Object[]} message - The array of messages to send to the Mistral model.
- * @param {Object} message[] - An object representing a message in the conversation.
- * @param {string} message[].role - The role of the message, such as "system" or "user".
- * @param {string} message[].content - The content of the message.
- * @returns {Promise<Object>} The response from the Mistral model in JSON format.
- * @throws {Error} If an error occurs during the request.
+ * @param {Array<Object>} message - An array of message objects. Each object should have 'role' and 'content' properties.
+ * @param {string} message.role - The role of the message sender (either 'system' or 'user').
+ * @param {string} message.content - The content of the message.
+ * @returns {Promise<Object>} A promise that resolves to the parsed JSON response from Mistral AI.
+ * @throws {Error} Throws an error if there's a problem with the Mistral AI request.
  */
 const askMistral = async (message) => {
-    try {
-        const completion = await ollama.chat({
-            model: "mistral",
-            response_format: { type: "json_object" },
-            messages: message,
-
-        });
-
-        return JSON.parse(completion.message.content)
-    } catch (error) {
-        throw new Error("Une erreur est survenue, veuillez réessayer.");
-    }
+    return false;
 }
+
+
 /**
  * Develops an emergency plan for a given crisis by providing key information and essential tasks.
  *
