@@ -11,6 +11,7 @@ const askMistral = async (message) => {
     return false;
 }
 
+
 /**
  * Develops an emergency plan for a given crisis by providing key information and essential tasks.
  *

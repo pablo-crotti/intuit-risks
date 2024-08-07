@@ -120,10 +120,6 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 
 Once the servers are running, open your browser and navigate to: `http://localhost:8000`
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
 ## Contributing
 
 We welcome contributions! While we do not currently have a Contributing Guidelines document, you can still submit pull requests or reach out for more information
