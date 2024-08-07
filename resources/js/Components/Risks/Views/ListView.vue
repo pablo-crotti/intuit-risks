@@ -47,6 +47,8 @@ export default {
         maxPerPage: 10,
         actualPage: 1,
         pageRisks: [],
+        shownRisks: [],
+
         searching: false,
     }),
     components: {
@@ -164,7 +166,8 @@ export default {
             });
         },
         setPageRisks() {
-            this.pageRisks = this.pageRisks.slice(
+            this.pages = Math.ceil(this.pageRisks.length / this.maxPerPage);
+            this.shownRisks = this.pageRisks.slice(
                 (this.actualPage - 1) * this.maxPerPage,
                 this.actualPage * this.maxPerPage
             );
@@ -203,12 +206,13 @@ export default {
         },
 
         useFilters() {
+            this.pageRisks = this.risks;
             if (
                 this.selectedStrategies.length === 0 &&
                 this.selectedCategories.length === 0
             ) {
-                this.pageRisks = this.risks;
                 this.order();
+                this.setPageRisks();
                 return;
             }
 
@@ -227,6 +231,9 @@ export default {
                         this.selectedStrategies.includes(risk.strategy)
                 );
             }
+
+            this.order();
+            this.setPageRisks();
         },
         setSelectedCategories(id) {
             if (this.selectedCategories.includes(id)) {
@@ -494,7 +501,10 @@ export default {
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b dark:border-gray-700" v-for="risk in pageRisks">
+            <tr
+                class="border-b dark:border-gray-700"
+                v-for="risk in shownRisks"
+            >
                 <RiskTableBody :risk="risk" />
             </tr>
         </tbody>
