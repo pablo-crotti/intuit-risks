@@ -254,6 +254,7 @@ export default {
 
     watch: {
         risks() {
+            this.pageRisks = this.risks;
             this.order();
             this.setPageRisks();
         },
