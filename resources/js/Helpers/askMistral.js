@@ -1,5 +1,3 @@
-
-
 /**
  * Sends a message to Mistral AI and returns the response.
  *

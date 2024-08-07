@@ -23,7 +23,7 @@ export default {
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
-            class="size-10 text-primary-700 group-hover:text-primary-600 dark:text-primary-500 dark:group-hover:text-primary-400 duration-300"
+            class="size-10 text-gray-300 group-hover:text-primary-600 dark:text-gray-700 dark:group-hover:text-primary-600 duration-300"
             fill="currentColor"
         >
             <path
