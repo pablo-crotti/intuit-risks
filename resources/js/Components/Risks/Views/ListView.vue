@@ -77,7 +77,7 @@ export default {
             this.setPageRisks();
         },
         order() {
-            this.risks.sort((a, b) => {
+            this.pageRisks.sort((a, b) => {
                 if (this.ordered.criticity) {
                     if (this.ordered.criticity == "up") {
                         return (
@@ -164,7 +164,7 @@ export default {
             });
         },
         setPageRisks() {
-            this.pageRisks = this.risks.slice(
+            this.pageRisks = this.pageRisks.slice(
                 (this.actualPage - 1) * this.maxPerPage,
                 this.actualPage * this.maxPerPage
             );
@@ -208,6 +208,7 @@ export default {
                 this.selectedCategories.length === 0
             ) {
                 this.pageRisks = this.risks;
+                this.order();
                 return;
             }
 
@@ -264,6 +265,7 @@ export default {
         this.order();
 
         this.pages = Math.ceil(this.risks.length / this.maxPerPage);
+        this.pageRisks = this.risks;
         this.setPageRisks();
         this.setCategories();
     },
