@@ -2,17 +2,17 @@
 
 IntuitRisks is a Bachelor’s project developed in collaboration with IntuitSens, a company specializing in crisis management, based in Penthalaz (VD). This project was completed as part of the Bachelor’s studies at the School of Engineering and Management of Vaud (HEIG-VD).
 
-## Context
+## Context 📚
 
 In an increasingly uncertain economic environment marked by various risks (such as health crises, cyberattacks, natural disasters, etc.), businesses, especially small and medium-sized enterprises (SMEs), face significant challenges in safeguarding their operations. SMEs, often with limited resources, require risk management solutions that are simple, accessible, and effective to proactively prevent and manage crises.
 
-## Objectives
+## Objectives 🎯
 
 -   Develop a functional prototype allowing users to register, configure their organization, and select relevant risks in less than 15 to 20 minutes.
 -   Simplify and optimize the user interface to ensure quick adoption and high user satisfaction.
 -   Lay the groundwork for future features, such as generating emergency plans and risk response strategies.
 
-## Features
+## Features 🚀
 
 -   **User registration :** Simple and quick registration process.
 -   **Organization configuration :** Easy setup for user organization details.
@@ -23,7 +23,7 @@ In an increasingly uncertain economic environment marked by various risks (such 
 -   **User interface :** Optimized for ease of use and quick adoption.
 -   **Future expansion :** Foundation for additional features like automated risk assessments.
 
-## Installation
+## Installation 🛠️
 
 To get started with the IntuitRisks project, follow these steps to set up the development environment and run the application locally:
 
@@ -120,15 +120,15 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 
 Once the servers are running, open your browser and navigate to: `http://localhost:8000`
 
-## Contributing
+## Contributing 🤝
 
 We welcome contributions! While we do not currently have a Contributing Guidelines document, you can still submit pull requests or reach out for more information
 
-## License
+## License 📜
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Acknowledgements
+## Acknowledgements 🙏
 
 -   IntuitSens for their collaboration and expertise in crisis management.
 -   The School of Engineering and Management of Vaud (HEIG-VD) for their support.
