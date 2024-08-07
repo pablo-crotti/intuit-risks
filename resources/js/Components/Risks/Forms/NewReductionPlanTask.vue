@@ -113,7 +113,7 @@ export default {
         buttonTitle="Ajouter une action"
     >
         <template #body>
-            <!-- <div class="mb-4">
+            <div class="mb-4">
                 <button
                     @click="generateReductionPlanTask"
                     class="text-gray-700 dark:text-gray-300 hover:text-primary-500 flex gap-2 items-center"
@@ -135,7 +135,7 @@ export default {
                         />
                     </svg>
                 </button>
-            </div> -->
+            </div>
             <div class="mb-4">
                 <InputLabel for="task" label="Action">Action</InputLabel>
                 <textarea

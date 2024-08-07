@@ -210,7 +210,7 @@ export default {
                 >
                     <template #body>
                         <div class="w-full">
-                            <!-- <div class="mb-4">
+                            <div class="mb-4">
                                 <button
                                     @click="generatePrecursors"
                                     class="text-gray-700 dark:text-gray-300 hover:text-primary-500 flex gap-2 items-center"
@@ -232,7 +232,7 @@ export default {
                                         />
                                     </svg>
                                 </button>
-                            </div> -->
+                            </div>
                             <div class="mb-8 flex justify-between">
                                 <InputLabel
                                     for="signs"

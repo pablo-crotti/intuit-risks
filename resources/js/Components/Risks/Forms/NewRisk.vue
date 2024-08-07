@@ -152,7 +152,7 @@ export default {
                         />
                     </svg>
                 </button>
-                <!-- <button
+                <button
                     @click="(AIrisk = true), askMistral()"
                     class="group text-left inline-flex w-full items-center justify-center p-5 text-base font-medium text-gray-700 rounded-lg bg-gray-100 hover:text-gray-800 hover:bg-gray-200 dark:text-gray-200 dark:bg-gray-700 border-0 dark:border-2 dark:border-gray-600 dark:hover:border-gray-700 dark:hover:bg-gray-700 dark:hover:text-white duration-300"
                 >
@@ -189,7 +189,7 @@ export default {
                             d="M1 5h12m0 0L9 1m4 4L9 9"
                         />
                     </svg>
-                </button> -->
+                </button>
             </div>
             <div v-else>
                 <div class="w-full flex justify-end">
