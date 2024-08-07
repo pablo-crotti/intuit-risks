@@ -123,3 +123,16 @@ Once the servers are running, open your browser and navigate to: `http://localho
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contributing
+
+We welcome contributions! While we do not currently have a Contributing Guidelines document, you can still submit pull requests or reach out for more information
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+-   IntuitSens for their collaboration and expertise in crisis management.
+-   The School of Engineering and Management of Vaud (HEIG-VD) for their support.
