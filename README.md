@@ -12,6 +12,17 @@ In an increasingly uncertain economic environment marked by various risks (such 
 -   Simplify and optimize the user interface to ensure quick adoption and high user satisfaction.
 -   Lay the groundwork for future features, such as generating emergency plans and risk response strategies.
 
+## Features
+
+-   **User registration :** Simple and quick registration process.
+-   **Organization configuration :** Easy setup for user organization details.
+-   **Risk selection :** Ability to select and prioritize relevant risks.
+-   **Follow risk evolution :** Track the evolution of identified risks over time.
+-   **Response strategies :** Create and manage response strategies for various risks.
+-   **Emergency plans :** Set up and maintain comprehensive emergency plans.
+-   **User interface :** Optimized for ease of use and quick adoption.
+-   **Future expansion :** Foundation for additional features like automated risk assessments.
+
 ## Installation
 
 To get started with the IntuitRisks project, follow these steps to set up the development environment and run the application locally:
@@ -108,3 +119,7 @@ To get started with the IntuitRisks project, follow these steps to set up the de
 ### Access the application
 
 Once the servers are running, open your browser and navigate to: `http://localhost:8000`
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
