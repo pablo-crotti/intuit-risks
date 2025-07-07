@@ -1,6 +1,6 @@
 # IntuitRisks
 
-IntuitRisks is a Bachelor’s project developed in collaboration with IntuitSens, a company specializing in crisis management, based in Penthalaz (VD). This project was completed as part of the Bachelor’s studies at the School of Engineering and Management of Vaud (HEIG-VD).
+IntuitRisks is a Bachelor’s project developed in collaboration with IntuitSens, a company specializing in crisis management, based in Penthalaz (VD). This project was completed as part of the Bachelor’s studies at the School of Engineering and Management of Vaud (HEIG-VD). The work report can be read [here](https://tb.heig-vd.ch/8464)
 
 ## Context 📚
 
